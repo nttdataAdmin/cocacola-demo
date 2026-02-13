@@ -1,0 +1,268 @@
+{
+  "user_stories": [
+    {
+      "id": "US-001",
+      "title": "User Registration",
+      "user_story": "As a new user, I want to register an account so that I can access personalized features.",
+      "acceptance_criteria": [
+        "User can access the registration page from the homepage.",
+        "User must provide a valid email address, password, and name.",
+        "User receives a confirmation email after successful registration.",
+        "System prevents duplicate email registrations.",
+        "User is redirected to the login page after registration."
+      ],
+      "priority": "High"
+    },
+    {
+      "id": "US-002",
+      "title": "User Login",
+      "user_story": "As a registered user, I want to log in to my account so that I can access my dashboard.",
+      "acceptance_criteria": [
+        "User can enter email and password to log in.",
+        "System validates credentials and provides error messages for invalid login.",
+        "User is redirected to their dashboard upon successful login.",
+        "System supports 'Remember Me' functionality.",
+        "User can reset their password if forgotten."
+      ],
+      "priority": "High"
+    },
+    {
+      "id": "US-003",
+      "title": "Password Reset",
+      "user_story": "As a user, I want to reset my password so that I can regain access if I forget it.",
+      "acceptance_criteria": [
+        "User can request a password reset from the login page.",
+        "User receives a password reset email with a secure link.",
+        "User can set a new password using the link.",
+        "System validates the password reset token for security.",
+        "User is notified of successful password reset."
+      ],
+      "priority": "High"
+    },
+    {
+      "id": "US-004",
+      "title": "Profile Management",
+      "user_story": "As a user, I want to update my profile information so that my account details remain current.",
+      "acceptance_criteria": [
+        "User can access and edit their profile from the dashboard.",
+        "User can update name, email, and profile picture.",
+        "System validates email format and uniqueness.",
+        "Changes are saved and reflected immediately.",
+        "User receives confirmation of successful profile update."
+      ],
+      "priority": "Medium"
+    },
+    {
+      "id": "US-005",
+      "title": "View Dashboard",
+      "user_story": "As a user, I want to view a personalized dashboard so that I can see relevant information at a glance.",
+      "acceptance_criteria": [
+        "Dashboard displays user\u2019s name and profile picture.",
+        "Dashboard shows recent activity and notifications.",
+        "User can access quick links to main features.",
+        "Dashboard updates in real-time with new dATF.",
+        "User can customize dashboard widgets."
+      ],
+      "priority": "High"
+    },
+    {
+      "id": "US-006",
+      "title": "Create New Project",
+      "user_story": "As a user, I want to create a new project so that I can organize my work efficiently.",
+      "acceptance_criteria": [
+        "User can access 'Create Project' from the dashboard.",
+        "User can enter project name, description, and set privacy settings.",
+        "System validates required fields before creation.",
+        "Project appears in the user\u2019s project list after creation.",
+        "User receives confirmation of successful project creation."
+      ],
+      "priority": "High"
+    },
+    {
+      "id": "US-007",
+      "title": "Edit Project Details",
+      "user_story": "As a project owner, I want to edit project details so that I can keep information up to date.",
+      "acceptance_criteria": [
+        "User can access project settings from the project page.",
+        "User can update project name, description, and privacy.",
+        "System validates changes before saving.",
+        "Changes are reflected immediately in the project list.",
+        "User receives confirmation of successful update."
+      ],
+      "priority": "Medium"
+    },
+    {
+      "id": "US-008",
+      "title": "Delete Project",
+      "user_story": "As a project owner, I want to delete a project so that I can remove unwanted projects.",
+      "acceptance_criteria": [
+        "User can access delete option from project settings.",
+        "System asks for confirmation before deletion.",
+        "Project is removed from user\u2019s project list after deletion.",
+        "User receives notification of successful deletion.",
+        "Deleted projects cannot be accessed or restored."
+      ],
+      "priority": "Medium"
+    },
+    {
+      "id": "US-009",
+      "title": "Invite Team Members",
+      "user_story": "As a project owner, I want to invite team members to a project so that we can collaborate.",
+      "acceptance_criteria": [
+        "User can send invitations via email from the project page.",
+        "Invited users receive an email with a join link.",
+        "System prevents duplicate invitations.",
+        "Invited users appear in the project team list after accepting.",
+        "User receives notification when invitations are accepted."
+      ],
+      "priority": "High"
+    },
+    {
+      "id": "US-010",
+      "title": "Assign Roles to Team Members",
+      "user_story": "As a project owner, I want to assign roles to team members so that responsibilities are clear.",
+      "acceptance_criteria": [
+        "User can assign roles (e.g., Admin, Editor, Viewer) to team members.",
+        "System enforces role-based permissions for project actions.",
+        "Role changes are reflected immediately in the team list.",
+        "User receives confirmation of successful role assignment.",
+        "Only project owners can change roles."
+      ],
+      "priority": "Medium"
+    },
+    {
+      "id": "US-011",
+      "title": "Create Task in Project",
+      "user_story": "As a team member, I want to create tasks within a project so that work can be organized and tracked.",
+      "acceptance_criteria": [
+        "User can add tasks with title, description, due date, and assignee.",
+        "System validates required fields before task creation.",
+        "Task appears in the project task list after creation.",
+        "User receives confirmation of successful task creation.",
+        "Tasks can be assigned to multiple team members."
+      ],
+      "priority": "High"
+    },
+    {
+      "id": "US-012",
+      "title": "Edit Task Details",
+      "user_story": "As a team member, I want to edit task details so that information remains accurate.",
+      "acceptance_criteria": [
+        "User can update task title, description, due date, and assignee.",
+        "System validates changes before saving.",
+        "Changes are reflected immediately in the task list.",
+        "User receives confirmation of successful update.",
+        "Only users with appropriate permissions can edit tasks."
+      ],
+      "priority": "Medium"
+    },
+    {
+      "id": "US-013",
+      "title": "Mark Task as Complete",
+      "user_story": "As a team member, I want to mark tasks as complete so that progress is tracked.",
+      "acceptance_criteria": [
+        "User can mark tasks as complete from the task list.",
+        "Completed tasks are visually distinguished from incomplete tasks.",
+        "System updates task status in real-time.",
+        "User receives confirmation of successful completion.",
+        "Completed tasks can be filtered or hidden."
+      ],
+      "priority": "High"
+    },
+    {
+      "id": "US-014",
+      "title": "Comment on Tasks",
+      "user_story": "As a team member, I want to comment on tasks so that we can discuss and clarify work.",
+      "acceptance_criteria": [
+        "User can add comments to any task.",
+        "Comments display author and timestamp.",
+        "System supports editing and deleting own comments.",
+        "Comments are visible to all project members.",
+        "User receives notification for new comments."
+      ],
+      "priority": "Medium"
+    },
+    {
+      "id": "US-015",
+      "title": "Receive Notifications",
+      "user_story": "As a user, I want to receive notifications for important events so that I stay informed.",
+      "acceptance_criteria": [
+        "User receives notifications for task assignments, comments, and project updates.",
+        "Notifications are visible in the dashboard and via email.",
+        "User can customize notification preferences.",
+        "System marks notifications as read when viewed.",
+        "User can clear or archive notifications."
+      ],
+      "priority": "High"
+    },
+    {
+      "id": "US-016",
+      "title": "Search Projects and Tasks",
+      "user_story": "As a user, I want to search for projects and tasks so that I can quickly find relevant information.",
+      "acceptance_criteria": [
+        "User can enter keywords to search projects and tasks.",
+        "Search results display matching projects and tasks.",
+        "System supports filtering by status, date, and assignee.",
+        "Search results update in real-time as user types.",
+        "User can access items directly from search results."
+      ],
+      "priority": "Medium"
+    },
+    {
+      "id": "US-017",
+      "title": "Export Project DATF",
+      "user_story": "As a project owner, I want to export project dATF so that I can share or archive information.",
+      "acceptance_criteria": [
+        "User can export project dATF in CSV or PDF format.",
+        "Export includes project details, tasks, and team members.",
+        "System generates export files quickly and accurately.",
+        "User receives confirmation when export is complete.",
+        "Exported files are downloadable from the dashboard."
+      ],
+      "priority": "Low"
+    },
+    {
+      "id": "US-018",
+      "title": "View Activity Log",
+      "user_story": "As a user, I want to view an activity log so that I can track changes and actions within projects.",
+      "acceptance_criteria": [
+        "Activity log displays actions by all team members.",
+        "Log includes timestamps and descriptions of actions.",
+        "User can filter log by date, user, and action type.",
+        "Log updates in real-time with new activities.",
+        "Only project members can view the activity log."
+      ],
+      "priority": "Medium"
+    },
+    {
+      "id": "US-019",
+      "title": "Set Task Priority",
+      "user_story": "As a team member, I want to set priority for tasks so that important work is highlighted.",
+      "acceptance_criteria": [
+        "User can assign priority levels (High, Medium, Low) to tasks.",
+        "Tasks display priority visually in the task list.",
+        "System supports sorting and filtering by priority.",
+        "Priority can be changed at any time.",
+        "User receives confirmation of priority changes."
+      ],
+      "priority": "Medium"
+    },
+    {
+      "id": "US-020",
+      "title": "Archive Completed Projects",
+      "user_story": "As a project owner, I want to archive completed projects so that my active workspace remains uncluttered.",
+      "acceptance_criteria": [
+        "User can archive projects from the project settings.",
+        "Archived projects are moved to a separate section.",
+        "Archived projects are read-only and cannot be edited.",
+        "User can restore archived projects if needed.",
+        "User receives confirmation of successful archiving."
+      ],
+      "priority": "Low"
+    }
+  ],
+  "summary": "20 comprehensive user stories have been generated, covering all major functional requirements including user management, project and task management, collaboration, notifications, search, export, and activity tracking.",
+  "agent_name": "User Story Creator",
+  "file_name": "sample input_userstory_new.docx",
+  "timestamp": "2026-02-05T01:18:51.227015"
+}

@@ -1,0 +1,268 @@
+{
+  "user_stories": [
+    {
+      "id": "US-001",
+      "title": "User Registration via Email",
+      "user_story": "As a new user, I want to register using my email address so that I can create an account and access the platform.",
+      "acceptance_criteria": [
+        "User can input email, password, and confirm password fields.",
+        "System validates the email format.",
+        "System checks password strength and matches confirmation.",
+        "User receives a verification email upon registration.",
+        "User cannot register with an already used email."
+      ],
+      "priority": "High"
+    },
+    {
+      "id": "US-002",
+      "title": "User Login",
+      "user_story": "As a registered user, I want to log in with my email and password so that I can access my account securely.",
+      "acceptance_criteria": [
+        "User can input email and password.",
+        "System validates credentials against stored dATF.",
+        "User receives error message for incorrect credentials.",
+        "System prevents login after 5 failed attempts.",
+        "User is redirected to dashboard upon successful login."
+      ],
+      "priority": "High"
+    },
+    {
+      "id": "US-003",
+      "title": "Password Reset",
+      "user_story": "As a user, I want to reset my password if I forget it so that I can regain access to my account.",
+      "acceptance_criteria": [
+        "User can request a password reset link via email.",
+        "System sends a secure reset link to the user's email.",
+        "User can set a new password using the reset link.",
+        "System enforces password strength requirements.",
+        "User receives confirmation after successful password reset."
+      ],
+      "priority": "High"
+    },
+    {
+      "id": "US-004",
+      "title": "Profile Management",
+      "user_story": "As a user, I want to view and update my profile information so that my account details are accurate.",
+      "acceptance_criteria": [
+        "User can view current profile information.",
+        "User can edit and save changes to profile fields.",
+        "System validates updated information before saving.",
+        "User receives confirmation after successful update.",
+        "Changes are reflected immediately on the profile page."
+      ],
+      "priority": "Medium"
+    },
+    {
+      "id": "US-005",
+      "title": "Upload Profile Picture",
+      "user_story": "As a user, I want to upload a profile picture so that my account is personalized.",
+      "acceptance_criteria": [
+        "User can select and upload an image file.",
+        "System validates image format and size.",
+        "Profile picture is displayed on the user's profile.",
+        "User can remove or replace the profile picture.",
+        "System provides error messages for invalid uploads."
+      ],
+      "priority": "Medium"
+    },
+    {
+      "id": "US-006",
+      "title": "Dashboard Access",
+      "user_story": "As a user, I want to access a personalized dashboard so that I can see relevant information at a glance.",
+      "acceptance_criteria": [
+        "User is redirected to dashboard after login.",
+        "Dashboard displays user-specific dATF.",
+        "User can navigate to other sections from the dashboard.",
+        "Dashboard updates dynamically based on user activity.",
+        "User sees notifications and alerts on the dashboard."
+      ],
+      "priority": "High"
+    },
+    {
+      "id": "US-007",
+      "title": "Search Functionality",
+      "user_story": "As a user, I want to search for items using keywords so that I can quickly find what I need.",
+      "acceptance_criteria": [
+        "User can input search keywords.",
+        "System returns relevant results based on keywords.",
+        "Results are displayed in a paginated format.",
+        "User receives feedback if no results are found.",
+        "Search is case-insensitive and supports partial matches."
+      ],
+      "priority": "High"
+    },
+    {
+      "id": "US-008",
+      "title": "Filter Search Results",
+      "user_story": "As a user, I want to filter search results by categories so that I can narrow down my options.",
+      "acceptance_criteria": [
+        "User can select one or more filter categories.",
+        "System updates results based on selected filters.",
+        "Filters are clearly displayed and can be reset.",
+        "User can combine multiple filters.",
+        "Filtered results load without page refresh."
+      ],
+      "priority": "Medium"
+    },
+    {
+      "id": "US-009",
+      "title": "View Item Details",
+      "user_story": "As a user, I want to view detailed information about an item so that I can make informed decisions.",
+      "acceptance_criteria": [
+        "User can click on an item to view its details.",
+        "Item details page displays all relevant information.",
+        "User can see images, descriptions, and specifications.",
+        "User can navigate back to the search results.",
+        "System displays related items on the details page."
+      ],
+      "priority": "High"
+    },
+    {
+      "id": "US-010",
+      "title": "Add Item to Favorites",
+      "user_story": "As a user, I want to add items to my favorites list so that I can easily access them later.",
+      "acceptance_criteria": [
+        "User can mark an item as favorite from the details page.",
+        "System adds the item to the user's favorites list.",
+        "User can view and manage their favorites list.",
+        "User can remove items from favorites.",
+        "Favorites persist across sessions."
+      ],
+      "priority": "Medium"
+    },
+    {
+      "id": "US-011",
+      "title": "Notifications for Updates",
+      "user_story": "As a user, I want to receive notifications about important updates so that I stay informed.",
+      "acceptance_criteria": [
+        "User receives notifications for relevant events.",
+        "Notifications are displayed on the dashboard.",
+        "User can mark notifications as read.",
+        "System stores notification history.",
+        "User can enable or disable notifications."
+      ],
+      "priority": "Medium"
+    },
+    {
+      "id": "US-012",
+      "title": "Admin: Manage Users",
+      "user_story": "As an admin, I want to view, edit, and deactivate user accounts so that I can maintain platform integrity.",
+      "acceptance_criteria": [
+        "Admin can view a list of all users.",
+        "Admin can edit user details.",
+        "Admin can deactivate or reactivate user accounts.",
+        "System logs all admin actions.",
+        "Deactivated users cannot log in."
+      ],
+      "priority": "High"
+    },
+    {
+      "id": "US-013",
+      "title": "Admin: Manage Items",
+      "user_story": "As an admin, I want to add, edit, and remove items so that the platform content stays up to date.",
+      "acceptance_criteria": [
+        "Admin can add new items with all required fields.",
+        "Admin can edit existing item details.",
+        "Admin can remove items from the platform.",
+        "System validates item dATF before saving.",
+        "Changes are reflected immediately to users."
+      ],
+      "priority": "High"
+    },
+    {
+      "id": "US-014",
+      "title": "Admin: View Analytics",
+      "user_story": "As an admin, I want to view analytics on user activity and item popularity so that I can make informed decisions.",
+      "acceptance_criteria": [
+        "Admin can access analytics dashboard.",
+        "Dashboard displays user activity metrics.",
+        "Dashboard shows item popularity statistics.",
+        "Admin can filter analytics by date range.",
+        "Analytics dATF updates in real time."
+      ],
+      "priority": "Medium"
+    },
+    {
+      "id": "US-015",
+      "title": "User: Contact Support",
+      "user_story": "As a user, I want to contact support through a form so that I can get help with issues.",
+      "acceptance_criteria": [
+        "User can access the support contact form.",
+        "User can submit queries with subject and description.",
+        "System sends confirmation of submission.",
+        "Support team receives the query for follow-up.",
+        "User can view status of submitted queries."
+      ],
+      "priority": "Medium"
+    },
+    {
+      "id": "US-016",
+      "title": "User: Change Password",
+      "user_story": "As a user, I want to change my password from my account settings so that I can keep my account secure.",
+      "acceptance_criteria": [
+        "User can access password change option in settings.",
+        "System validates current password before allowing change.",
+        "New password must meet strength requirements.",
+        "User receives confirmation after successful change.",
+        "User is logged out from other sessions after password change."
+      ],
+      "priority": "Medium"
+    },
+    {
+      "id": "US-017",
+      "title": "User: Delete Account",
+      "user_story": "As a user, I want to delete my account so that my dATF is removed from the platform.",
+      "acceptance_criteria": [
+        "User can request account deletion from settings.",
+        "System asks for confirmation before deletion.",
+        "All user dATF is permanently removed upon deletion.",
+        "User receives email confirmation of account deletion.",
+        "User cannot log in after account is deleted."
+      ],
+      "priority": "Low"
+    },
+    {
+      "id": "US-018",
+      "title": "User: Multi-device Access",
+      "user_story": "As a user, I want to access my account from multiple devices so that I can use the platform anywhere.",
+      "acceptance_criteria": [
+        "User can log in from different devices.",
+        "User dATF syncs across devices in real time.",
+        "Favorites and settings are consistent on all devices.",
+        "System logs device access history.",
+        "User can log out remotely from any device."
+      ],
+      "priority": "Low"
+    },
+    {
+      "id": "US-019",
+      "title": "User: Receive Email Alerts",
+      "user_story": "As a user, I want to receive email alerts for important activities so that I am always updated.",
+      "acceptance_criteria": [
+        "User receives email alerts for account changes.",
+        "User receives alerts for new items or updates.",
+        "User can manage email alert preferences.",
+        "System sends emails in a timely manner.",
+        "User can unsubscribe from email alerts."
+      ],
+      "priority": "Low"
+    },
+    {
+      "id": "US-020",
+      "title": "User: Accessibility Features",
+      "user_story": "As a user with accessibility needs, I want the platform to support screen readers and keyboard navigation so that I can use it comfortably.",
+      "acceptance_criteria": [
+        "Platform supports standard screen readers.",
+        "All interactive elements are accessible via keyboard.",
+        "Images have descriptive alt text.",
+        "Contrast ratios meet accessibility guidelines.",
+        "User can adjust font sizes for readability."
+      ],
+      "priority": "Medium"
+    }
+  ],
+  "summary": "20 comprehensive user stories have been generated covering all major functional requirements, including user account management, dashboard, search and filter, item details, favorites, notifications, admin features, support, security, multi-device access, email alerts, and accessibility.",
+  "agent_name": "User Story Creator",
+  "file_name": "sample input_userstory_new - Copy.docx",
+  "timestamp": "2026-02-05T01:44:45.962108"
+}

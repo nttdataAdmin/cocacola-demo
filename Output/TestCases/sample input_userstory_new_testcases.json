@@ -1,0 +1,930 @@
+{
+  "test_cases": [
+    {
+      "id": "TC-001",
+      "title": "Access Registration Page from Homepage",
+      "description": "Verify that a new user can access the registration page from the homepage.",
+      "preconditions": [
+        "User is on the homepage",
+        "No user is logged in"
+      ],
+      "test_steps": [
+        "Navigate to the homepage",
+        "Click on the 'Register' or 'Sign Up' button/link"
+      ],
+      "expected_results": "Registration page is displayed.",
+      "priority": "High",
+      "test_type": "Functional",
+      "user_story_id": "US-001"
+    },
+    {
+      "id": "TC-002",
+      "title": "Successful User Registration with Valid DATF",
+      "description": "Verify that a new user can register with valid email, password, and name.",
+      "preconditions": [
+        "User is on the registration page",
+        "Email is not already registered"
+      ],
+      "test_steps": [
+        "Enter a valid email address",
+        "Enter a valid password",
+        "Enter a valid name",
+        "Submit the registration form"
+      ],
+      "expected_results": "User receives a confirmation email, is redirected to the login page, and account is created.",
+      "priority": "High",
+      "test_type": "Functional",
+      "user_story_id": "US-001"
+    },
+    {
+      "id": "TC-003",
+      "title": "Registration with Duplicate Email",
+      "description": "Verify that the system prevents registration with an email that is already registered.",
+      "preconditions": [
+        "User is on the registration page",
+        "Email is already registered"
+      ],
+      "test_steps": [
+        "Enter an email address that is already registered",
+        "Enter a valid password and name",
+        "Submit the registration form"
+      ],
+      "expected_results": "System displays an error message indicating duplicate email and registration is not allowed.",
+      "priority": "High",
+      "test_type": "Functional",
+      "user_story_id": "US-001"
+    },
+    {
+      "id": "TC-004",
+      "title": "Registration with Invalid Email Format",
+      "description": "Verify that the system validates email format during registration.",
+      "preconditions": [
+        "User is on the registration page"
+      ],
+      "test_steps": [
+        "Enter an invalid email format (e.g., 'user@com')",
+        "Enter a valid password and name",
+        "Submit the registration form"
+      ],
+      "expected_results": "System displays an error message for invalid email format and registration is not allowed.",
+      "priority": "High",
+      "test_type": "Functional",
+      "user_story_id": "US-001"
+    },
+    {
+      "id": "TC-005",
+      "title": "Registration with Missing Required Fields",
+      "description": "Verify that the system does not allow registration when required fields are missing.",
+      "preconditions": [
+        "User is on the registration page"
+      ],
+      "test_steps": [
+        "Leave one or more required fields (email, password, name) blank",
+        "Submit the registration form"
+      ],
+      "expected_results": "System displays an error message for missing required fields and registration is not allowed.",
+      "priority": "High",
+      "test_type": "Functional",
+      "user_story_id": "US-001"
+    },
+    {
+      "id": "TC-006",
+      "title": "Login with Valid Credentials",
+      "description": "Verify that a registered user can log in with valid email and password.",
+      "preconditions": [
+        "User is registered",
+        "User is on the login page"
+      ],
+      "test_steps": [
+        "Enter registered email address",
+        "Enter correct password",
+        "Click 'Login'"
+      ],
+      "expected_results": "User is redirected to their dashboard.",
+      "priority": "High",
+      "test_type": "Functional",
+      "user_story_id": "US-002"
+    },
+    {
+      "id": "TC-007",
+      "title": "Login with Invalid Credentials",
+      "description": "Verify that the system displays error messages for invalid login attempts.",
+      "preconditions": [
+        "User is registered",
+        "User is on the login page"
+      ],
+      "test_steps": [
+        "Enter registered email address",
+        "Enter incorrect password",
+        "Click 'Login'"
+      ],
+      "expected_results": "System displays an error message for invalid credentials and login is not allowed.",
+      "priority": "High",
+      "test_type": "Functional",
+      "user_story_id": "US-002"
+    },
+    {
+      "id": "TC-008",
+      "title": "Login with Unregistered Email",
+      "description": "Verify that the system does not allow login with an unregistered email.",
+      "preconditions": [
+        "User is on the login page"
+      ],
+      "test_steps": [
+        "Enter an unregistered email address",
+        "Enter any password",
+        "Click 'Login'"
+      ],
+      "expected_results": "System displays an error message for invalid credentials and login is not allowed.",
+      "priority": "High",
+      "test_type": "Functional",
+      "user_story_id": "US-002"
+    },
+    {
+      "id": "TC-009",
+      "title": "Remember Me Functionality",
+      "description": "Verify that the 'Remember Me' functionality keeps the user logged in across sessions.",
+      "preconditions": [
+        "User is registered",
+        "User is on the login page"
+      ],
+      "test_steps": [
+        "Enter valid credentials",
+        "Select 'Remember Me' checkbox",
+        "Click 'Login'",
+        "Close and reopen browser",
+        "Navigate to the site"
+      ],
+      "expected_results": "User remains logged in and is redirected to the dashboard.",
+      "priority": "High",
+      "test_type": "Functional",
+      "user_story_id": "US-002"
+    },
+    {
+      "id": "TC-010",
+      "title": "Password Reset Request from Login Page",
+      "description": "Verify that a user can request a password reset from the login page.",
+      "preconditions": [
+        "User is on the login page"
+      ],
+      "test_steps": [
+        "Click on 'Forgot Password?' link",
+        "Enter registered email address",
+        "Submit the request"
+      ],
+      "expected_results": "User receives a password reset email with a secure link.",
+      "priority": "High",
+      "test_type": "Functional",
+      "user_story_id": "US-003"
+    },
+    {
+      "id": "TC-011",
+      "title": "Password Reset with Invalid Email",
+      "description": "Verify that the system does not send a password reset email for unregistered emails.",
+      "preconditions": [
+        "User is on the password reset page"
+      ],
+      "test_steps": [
+        "Enter an unregistered email address",
+        "Submit the request"
+      ],
+      "expected_results": "System displays an error message and does not send a reset email.",
+      "priority": "High",
+      "test_type": "Functional",
+      "user_story_id": "US-003"
+    },
+    {
+      "id": "TC-012",
+      "title": "Password Reset with Expired Token",
+      "description": "Verify that the system does not allow password reset with an expired token.",
+      "preconditions": [
+        "User has received a password reset email",
+        "Token is expired"
+      ],
+      "test_steps": [
+        "Click on the password reset link after token expiration",
+        "Attempt to set a new password"
+      ],
+      "expected_results": "System displays an error message for expired token and does not allow password reset.",
+      "priority": "High",
+      "test_type": "Functional",
+      "user_story_id": "US-003"
+    },
+    {
+      "id": "TC-013",
+      "title": "Successful Password Reset",
+      "description": "Verify that a user can successfully reset their password using a valid token.",
+      "preconditions": [
+        "User has received a password reset email",
+        "Token is valid"
+      ],
+      "test_steps": [
+        "Click on the password reset link",
+        "Enter a new valid password",
+        "Submit the form"
+      ],
+      "expected_results": "User is notified of successful password reset and can log in with the new password.",
+      "priority": "High",
+      "test_type": "Functional",
+      "user_story_id": "US-003"
+    },
+    {
+      "id": "TC-014",
+      "title": "Access and Edit Profile from Dashboard",
+      "description": "Verify that a user can access and edit their profile from the dashboard.",
+      "preconditions": [
+        "User is logged in",
+        "User is on the dashboard"
+      ],
+      "test_steps": [
+        "Click on 'Profile' or 'Edit Profile' link",
+        "Edit name, email, or profile picture",
+        "Save changes"
+      ],
+      "expected_results": "Changes are saved and reflected immediately; user receives confirmation.",
+      "priority": "Medium",
+      "test_type": "Functional",
+      "user_story_id": "US-004"
+    },
+    {
+      "id": "TC-015",
+      "title": "Profile Update with Invalid Email Format",
+      "description": "Verify that the system validates email format during profile update.",
+      "preconditions": [
+        "User is logged in",
+        "User is on the profile edit page"
+      ],
+      "test_steps": [
+        "Enter an invalid email format",
+        "Save changes"
+      ],
+      "expected_results": "System displays an error message and does not save changes.",
+      "priority": "Medium",
+      "test_type": "Functional",
+      "user_story_id": "US-004"
+    },
+    {
+      "id": "TC-016",
+      "title": "Profile Update with Duplicate Email",
+      "description": "Verify that the system prevents updating profile to an email already in use.",
+      "preconditions": [
+        "User is logged in",
+        "Another user exists with the target email"
+      ],
+      "test_steps": [
+        "Enter an email address already used by another user",
+        "Save changes"
+      ],
+      "expected_results": "System displays an error message for duplicate email and does not save changes.",
+      "priority": "Medium",
+      "test_type": "Functional",
+      "user_story_id": "US-004"
+    },
+    {
+      "id": "TC-017",
+      "title": "Dashboard Displays User Info",
+      "description": "Verify that the dashboard displays the user's name and profile picture.",
+      "preconditions": [
+        "User is logged in"
+      ],
+      "test_steps": [
+        "Navigate to the dashboard"
+      ],
+      "expected_results": "Dashboard displays user's name and profile picture.",
+      "priority": "High",
+      "test_type": "Functional",
+      "user_story_id": "US-005"
+    },
+    {
+      "id": "TC-018",
+      "title": "Dashboard Shows Recent Activity and Notifications",
+      "description": "Verify that the dashboard displays recent activity and notifications.",
+      "preconditions": [
+        "User is logged in",
+        "User has recent activity and notifications"
+      ],
+      "test_steps": [
+        "Navigate to the dashboard"
+      ],
+      "expected_results": "Dashboard shows recent activity and notifications.",
+      "priority": "High",
+      "test_type": "Functional",
+      "user_story_id": "US-005"
+    },
+    {
+      "id": "TC-019",
+      "title": "Customize Dashboard Widgets",
+      "description": "Verify that a user can customize dashboard widgets.",
+      "preconditions": [
+        "User is logged in"
+      ],
+      "test_steps": [
+        "Navigate to dashboard customization",
+        "Add, remove, or rearrange widgets",
+        "Save changes"
+      ],
+      "expected_results": "Dashboard reflects customized widgets immediately.",
+      "priority": "High",
+      "test_type": "Functional",
+      "user_story_id": "US-005"
+    },
+    {
+      "id": "TC-020",
+      "title": "Create New Project with Valid DATF",
+      "description": "Verify that a user can create a new project with valid name, description, and privacy settings.",
+      "preconditions": [
+        "User is logged in",
+        "User is on the dashboard"
+      ],
+      "test_steps": [
+        "Click on 'Create Project'",
+        "Enter valid project name, description, and select privacy setting",
+        "Submit the form"
+      ],
+      "expected_results": "Project is created, appears in project list, and user receives confirmation.",
+      "priority": "High",
+      "test_type": "Functional",
+      "user_story_id": "US-006"
+    },
+    {
+      "id": "TC-021",
+      "title": "Create Project with Missing Required Fields",
+      "description": "Verify that the system does not allow project creation when required fields are missing.",
+      "preconditions": [
+        "User is logged in",
+        "User is on the create project page"
+      ],
+      "test_steps": [
+        "Leave project name or description blank",
+        "Submit the form"
+      ],
+      "expected_results": "System displays an error message and project is not created.",
+      "priority": "High",
+      "test_type": "Functional",
+      "user_story_id": "US-006"
+    },
+    {
+      "id": "TC-022",
+      "title": "Edit Project Details Successfully",
+      "description": "Verify that a project owner can edit project name, description, and privacy.",
+      "preconditions": [
+        "User is logged in",
+        "User is project owner",
+        "Project exists"
+      ],
+      "test_steps": [
+        "Navigate to project settings",
+        "Edit project name, description, or privacy",
+        "Save changes"
+      ],
+      "expected_results": "Changes are saved and reflected immediately in the project list; user receives confirmation.",
+      "priority": "Medium",
+      "test_type": "Functional",
+      "user_story_id": "US-007"
+    },
+    {
+      "id": "TC-023",
+      "title": "Edit Project with Invalid DATF",
+      "description": "Verify that the system validates changes before saving during project edit.",
+      "preconditions": [
+        "User is logged in",
+        "User is project owner",
+        "Project exists"
+      ],
+      "test_steps": [
+        "Navigate to project settings",
+        "Enter invalid dATF (e.g., blank name)",
+        "Save changes"
+      ],
+      "expected_results": "System displays an error message and does not save changes.",
+      "priority": "Medium",
+      "test_type": "Functional",
+      "user_story_id": "US-007"
+    },
+    {
+      "id": "TC-024",
+      "title": "Delete Project with Confirmation",
+      "description": "Verify that a project owner can delete a project after confirmation.",
+      "preconditions": [
+        "User is logged in",
+        "User is project owner",
+        "Project exists"
+      ],
+      "test_steps": [
+        "Navigate to project settings",
+        "Click 'Delete Project'",
+        "Confirm deletion"
+      ],
+      "expected_results": "Project is removed from project list, user receives notification, and project cannot be accessed or restored.",
+      "priority": "Medium",
+      "test_type": "Functional",
+      "user_story_id": "US-008"
+    },
+    {
+      "id": "TC-025",
+      "title": "Attempt to Access Deleted Project",
+      "description": "Verify that deleted projects cannot be accessed or restored.",
+      "preconditions": [
+        "Project has been deleted"
+      ],
+      "test_steps": [
+        "Attempt to access the deleted project via direct URL or project list"
+      ],
+      "expected_results": "System displays an error or 'not found' message; project cannot be accessed.",
+      "priority": "Medium",
+      "test_type": "Functional",
+      "user_story_id": "US-008"
+    },
+    {
+      "id": "TC-026",
+      "title": "Invite Team Members via Email",
+      "description": "Verify that a project owner can invite team members via email from the project page.",
+      "preconditions": [
+        "User is logged in",
+        "User is project owner",
+        "Project exists"
+      ],
+      "test_steps": [
+        "Navigate to project page",
+        "Enter email addresses of team members to invite",
+        "Send invitations"
+      ],
+      "expected_results": "Invited users receive an email with a join link; invitations are sent successfully.",
+      "priority": "High",
+      "test_type": "Functional",
+      "user_story_id": "US-009"
+    },
+    {
+      "id": "TC-027",
+      "title": "Prevent Duplicate Invitations",
+      "description": "Verify that the system prevents sending duplicate invitations to the same email.",
+      "preconditions": [
+        "User is logged in",
+        "User is project owner",
+        "Project exists",
+        "User has already invited a team member"
+      ],
+      "test_steps": [
+        "Attempt to invite the same email address again"
+      ],
+      "expected_results": "System displays an error message and does not send duplicate invitation.",
+      "priority": "High",
+      "test_type": "Functional",
+      "user_story_id": "US-009"
+    },
+    {
+      "id": "TC-028",
+      "title": "Invited User Appears in Team List After Accepting",
+      "description": "Verify that invited users appear in the project team list after accepting invitation.",
+      "preconditions": [
+        "User has received invitation email",
+        "User accepts invitation"
+      ],
+      "test_steps": [
+        "Click on join link in email",
+        "Accept invitation",
+        "Navigate to project team list"
+      ],
+      "expected_results": "User appears in the project team list.",
+      "priority": "High",
+      "test_type": "Functional",
+      "user_story_id": "US-009"
+    },
+    {
+      "id": "TC-029",
+      "title": "Assign Roles to Team Members",
+      "description": "Verify that a project owner can assign roles to team members.",
+      "preconditions": [
+        "User is logged in",
+        "User is project owner",
+        "Team members exist"
+      ],
+      "test_steps": [
+        "Navigate to project team list",
+        "Select a team member",
+        "Assign a role (Admin, Editor, Viewer)",
+        "Save changes"
+      ],
+      "expected_results": "Role assignment is reflected immediately; user receives confirmation.",
+      "priority": "Medium",
+      "test_type": "Functional",
+      "user_story_id": "US-010"
+    },
+    {
+      "id": "TC-030",
+      "title": "Role-Based Permissions Enforcement",
+      "description": "Verify that the system enforces role-based permissions for project actions.",
+      "preconditions": [
+        "User is logged in",
+        "User has a specific role (e.g., Viewer)"
+      ],
+      "test_steps": [
+        "Attempt to perform an action not permitted for the assigned role (e.g., edit project as Viewer)"
+      ],
+      "expected_results": "System prevents the action and displays an appropriate error message.",
+      "priority": "Medium",
+      "test_type": "Functional",
+      "user_story_id": "US-010"
+    },
+    {
+      "id": "TC-031",
+      "title": "Only Project Owners Can Change Roles",
+      "description": "Verify that only project owners can change team member roles.",
+      "preconditions": [
+        "User is logged in",
+        "User is not project owner",
+        "Team members exist"
+      ],
+      "test_steps": [
+        "Attempt to change another team member's role"
+      ],
+      "expected_results": "System prevents role change and displays an error message.",
+      "priority": "Medium",
+      "test_type": "Functional",
+      "user_story_id": "US-010"
+    },
+    {
+      "id": "TC-032",
+      "title": "Create Task with Valid DATF",
+      "description": "Verify that a team member can create a task with title, description, due date, and assignee.",
+      "preconditions": [
+        "User is logged in",
+        "User is a team member",
+        "Project exists"
+      ],
+      "test_steps": [
+        "Navigate to project task list",
+        "Click 'Add Task'",
+        "Enter valid title, description, due date, and select assignee(s)",
+        "Submit the form"
+      ],
+      "expected_results": "Task appears in the project task list; user receives confirmation.",
+      "priority": "High",
+      "test_type": "Functional",
+      "user_story_id": "US-011"
+    },
+    {
+      "id": "TC-033",
+      "title": "Create Task with Missing Required Fields",
+      "description": "Verify that the system does not allow task creation when required fields are missing.",
+      "preconditions": [
+        "User is logged in",
+        "User is a team member",
+        "Project exists"
+      ],
+      "test_steps": [
+        "Leave title or due date blank",
+        "Submit the form"
+      ],
+      "expected_results": "System displays an error message and task is not created.",
+      "priority": "High",
+      "test_type": "Functional",
+      "user_story_id": "US-011"
+    },
+    {
+      "id": "TC-034",
+      "title": "Assign Task to Multiple Team Members",
+      "description": "Verify that a task can be assigned to multiple team members.",
+      "preconditions": [
+        "User is logged in",
+        "User is a team member",
+        "Project exists",
+        "Multiple team members exist"
+      ],
+      "test_steps": [
+        "Create a new task",
+        "Select multiple assignees",
+        "Submit the form"
+      ],
+      "expected_results": "Task is created and assigned to all selected team members.",
+      "priority": "High",
+      "test_type": "Functional",
+      "user_story_id": "US-011"
+    },
+    {
+      "id": "TC-035",
+      "title": "Edit Task Details Successfully",
+      "description": "Verify that a team member with appropriate permissions can edit task details.",
+      "preconditions": [
+        "User is logged in",
+        "User has edit permissions",
+        "Task exists"
+      ],
+      "test_steps": [
+        "Navigate to task details",
+        "Edit title, description, due date, or assignee",
+        "Save changes"
+      ],
+      "expected_results": "Changes are saved and reflected immediately; user receives confirmation.",
+      "priority": "Medium",
+      "test_type": "Functional",
+      "user_story_id": "US-012"
+    },
+    {
+      "id": "TC-036",
+      "title": "Edit Task Without Permission",
+      "description": "Verify that users without appropriate permissions cannot edit tasks.",
+      "preconditions": [
+        "User is logged in",
+        "User does not have edit permissions",
+        "Task exists"
+      ],
+      "test_steps": [
+        "Attempt to edit task details"
+      ],
+      "expected_results": "System prevents editing and displays an error message.",
+      "priority": "Medium",
+      "test_type": "Functional",
+      "user_story_id": "US-012"
+    },
+    {
+      "id": "TC-037",
+      "title": "Mark Task as Complete",
+      "description": "Verify that a team member can mark a task as complete from the task list.",
+      "preconditions": [
+        "User is logged in",
+        "Task exists"
+      ],
+      "test_steps": [
+        "Navigate to project task list",
+        "Select a task",
+        "Click 'Mark as Complete'"
+      ],
+      "expected_results": "Task status is updated to complete, visually distinguished, and user receives confirmation.",
+      "priority": "High",
+      "test_type": "Functional",
+      "user_story_id": "US-013"
+    },
+    {
+      "id": "TC-038",
+      "title": "Filter Completed Tasks",
+      "description": "Verify that completed tasks can be filtered or hidden in the task list.",
+      "preconditions": [
+        "User is logged in",
+        "Completed tasks exist"
+      ],
+      "test_steps": [
+        "Navigate to project task list",
+        "Apply filter to show/hide completed tasks"
+      ],
+      "expected_results": "Task list updates to show/hide completed tasks as per filter.",
+      "priority": "High",
+      "test_type": "Functional",
+      "user_story_id": "US-013"
+    },
+    {
+      "id": "TC-039",
+      "title": "Add Comment to Task",
+      "description": "Verify that a team member can add a comment to any task.",
+      "preconditions": [
+        "User is logged in",
+        "Task exists"
+      ],
+      "test_steps": [
+        "Navigate to task details",
+        "Enter a comment",
+        "Submit comment"
+      ],
+      "expected_results": "Comment is added, displays author and timestamp, and is visible to all project members.",
+      "priority": "Medium",
+      "test_type": "Functional",
+      "user_story_id": "US-014"
+    },
+    {
+      "id": "TC-040",
+      "title": "Edit and Delete Own Comment",
+      "description": "Verify that a user can edit and delete their own comments on tasks.",
+      "preconditions": [
+        "User is logged in",
+        "User has added a comment"
+      ],
+      "test_steps": [
+        "Navigate to own comment",
+        "Edit comment and save",
+        "Delete comment"
+      ],
+      "expected_results": "Comment is updated or removed as per action.",
+      "priority": "Medium",
+      "test_type": "Functional",
+      "user_story_id": "US-014"
+    },
+    {
+      "id": "TC-041",
+      "title": "Receive Notification for New Comment",
+      "description": "Verify that users receive notifications for new comments on tasks.",
+      "preconditions": [
+        "User is logged in",
+        "Another user adds a comment to a task"
+      ],
+      "test_steps": [
+        "Add a comment to a task",
+        "Check notifications"
+      ],
+      "expected_results": "User receives notification for new comment.",
+      "priority": "Medium",
+      "test_type": "Functional",
+      "user_story_id": "US-014"
+    },
+    {
+      "id": "TC-042",
+      "title": "Receive Notification for Task Assignment",
+      "description": "Verify that users receive notifications for task assignments.",
+      "preconditions": [
+        "User is logged in",
+        "User is assigned a task"
+      ],
+      "test_steps": [
+        "Assign a task to user",
+        "Check notifications in dashboard and email"
+      ],
+      "expected_results": "User receives notification in dashboard and via email.",
+      "priority": "High",
+      "test_type": "Functional",
+      "user_story_id": "US-015"
+    },
+    {
+      "id": "TC-043",
+      "title": "Customize Notification Preferences",
+      "description": "Verify that a user can customize notification preferences.",
+      "preconditions": [
+        "User is logged in"
+      ],
+      "test_steps": [
+        "Navigate to notification settings",
+        "Change preferences (enable/disable types of notifications)",
+        "Save changes"
+      ],
+      "expected_results": "Notification settings are updated and applied.",
+      "priority": "High",
+      "test_type": "Functional",
+      "user_story_id": "US-015"
+    },
+    {
+      "id": "TC-044",
+      "title": "Mark Notification as Read",
+      "description": "Verify that notifications are marked as read when viewed.",
+      "preconditions": [
+        "User is logged in",
+        "Unread notifications exist"
+      ],
+      "test_steps": [
+        "Navigate to notifications",
+        "View a notification"
+      ],
+      "expected_results": "Notification is marked as read.",
+      "priority": "High",
+      "test_type": "Functional",
+      "user_story_id": "US-015"
+    },
+    {
+      "id": "TC-045",
+      "title": "Search Projects and Tasks by Keyword",
+      "description": "Verify that a user can search for projects and tasks using keywords.",
+      "preconditions": [
+        "User is logged in",
+        "Projects and tasks exist"
+      ],
+      "test_steps": [
+        "Enter a keyword in the search bar",
+        "View search results"
+      ],
+      "expected_results": "Matching projects and tasks are displayed.",
+      "priority": "Medium",
+      "test_type": "Functional",
+      "user_story_id": "US-016"
+    },
+    {
+      "id": "TC-046",
+      "title": "Search Results Filtering",
+      "description": "Verify that search results can be filtered by status, date, and assignee.",
+      "preconditions": [
+        "User is logged in",
+        "Projects and tasks exist"
+      ],
+      "test_steps": [
+        "Enter a keyword in the search bar",
+        "Apply filters for status, date, and assignee"
+      ],
+      "expected_results": "Search results update according to applied filters.",
+      "priority": "Medium",
+      "test_type": "Functional",
+      "user_story_id": "US-016"
+    },
+    {
+      "id": "TC-047",
+      "title": "Export Project DATF in CSV Format",
+      "description": "Verify that a project owner can export project dATF in CSV format.",
+      "preconditions": [
+        "User is logged in",
+        "User is project owner",
+        "Project exists"
+      ],
+      "test_steps": [
+        "Navigate to project export option",
+        "Select CSV format",
+        "Initiate export"
+      ],
+      "expected_results": "System generates and downloads CSV file with project details, tasks, and team members.",
+      "priority": "Low",
+      "test_type": "Functional",
+      "user_story_id": "US-017"
+    },
+    {
+      "id": "TC-048",
+      "title": "Export Project DATF in PDF Format",
+      "description": "Verify that a project owner can export project dATF in PDF format.",
+      "preconditions": [
+        "User is logged in",
+        "User is project owner",
+        "Project exists"
+      ],
+      "test_steps": [
+        "Navigate to project export option",
+        "Select PDF format",
+        "Initiate export"
+      ],
+      "expected_results": "System generates and downloads PDF file with project details, tasks, and team members.",
+      "priority": "Low",
+      "test_type": "Functional",
+      "user_story_id": "US-017"
+    },
+    {
+      "id": "TC-049",
+      "title": "View Activity Log with Filters",
+      "description": "Verify that a user can view and filter the activity log by date, user, and action type.",
+      "preconditions": [
+        "User is logged in",
+        "User is a project member",
+        "Activity log exists"
+      ],
+      "test_steps": [
+        "Navigate to activity log",
+        "Apply filters for date, user, and action type"
+      ],
+      "expected_results": "Activity log updates according to applied filters.",
+      "priority": "Medium",
+      "test_type": "Functional",
+      "user_story_id": "US-018"
+    },
+    {
+      "id": "TC-050",
+      "title": "Set Task Priority",
+      "description": "Verify that a team member can assign priority levels to tasks.",
+      "preconditions": [
+        "User is logged in",
+        "Task exists"
+      ],
+      "test_steps": [
+        "Navigate to task details",
+        "Set priority to High, Medium, or Low",
+        "Save changes"
+      ],
+      "expected_results": "Task displays selected priority visually and user receives confirmation.",
+      "priority": "Medium",
+      "test_type": "Functional",
+      "user_story_id": "US-019"
+    },
+    {
+      "id": "TC-051",
+      "title": "Archive Completed Project",
+      "description": "Verify that a project owner can archive a completed project.",
+      "preconditions": [
+        "User is logged in",
+        "User is project owner",
+        "Project is completed"
+      ],
+      "test_steps": [
+        "Navigate to project settings",
+        "Click 'Archive Project'",
+        "Confirm archiving"
+      ],
+      "expected_results": "Project is moved to archived section, is read-only, and user receives confirmation.",
+      "priority": "Low",
+      "test_type": "Functional",
+      "user_story_id": "US-020"
+    },
+    {
+      "id": "TC-052",
+      "title": "Restore Archived Project",
+      "description": "Verify that a project owner can restore an archived project.",
+      "preconditions": [
+        "User is logged in",
+        "User is project owner",
+        "Project is archived"
+      ],
+      "test_steps": [
+        "Navigate to archived projects section",
+        "Select a project",
+        "Click 'Restore Project'"
+      ],
+      "expected_results": "Project is restored to active projects and user receives confirmation.",
+      "priority": "Low",
+      "test_type": "Functional",
+      "user_story_id": "US-020"
+    }
+  ],
+  "summary": "52 comprehensive test cases have been generated, covering all major user stories and requirements including user management, project and task management, collaboration, notifications, search, export, and activity tracking. The test cases include positive, negative, boundary, and edge scenarios for thorough coverage.",
+  "agent_name": "Test Case Generator",
+  "file_name": "sample input_userstory_new.docx",
+  "timestamp": "2026-02-05T01:19:24.181608"
+}

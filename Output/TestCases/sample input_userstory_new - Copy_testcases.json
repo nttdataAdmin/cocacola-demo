@@ -1,0 +1,1284 @@
+{
+  "test_cases": [
+    {
+      "id": "TC-001",
+      "title": "Successful User Registration with Valid Email",
+      "description": "Verify that a new user can register using a valid email, strong password, and matching confirmation.",
+      "preconditions": [],
+      "test_steps": [
+        "Navigate to the registration page.",
+        "Enter a valid email address.",
+        "Enter a strong password.",
+        "Enter the same password in the confirm password field.",
+        "Click the Register button."
+      ],
+      "expected_results": "User is registered successfully and receives a verification email.",
+      "priority": "High",
+      "test_type": "Functional",
+      "user_story_id": "US-001"
+    },
+    {
+      "id": "TC-002",
+      "title": "Registration with Invalid Email Format",
+      "description": "Verify that the system prevents registration with an invalid email format.",
+      "preconditions": [],
+      "test_steps": [
+        "Navigate to the registration page.",
+        "Enter an invalid email format (e.g., 'user@com').",
+        "Enter a strong password.",
+        "Enter the same password in the confirm password field.",
+        "Click the Register button."
+      ],
+      "expected_results": "System displays an error message indicating invalid email format.",
+      "priority": "High",
+      "test_type": "Functional",
+      "user_story_id": "US-001"
+    },
+    {
+      "id": "TC-003",
+      "title": "Registration with Weak Password",
+      "description": "Verify that the system enforces password strength requirements during registration.",
+      "preconditions": [],
+      "test_steps": [
+        "Navigate to the registration page.",
+        "Enter a valid email address.",
+        "Enter a weak password (e.g., '12345').",
+        "Enter the same password in the confirm password field.",
+        "Click the Register button."
+      ],
+      "expected_results": "System displays an error message indicating password does not meet strength requirements.",
+      "priority": "High",
+      "test_type": "Functional",
+      "user_story_id": "US-001"
+    },
+    {
+      "id": "TC-004",
+      "title": "Registration with Non-matching Passwords",
+      "description": "Verify that the system prevents registration when password and confirm password do not match.",
+      "preconditions": [],
+      "test_steps": [
+        "Navigate to the registration page.",
+        "Enter a valid email address.",
+        "Enter a strong password.",
+        "Enter a different password in the confirm password field.",
+        "Click the Register button."
+      ],
+      "expected_results": "System displays an error message indicating passwords do not match.",
+      "priority": "High",
+      "test_type": "Functional",
+      "user_story_id": "US-001"
+    },
+    {
+      "id": "TC-005",
+      "title": "Registration with Already Used Email",
+      "description": "Verify that the system prevents registration with an email already used.",
+      "preconditions": [
+        "User account already exists with email 'testuser@example.com'"
+      ],
+      "test_steps": [
+        "Navigate to the registration page.",
+        "Enter 'testuser@example.com' as email.",
+        "Enter a strong password.",
+        "Enter the same password in the confirm password field.",
+        "Click the Register button."
+      ],
+      "expected_results": "System displays an error message indicating email is already in use.",
+      "priority": "High",
+      "test_type": "Functional",
+      "user_story_id": "US-001"
+    },
+    {
+      "id": "TC-006",
+      "title": "Successful Login with Correct Credentials",
+      "description": "Verify that a registered user can log in with correct email and password.",
+      "preconditions": [
+        "User account exists with email and password"
+      ],
+      "test_steps": [
+        "Navigate to the login page.",
+        "Enter registered email.",
+        "Enter correct password.",
+        "Click the Login button."
+      ],
+      "expected_results": "User is redirected to the dashboard.",
+      "priority": "High",
+      "test_type": "Functional",
+      "user_story_id": "US-002"
+    },
+    {
+      "id": "TC-007",
+      "title": "Login Attempt with Incorrect Password",
+      "description": "Verify that the system displays an error message for incorrect password.",
+      "preconditions": [
+        "User account exists with email and password"
+      ],
+      "test_steps": [
+        "Navigate to the login page.",
+        "Enter registered email.",
+        "Enter incorrect password.",
+        "Click the Login button."
+      ],
+      "expected_results": "System displays an error message for incorrect credentials.",
+      "priority": "High",
+      "test_type": "Functional",
+      "user_story_id": "US-002"
+    },
+    {
+      "id": "TC-008",
+      "title": "Login Attempt with Non-existent Email",
+      "description": "Verify that the system displays an error for login attempts with an email not registered.",
+      "preconditions": [],
+      "test_steps": [
+        "Navigate to the login page.",
+        "Enter a non-existent email.",
+        "Enter any password.",
+        "Click the Login button."
+      ],
+      "expected_results": "System displays an error message for incorrect credentials.",
+      "priority": "High",
+      "test_type": "Functional",
+      "user_story_id": "US-002"
+    },
+    {
+      "id": "TC-009",
+      "title": "Login Lockout After Five Failed Attempts",
+      "description": "Verify that the system prevents login after five consecutive failed attempts.",
+      "preconditions": [
+        "User account exists with email and password"
+      ],
+      "test_steps": [
+        "Navigate to the login page.",
+        "Enter registered email.",
+        "Enter incorrect password.",
+        "Repeat steps 2-3 five times.",
+        "Attempt to log in again with correct credentials."
+      ],
+      "expected_results": "System prevents login and displays lockout message.",
+      "priority": "High",
+      "test_type": "Functional",
+      "user_story_id": "US-002"
+    },
+    {
+      "id": "TC-010",
+      "title": "Password Reset Request",
+      "description": "Verify that a user can request a password reset link via email.",
+      "preconditions": [
+        "User account exists with email"
+      ],
+      "test_steps": [
+        "Navigate to the password reset page.",
+        "Enter registered email address.",
+        "Click the Request Reset Link button."
+      ],
+      "expected_results": "System sends a password reset link to the user's email.",
+      "priority": "High",
+      "test_type": "Functional",
+      "user_story_id": "US-003"
+    },
+    {
+      "id": "TC-011",
+      "title": "Password Reset with Invalid Email",
+      "description": "Verify that the system does not send a reset link for an unregistered email.",
+      "preconditions": [],
+      "test_steps": [
+        "Navigate to the password reset page.",
+        "Enter an unregistered email address.",
+        "Click the Request Reset Link button."
+      ],
+      "expected_results": "System displays an error message indicating email is not registered.",
+      "priority": "High",
+      "test_type": "Functional",
+      "user_story_id": "US-003"
+    },
+    {
+      "id": "TC-012",
+      "title": "Password Reset with Weak New Password",
+      "description": "Verify that the system enforces password strength when resetting password.",
+      "preconditions": [
+        "User has received password reset link"
+      ],
+      "test_steps": [
+        "Click the password reset link in email.",
+        "Enter a weak new password.",
+        "Click the Save button."
+      ],
+      "expected_results": "System displays error message for weak password.",
+      "priority": "High",
+      "test_type": "Functional",
+      "user_story_id": "US-003"
+    },
+    {
+      "id": "TC-013",
+      "title": "Successful Password Reset",
+      "description": "Verify that a user can successfully reset password and receives confirmation.",
+      "preconditions": [
+        "User has received password reset link"
+      ],
+      "test_steps": [
+        "Click the password reset link in email.",
+        "Enter a strong new password.",
+        "Click the Save button."
+      ],
+      "expected_results": "System updates password and sends confirmation.",
+      "priority": "High",
+      "test_type": "Functional",
+      "user_story_id": "US-003"
+    },
+    {
+      "id": "TC-014",
+      "title": "View Profile Information",
+      "description": "Verify that a user can view current profile information.",
+      "preconditions": [
+        "User is logged in"
+      ],
+      "test_steps": [
+        "Navigate to the profile page."
+      ],
+      "expected_results": "Profile page displays current user information.",
+      "priority": "Medium",
+      "test_type": "Functional",
+      "user_story_id": "US-004"
+    },
+    {
+      "id": "TC-015",
+      "title": "Edit and Save Profile Information",
+      "description": "Verify that a user can edit and save changes to profile fields.",
+      "preconditions": [
+        "User is logged in"
+      ],
+      "test_steps": [
+        "Navigate to the profile page.",
+        "Edit profile fields (e.g., name, phone).",
+        "Click the Save button."
+      ],
+      "expected_results": "Profile information is updated and confirmation is displayed.",
+      "priority": "Medium",
+      "test_type": "Functional",
+      "user_story_id": "US-004"
+    },
+    {
+      "id": "TC-016",
+      "title": "Profile Update with Invalid DATF",
+      "description": "Verify that the system validates updated information before saving.",
+      "preconditions": [
+        "User is logged in"
+      ],
+      "test_steps": [
+        "Navigate to the profile page.",
+        "Enter invalid dATF in a field (e.g., phone number with letters).",
+        "Click the Save button."
+      ],
+      "expected_results": "System displays error message and does not save invalid dATF.",
+      "priority": "Medium",
+      "test_type": "Functional",
+      "user_story_id": "US-004"
+    },
+    {
+      "id": "TC-017",
+      "title": "Immediate Reflection of Profile Changes",
+      "description": "Verify that profile changes are reflected immediately on the profile page.",
+      "preconditions": [
+        "User is logged in"
+      ],
+      "test_steps": [
+        "Navigate to the profile page.",
+        "Edit a profile field.",
+        "Click the Save button.",
+        "Observe the updated profile page."
+      ],
+      "expected_results": "Changes appear instantly on the profile page.",
+      "priority": "Medium",
+      "test_type": "Functional",
+      "user_story_id": "US-004"
+    },
+    {
+      "id": "TC-018",
+      "title": "Upload Valid Profile Picture",
+      "description": "Verify that a user can upload a valid image file as profile picture.",
+      "preconditions": [
+        "User is logged in"
+      ],
+      "test_steps": [
+        "Navigate to profile picture upload section.",
+        "Select a valid image file (e.g., JPG under 2MB).",
+        "Click the Upload button."
+      ],
+      "expected_results": "Profile picture is uploaded and displayed.",
+      "priority": "Medium",
+      "test_type": "Functional",
+      "user_story_id": "US-005"
+    },
+    {
+      "id": "TC-019",
+      "title": "Upload Invalid Profile Picture Format",
+      "description": "Verify that the system rejects invalid image formats.",
+      "preconditions": [
+        "User is logged in"
+      ],
+      "test_steps": [
+        "Navigate to profile picture upload section.",
+        "Select an invalid image file (e.g., PDF).",
+        "Click the Upload button."
+      ],
+      "expected_results": "System displays error message for invalid format.",
+      "priority": "Medium",
+      "test_type": "Functional",
+      "user_story_id": "US-005"
+    },
+    {
+      "id": "TC-020",
+      "title": "Upload Oversized Profile Picture",
+      "description": "Verify that the system rejects images exceeding size limit.",
+      "preconditions": [
+        "User is logged in"
+      ],
+      "test_steps": [
+        "Navigate to profile picture upload section.",
+        "Select an image file larger than allowed (e.g., 5MB).",
+        "Click the Upload button."
+      ],
+      "expected_results": "System displays error message for file size.",
+      "priority": "Medium",
+      "test_type": "Functional",
+      "user_story_id": "US-005"
+    },
+    {
+      "id": "TC-021",
+      "title": "Remove Profile Picture",
+      "description": "Verify that a user can remove their profile picture.",
+      "preconditions": [
+        "User is logged in",
+        "Profile picture is uploaded"
+      ],
+      "test_steps": [
+        "Navigate to profile picture section.",
+        "Click the Remove button."
+      ],
+      "expected_results": "Profile picture is removed and default image is displayed.",
+      "priority": "Medium",
+      "test_type": "Functional",
+      "user_story_id": "US-005"
+    },
+    {
+      "id": "TC-022",
+      "title": "Replace Profile Picture",
+      "description": "Verify that a user can replace their existing profile picture.",
+      "preconditions": [
+        "User is logged in",
+        "Profile picture is uploaded"
+      ],
+      "test_steps": [
+        "Navigate to profile picture section.",
+        "Select a new valid image file.",
+        "Click the Upload button."
+      ],
+      "expected_results": "New profile picture replaces the old one.",
+      "priority": "Medium",
+      "test_type": "Functional",
+      "user_story_id": "US-005"
+    },
+    {
+      "id": "TC-023",
+      "title": "Dashboard Access After Login",
+      "description": "Verify that user is redirected to dashboard after successful login.",
+      "preconditions": [
+        "User account exists",
+        "User is logged in"
+      ],
+      "test_steps": [
+        "Log in with valid credentials.",
+        "Observe redirection."
+      ],
+      "expected_results": "User is redirected to dashboard.",
+      "priority": "High",
+      "test_type": "Functional",
+      "user_story_id": "US-006"
+    },
+    {
+      "id": "TC-024",
+      "title": "Dashboard Displays User-specific DATF",
+      "description": "Verify that dashboard shows personalized information.",
+      "preconditions": [
+        "User is logged in"
+      ],
+      "test_steps": [
+        "Navigate to dashboard."
+      ],
+      "expected_results": "Dashboard displays dATF specific to the logged-in user.",
+      "priority": "High",
+      "test_type": "Functional",
+      "user_story_id": "US-006"
+    },
+    {
+      "id": "TC-025",
+      "title": "Dashboard Navigation to Other Sections",
+      "description": "Verify that user can navigate to other sections from dashboard.",
+      "preconditions": [
+        "User is logged in"
+      ],
+      "test_steps": [
+        "Navigate to dashboard.",
+        "Click on links to other sections (e.g., Profile, Search)."
+      ],
+      "expected_results": "User is navigated to selected section.",
+      "priority": "High",
+      "test_type": "Functional",
+      "user_story_id": "US-006"
+    },
+    {
+      "id": "TC-026",
+      "title": "Dashboard Dynamic Update on Activity",
+      "description": "Verify that dashboard updates dynamically based on user activity.",
+      "preconditions": [
+        "User is logged in"
+      ],
+      "test_steps": [
+        "Perform an activity that affects dashboard dATF (e.g., add favorite).",
+        "Observe dashboard for updates."
+      ],
+      "expected_results": "Dashboard reflects changes immediately.",
+      "priority": "High",
+      "test_type": "Functional",
+      "user_story_id": "US-006"
+    },
+    {
+      "id": "TC-027",
+      "title": "Dashboard Displays Notifications and Alerts",
+      "description": "Verify that notifications and alerts are shown on dashboard.",
+      "preconditions": [
+        "User is logged in",
+        "User has notifications"
+      ],
+      "test_steps": [
+        "Navigate to dashboard."
+      ],
+      "expected_results": "Notifications and alerts are visible on dashboard.",
+      "priority": "High",
+      "test_type": "Functional",
+      "user_story_id": "US-006"
+    },
+    {
+      "id": "TC-028",
+      "title": "Search with Valid Keyword",
+      "description": "Verify that user can search for items using valid keywords.",
+      "preconditions": [
+        "User is logged in"
+      ],
+      "test_steps": [
+        "Navigate to search page.",
+        "Enter a valid keyword.",
+        "Click Search."
+      ],
+      "expected_results": "Relevant results are displayed.",
+      "priority": "High",
+      "test_type": "Functional",
+      "user_story_id": "US-007"
+    },
+    {
+      "id": "TC-029",
+      "title": "Search with No Matching Results",
+      "description": "Verify that system provides feedback when no results are found.",
+      "preconditions": [
+        "User is logged in"
+      ],
+      "test_steps": [
+        "Navigate to search page.",
+        "Enter a keyword with no matching items.",
+        "Click Search."
+      ],
+      "expected_results": "System displays message indicating no results found.",
+      "priority": "High",
+      "test_type": "Functional",
+      "user_story_id": "US-007"
+    },
+    {
+      "id": "TC-030",
+      "title": "Search with Case-insensitive Keyword",
+      "description": "Verify that search is case-insensitive.",
+      "preconditions": [
+        "User is logged in",
+        "Item exists with keyword 'Laptop'"
+      ],
+      "test_steps": [
+        "Navigate to search page.",
+        "Enter keyword 'laptop'.",
+        "Click Search."
+      ],
+      "expected_results": "Item 'Laptop' is displayed in results.",
+      "priority": "High",
+      "test_type": "Functional",
+      "user_story_id": "US-007"
+    },
+    {
+      "id": "TC-031",
+      "title": "Search with Partial Keyword",
+      "description": "Verify that search supports partial matches.",
+      "preconditions": [
+        "User is logged in",
+        "Item exists with keyword 'Laptop'"
+      ],
+      "test_steps": [
+        "Navigate to search page.",
+        "Enter partial keyword 'Lap'.",
+        "Click Search."
+      ],
+      "expected_results": "Item 'Laptop' is displayed in results.",
+      "priority": "High",
+      "test_type": "Functional",
+      "user_story_id": "US-007"
+    },
+    {
+      "id": "TC-032",
+      "title": "Search Results Pagination",
+      "description": "Verify that search results are displayed in paginated format.",
+      "preconditions": [
+        "User is logged in",
+        "More than one page of results exists"
+      ],
+      "test_steps": [
+        "Navigate to search page.",
+        "Enter a keyword that returns many results.",
+        "Click Search.",
+        "Navigate between pages."
+      ],
+      "expected_results": "Results are paginated and navigation works.",
+      "priority": "High",
+      "test_type": "Functional",
+      "user_story_id": "US-007"
+    },
+    {
+      "id": "TC-033",
+      "title": "Filter Search Results by Single Category",
+      "description": "Verify that user can filter search results by selecting a category.",
+      "preconditions": [
+        "User is logged in",
+        "Search results available"
+      ],
+      "test_steps": [
+        "Perform a search.",
+        "Select a filter category.",
+        "Observe updated results."
+      ],
+      "expected_results": "Results are updated based on selected filter.",
+      "priority": "Medium",
+      "test_type": "Functional",
+      "user_story_id": "US-008"
+    },
+    {
+      "id": "TC-034",
+      "title": "Filter Search Results by Multiple Categories",
+      "description": "Verify that user can combine multiple filters.",
+      "preconditions": [
+        "User is logged in",
+        "Search results available"
+      ],
+      "test_steps": [
+        "Perform a search.",
+        "Select multiple filter categories.",
+        "Observe updated results."
+      ],
+      "expected_results": "Results reflect all selected filters.",
+      "priority": "Medium",
+      "test_type": "Functional",
+      "user_story_id": "US-008"
+    },
+    {
+      "id": "TC-035",
+      "title": "Reset Search Filters",
+      "description": "Verify that user can reset all applied filters.",
+      "preconditions": [
+        "User is logged in",
+        "Filters are applied"
+      ],
+      "test_steps": [
+        "Click the Reset Filters button."
+      ],
+      "expected_results": "All filters are cleared and original results are displayed.",
+      "priority": "Medium",
+      "test_type": "Functional",
+      "user_story_id": "US-008"
+    },
+    {
+      "id": "TC-036",
+      "title": "Filter Results Load Without Page Refresh",
+      "description": "Verify that filtered results load dynamically without full page refresh.",
+      "preconditions": [
+        "User is logged in",
+        "Search results available"
+      ],
+      "test_steps": [
+        "Apply a filter.",
+        "Observe page behavior."
+      ],
+      "expected_results": "Results update dynamically without page reload.",
+      "priority": "Medium",
+      "test_type": "Functional",
+      "user_story_id": "US-008"
+    },
+    {
+      "id": "TC-037",
+      "title": "View Item Details",
+      "description": "Verify that user can view detailed information about an item.",
+      "preconditions": [
+        "User is logged in",
+        "Search results available"
+      ],
+      "test_steps": [
+        "Click on an item from search results."
+      ],
+      "expected_results": "Item details page displays all relevant information.",
+      "priority": "High",
+      "test_type": "Functional",
+      "user_story_id": "US-009"
+    },
+    {
+      "id": "TC-038",
+      "title": "Item Details Display Images and Specifications",
+      "description": "Verify that item details page displays images, descriptions, and specifications.",
+      "preconditions": [
+        "User is logged in",
+        "Item has images and specifications"
+      ],
+      "test_steps": [
+        "Navigate to item details page."
+      ],
+      "expected_results": "Images, descriptions, and specifications are displayed.",
+      "priority": "High",
+      "test_type": "Functional",
+      "user_story_id": "US-009"
+    },
+    {
+      "id": "TC-039",
+      "title": "Navigate Back to Search Results from Item Details",
+      "description": "Verify that user can return to search results from item details page.",
+      "preconditions": [
+        "User is logged in",
+        "On item details page"
+      ],
+      "test_steps": [
+        "Click the Back to Results button."
+      ],
+      "expected_results": "User is returned to previous search results.",
+      "priority": "High",
+      "test_type": "Functional",
+      "user_story_id": "US-009"
+    },
+    {
+      "id": "TC-040",
+      "title": "Display Related Items on Item Details Page",
+      "description": "Verify that related items are shown on item details page.",
+      "preconditions": [
+        "User is logged in",
+        "Item has related items"
+      ],
+      "test_steps": [
+        "Navigate to item details page."
+      ],
+      "expected_results": "Related items are displayed.",
+      "priority": "High",
+      "test_type": "Functional",
+      "user_story_id": "US-009"
+    },
+    {
+      "id": "TC-041",
+      "title": "Add Item to Favorites from Details Page",
+      "description": "Verify that user can mark an item as favorite from details page.",
+      "preconditions": [
+        "User is logged in",
+        "On item details page"
+      ],
+      "test_steps": [
+        "Click the Add to Favorites button."
+      ],
+      "expected_results": "Item is added to user's favorites list.",
+      "priority": "Medium",
+      "test_type": "Functional",
+      "user_story_id": "US-010"
+    },
+    {
+      "id": "TC-042",
+      "title": "View and Manage Favorites List",
+      "description": "Verify that user can view and manage their favorites list.",
+      "preconditions": [
+        "User is logged in",
+        "Favorites list contains items"
+      ],
+      "test_steps": [
+        "Navigate to favorites list.",
+        "View items.",
+        "Remove an item."
+      ],
+      "expected_results": "Favorites list displays items and allows removal.",
+      "priority": "Medium",
+      "test_type": "Functional",
+      "user_story_id": "US-010"
+    },
+    {
+      "id": "TC-043",
+      "title": "Favorites Persist Across Sessions",
+      "description": "Verify that favorites remain after user logs out and logs back in.",
+      "preconditions": [
+        "User is logged in",
+        "Favorites list contains items"
+      ],
+      "test_steps": [
+        "Log out.",
+        "Log back in.",
+        "Navigate to favorites list."
+      ],
+      "expected_results": "Favorites list contains previously added items.",
+      "priority": "Medium",
+      "test_type": "Functional",
+      "user_story_id": "US-010"
+    },
+    {
+      "id": "TC-044",
+      "title": "Receive Notification for Relevant Event",
+      "description": "Verify that user receives notifications for important updates.",
+      "preconditions": [
+        "User is logged in",
+        "Relevant event occurs (e.g., new item added)"
+      ],
+      "test_steps": [
+        "Trigger relevant event.",
+        "Navigate to dashboard."
+      ],
+      "expected_results": "Notification is displayed on dashboard.",
+      "priority": "Medium",
+      "test_type": "Functional",
+      "user_story_id": "US-011"
+    },
+    {
+      "id": "TC-045",
+      "title": "Mark Notification as Read",
+      "description": "Verify that user can mark notifications as read.",
+      "preconditions": [
+        "User is logged in",
+        "Unread notifications exist"
+      ],
+      "test_steps": [
+        "Navigate to notifications section.",
+        "Mark a notification as read."
+      ],
+      "expected_results": "Notification status changes to read.",
+      "priority": "Medium",
+      "test_type": "Functional",
+      "user_story_id": "US-011"
+    },
+    {
+      "id": "TC-046",
+      "title": "Enable and Disable Notifications",
+      "description": "Verify that user can enable or disable notifications.",
+      "preconditions": [
+        "User is logged in"
+      ],
+      "test_steps": [
+        "Navigate to notification settings.",
+        "Toggle notification preference."
+      ],
+      "expected_results": "Notification settings are updated accordingly.",
+      "priority": "Medium",
+      "test_type": "Functional",
+      "user_story_id": "US-011"
+    },
+    {
+      "id": "TC-047",
+      "title": "Admin View List of All Users",
+      "description": "Verify that admin can view a list of all users.",
+      "preconditions": [
+        "Admin is logged in"
+      ],
+      "test_steps": [
+        "Navigate to user management section."
+      ],
+      "expected_results": "List of all users is displayed.",
+      "priority": "High",
+      "test_type": "Functional",
+      "user_story_id": "US-012"
+    },
+    {
+      "id": "TC-048",
+      "title": "Admin Edit User Details",
+      "description": "Verify that admin can edit user details.",
+      "preconditions": [
+        "Admin is logged in",
+        "User exists"
+      ],
+      "test_steps": [
+        "Navigate to user management section.",
+        "Select a user.",
+        "Edit user details.",
+        "Save changes."
+      ],
+      "expected_results": "User details are updated and changes are logged.",
+      "priority": "High",
+      "test_type": "Functional",
+      "user_story_id": "US-012"
+    },
+    {
+      "id": "TC-049",
+      "title": "Admin Deactivate and Reactivate User Account",
+      "description": "Verify that admin can deactivate and reactivate user accounts.",
+      "preconditions": [
+        "Admin is logged in",
+        "User exists"
+      ],
+      "test_steps": [
+        "Navigate to user management section.",
+        "Select a user.",
+        "Click Deactivate.",
+        "Click Reactivate."
+      ],
+      "expected_results": "User account status changes and actions are logged.",
+      "priority": "High",
+      "test_type": "Functional",
+      "user_story_id": "US-012"
+    },
+    {
+      "id": "TC-050",
+      "title": "Deactivated User Cannot Log In",
+      "description": "Verify that deactivated users are prevented from logging in.",
+      "preconditions": [
+        "User account is deactivated"
+      ],
+      "test_steps": [
+        "Attempt to log in with deactivated account."
+      ],
+      "expected_results": "System displays error and prevents login.",
+      "priority": "High",
+      "test_type": "Functional",
+      "user_story_id": "US-012"
+    },
+    {
+      "id": "TC-051",
+      "title": "Admin Add New Item",
+      "description": "Verify that admin can add new items with required fields.",
+      "preconditions": [
+        "Admin is logged in"
+      ],
+      "test_steps": [
+        "Navigate to item management section.",
+        "Click Add New Item.",
+        "Fill all required fields.",
+        "Save item."
+      ],
+      "expected_results": "Item is added and visible to users.",
+      "priority": "High",
+      "test_type": "Functional",
+      "user_story_id": "US-013"
+    },
+    {
+      "id": "TC-052",
+      "title": "Admin Edit Existing Item",
+      "description": "Verify that admin can edit item details.",
+      "preconditions": [
+        "Admin is logged in",
+        "Item exists"
+      ],
+      "test_steps": [
+        "Navigate to item management section.",
+        "Select an item.",
+        "Edit item details.",
+        "Save changes."
+      ],
+      "expected_results": "Item details are updated and changes are reflected immediately.",
+      "priority": "High",
+      "test_type": "Functional",
+      "user_story_id": "US-013"
+    },
+    {
+      "id": "TC-053",
+      "title": "Admin Remove Item",
+      "description": "Verify that admin can remove items from platform.",
+      "preconditions": [
+        "Admin is logged in",
+        "Item exists"
+      ],
+      "test_steps": [
+        "Navigate to item management section.",
+        "Select an item.",
+        "Click Remove.",
+        "Confirm removal."
+      ],
+      "expected_results": "Item is removed and no longer visible to users.",
+      "priority": "High",
+      "test_type": "Functional",
+      "user_story_id": "US-013"
+    },
+    {
+      "id": "TC-054",
+      "title": "Admin Add Item with Invalid DATF",
+      "description": "Verify that system validates item dATF before saving.",
+      "preconditions": [
+        "Admin is logged in"
+      ],
+      "test_steps": [
+        "Navigate to item management section.",
+        "Click Add New Item.",
+        "Enter invalid dATF in required field.",
+        "Click Save."
+      ],
+      "expected_results": "System displays error and does not save item.",
+      "priority": "High",
+      "test_type": "Functional",
+      "user_story_id": "US-013"
+    },
+    {
+      "id": "TC-055",
+      "title": "Admin Access Analytics Dashboard",
+      "description": "Verify that admin can access analytics dashboard.",
+      "preconditions": [
+        "Admin is logged in"
+      ],
+      "test_steps": [
+        "Navigate to analytics section."
+      ],
+      "expected_results": "Analytics dashboard is displayed.",
+      "priority": "Medium",
+      "test_type": "Functional",
+      "user_story_id": "US-014"
+    },
+    {
+      "id": "TC-056",
+      "title": "Analytics Dashboard Displays User Activity Metrics",
+      "description": "Verify that dashboard shows user activity metrics.",
+      "preconditions": [
+        "Admin is logged in"
+      ],
+      "test_steps": [
+        "Navigate to analytics dashboard."
+      ],
+      "expected_results": "User activity metrics are displayed.",
+      "priority": "Medium",
+      "test_type": "Functional",
+      "user_story_id": "US-014"
+    },
+    {
+      "id": "TC-057",
+      "title": "Analytics Dashboard Filters by Date Range",
+      "description": "Verify that admin can filter analytics by date range.",
+      "preconditions": [
+        "Admin is logged in"
+      ],
+      "test_steps": [
+        "Navigate to analytics dashboard.",
+        "Select a date range filter."
+      ],
+      "expected_results": "Analytics dATF updates to selected date range.",
+      "priority": "Medium",
+      "test_type": "Functional",
+      "user_story_id": "US-014"
+    },
+    {
+      "id": "TC-058",
+      "title": "User Access Support Contact Form",
+      "description": "Verify that user can access the support contact form.",
+      "preconditions": [
+        "User is logged in"
+      ],
+      "test_steps": [
+        "Navigate to support section.",
+        "Open contact form."
+      ],
+      "expected_results": "Support contact form is displayed.",
+      "priority": "Medium",
+      "test_type": "Functional",
+      "user_story_id": "US-015"
+    },
+    {
+      "id": "TC-059",
+      "title": "Submit Support Query",
+      "description": "Verify that user can submit a query via support form.",
+      "preconditions": [
+        "User is logged in"
+      ],
+      "test_steps": [
+        "Open support contact form.",
+        "Enter subject and description.",
+        "Click Submit."
+      ],
+      "expected_results": "System sends confirmation and query is sent to support team.",
+      "priority": "Medium",
+      "test_type": "Functional",
+      "user_story_id": "US-015"
+    },
+    {
+      "id": "TC-060",
+      "title": "View Status of Submitted Support Query",
+      "description": "Verify that user can view status of their submitted queries.",
+      "preconditions": [
+        "User is logged in",
+        "Query has been submitted"
+      ],
+      "test_steps": [
+        "Navigate to support queries section.",
+        "View status of submitted queries."
+      ],
+      "expected_results": "Status of each query is displayed.",
+      "priority": "Medium",
+      "test_type": "Functional",
+      "user_story_id": "US-015"
+    },
+    {
+      "id": "TC-061",
+      "title": "Change Password from Account Settings",
+      "description": "Verify that user can change password from account settings.",
+      "preconditions": [
+        "User is logged in"
+      ],
+      "test_steps": [
+        "Navigate to account settings.",
+        "Select change password option.",
+        "Enter current password.",
+        "Enter new strong password.",
+        "Click Save."
+      ],
+      "expected_results": "Password is changed and confirmation is displayed.",
+      "priority": "Medium",
+      "test_type": "Functional",
+      "user_story_id": "US-016"
+    },
+    {
+      "id": "TC-062",
+      "title": "Change Password with Incorrect Current Password",
+      "description": "Verify that system validates current password before allowing change.",
+      "preconditions": [
+        "User is logged in"
+      ],
+      "test_steps": [
+        "Navigate to account settings.",
+        "Select change password option.",
+        "Enter incorrect current password.",
+        "Enter new password.",
+        "Click Save."
+      ],
+      "expected_results": "System displays error and does not change password.",
+      "priority": "Medium",
+      "test_type": "Functional",
+      "user_story_id": "US-016"
+    },
+    {
+      "id": "TC-063",
+      "title": "User Logged Out from Other Sessions After Password Change",
+      "description": "Verify that user is logged out from other sessions after password change.",
+      "preconditions": [
+        "User is logged in on multiple devices"
+      ],
+      "test_steps": [
+        "Change password from one device.",
+        "Attempt to perform action on another device session."
+      ],
+      "expected_results": "Other sessions are logged out and require re-login.",
+      "priority": "Medium",
+      "test_type": "Functional",
+      "user_story_id": "US-016"
+    },
+    {
+      "id": "TC-064",
+      "title": "Request Account Deletion",
+      "description": "Verify that user can request account deletion from settings.",
+      "preconditions": [
+        "User is logged in"
+      ],
+      "test_steps": [
+        "Navigate to account settings.",
+        "Select delete account option."
+      ],
+      "expected_results": "System asks for confirmation before deletion.",
+      "priority": "Low",
+      "test_type": "Functional",
+      "user_story_id": "US-017"
+    },
+    {
+      "id": "TC-065",
+      "title": "Confirm Account Deletion",
+      "description": "Verify that user dATF is permanently removed upon deletion.",
+      "preconditions": [
+        "User is logged in",
+        "Account deletion requested"
+      ],
+      "test_steps": [
+        "Confirm account deletion.",
+        "Attempt to log in again."
+      ],
+      "expected_results": "Account is deleted, user receives email confirmation, and cannot log in.",
+      "priority": "Low",
+      "test_type": "Functional",
+      "user_story_id": "US-017"
+    },
+    {
+      "id": "TC-066",
+      "title": "Multi-device Login",
+      "description": "Verify that user can log in from different devices.",
+      "preconditions": [
+        "User account exists"
+      ],
+      "test_steps": [
+        "Log in from device A.",
+        "Log in from device B."
+      ],
+      "expected_results": "User is logged in on both devices.",
+      "priority": "Low",
+      "test_type": "Functional",
+      "user_story_id": "US-018"
+    },
+    {
+      "id": "TC-067",
+      "title": "Favorites and Settings Sync Across Devices",
+      "description": "Verify that favorites and settings are consistent on all devices.",
+      "preconditions": [
+        "User is logged in on multiple devices"
+      ],
+      "test_steps": [
+        "Add item to favorites on device A.",
+        "Check favorites list on device B."
+      ],
+      "expected_results": "Favorites list is updated on both devices.",
+      "priority": "Low",
+      "test_type": "Functional",
+      "user_story_id": "US-018"
+    },
+    {
+      "id": "TC-068",
+      "title": "Log Out Remotely from Any Device",
+      "description": "Verify that user can log out remotely from any device.",
+      "preconditions": [
+        "User is logged in on multiple devices"
+      ],
+      "test_steps": [
+        "Initiate remote log out from device A for device B.",
+        "Attempt to perform action on device B."
+      ],
+      "expected_results": "Device B is logged out and requires re-login.",
+      "priority": "Low",
+      "test_type": "Functional",
+      "user_story_id": "US-018"
+    },
+    {
+      "id": "TC-069",
+      "title": "Receive Email Alert for Account Change",
+      "description": "Verify that user receives email alert for account changes.",
+      "preconditions": [
+        "User account exists"
+      ],
+      "test_steps": [
+        "Change profile information.",
+        "Check email inbox."
+      ],
+      "expected_results": "Email alert is received for account change.",
+      "priority": "Low",
+      "test_type": "Functional",
+      "user_story_id": "US-019"
+    },
+    {
+      "id": "TC-070",
+      "title": "Manage Email Alert Preferences",
+      "description": "Verify that user can manage preferences for email alerts.",
+      "preconditions": [
+        "User is logged in"
+      ],
+      "test_steps": [
+        "Navigate to email alert settings.",
+        "Change preferences.",
+        "Save changes."
+      ],
+      "expected_results": "Email alert preferences are updated.",
+      "priority": "Low",
+      "test_type": "Functional",
+      "user_story_id": "US-019"
+    },
+    {
+      "id": "TC-071",
+      "title": "Unsubscribe from Email Alerts",
+      "description": "Verify that user can unsubscribe from email alerts.",
+      "preconditions": [
+        "User is subscribed to email alerts"
+      ],
+      "test_steps": [
+        "Click unsubscribe link in email.",
+        "Confirm unsubscription."
+      ],
+      "expected_results": "User is unsubscribed and no further alerts are sent.",
+      "priority": "Low",
+      "test_type": "Functional",
+      "user_story_id": "US-019"
+    },
+    {
+      "id": "TC-072",
+      "title": "Platform Supports Screen Readers",
+      "description": "Verify that platform supports standard screen readers.",
+      "preconditions": [],
+      "test_steps": [
+        "Open platform with a screen reader enabled.",
+        "Navigate through various sections."
+      ],
+      "expected_results": "Screen reader reads all interactive elements and content.",
+      "priority": "Medium",
+      "test_type": "Non-functional",
+      "user_story_id": "US-020"
+    },
+    {
+      "id": "TC-073",
+      "title": "Keyboard Navigation for All Interactive Elements",
+      "description": "Verify that all interactive elements are accessible via keyboard.",
+      "preconditions": [],
+      "test_steps": [
+        "Navigate through platform using keyboard (Tab, Enter, etc.).",
+        "Attempt to interact with buttons, links, forms."
+      ],
+      "expected_results": "All interactive elements are accessible and usable via keyboard.",
+      "priority": "Medium",
+      "test_type": "Non-functional",
+      "user_story_id": "US-020"
+    },
+    {
+      "id": "TC-074",
+      "title": "Images Have Descriptive Alt Text",
+      "description": "Verify that all images have descriptive alt text for accessibility.",
+      "preconditions": [],
+      "test_steps": [
+        "Inspect images on platform using browser tools.",
+        "Check alt attribute for each image."
+      ],
+      "expected_results": "All images have meaningful alt text.",
+      "priority": "Medium",
+      "test_type": "Non-functional",
+      "user_story_id": "US-020"
+    },
+    {
+      "id": "TC-075",
+      "title": "Contrast Ratios Meet Accessibility Guidelines",
+      "description": "Verify that contrast ratios on platform meet accessibility standards.",
+      "preconditions": [],
+      "test_steps": [
+        "Use accessibility testing tool to measure contrast ratios.",
+        "Check text and background combinations."
+      ],
+      "expected_results": "Contrast ratios meet WCAG guidelines.",
+      "priority": "Medium",
+      "test_type": "Non-functional",
+      "user_story_id": "US-020"
+    },
+    {
+      "id": "TC-076",
+      "title": "User Can Adjust Font Sizes for Readability",
+      "description": "Verify that user can adjust font sizes for better readability.",
+      "preconditions": [
+        "User is logged in"
+      ],
+      "test_steps": [
+        "Navigate to accessibility settings.",
+        "Change font size.",
+        "Observe platform text."
+      ],
+      "expected_results": "Font size changes are reflected across platform.",
+      "priority": "Medium",
+      "test_type": "Non-functional",
+      "user_story_id": "US-020"
+    }
+  ],
+  "summary": "76 comprehensive test cases were generated covering all user stories and requirements, including positive, negative, boundary, and edge scenarios for user registration, login, password management, profile management, dashboard, search and filter, item details, favorites, notifications, admin features, support, security, multi-device access, email alerts, and accessibility.",
+  "agent_name": "Test Case Generator",
+  "file_name": "sample input_userstory_new - Copy.docx",
+  "timestamp": "2026-02-05T01:45:35.929452"
+}

@@ -1,0 +1,268 @@
+{
+  "user_stories": [
+    {
+      "id": "US-001",
+      "title": "User Registration",
+      "user_story": "As a new user, I want to register for an account so that I can access personalized features.",
+      "acceptance_criteria": [
+        "User can access the registration page from the homepage.",
+        "User can enter required details (name, email, password).",
+        "User receives a confirmation email upon successful registration.",
+        "User cannot register with an already used email address.",
+        "User sees error messages for invalid input."
+      ],
+      "priority": "High"
+    },
+    {
+      "id": "US-002",
+      "title": "User Login",
+      "user_story": "As a registered user, I want to log in to my account so that I can access my dashboard.",
+      "acceptance_criteria": [
+        "User can access the login page from the homepage.",
+        "User can log in using email and password.",
+        "User receives error messages for incorrect credentials.",
+        "User is redirected to dashboard upon successful login.",
+        "User can reset password if forgotten."
+      ],
+      "priority": "High"
+    },
+    {
+      "id": "US-003",
+      "title": "Password Reset",
+      "user_story": "As a user, I want to reset my password so that I can regain access to my account if I forget my password.",
+      "acceptance_criteria": [
+        "User can request a password reset from the login page.",
+        "User receives a password reset link via email.",
+        "User can set a new password using the reset link.",
+        "User cannot reuse previous passwords.",
+        "User receives confirmation after successful password reset."
+      ],
+      "priority": "High"
+    },
+    {
+      "id": "US-004",
+      "title": "Profile Management",
+      "user_story": "As a logged-in user, I want to view and edit my profile information so that my account details are up to date.",
+      "acceptance_criteria": [
+        "User can view profile information from dashboard.",
+        "User can edit name, email, and other personal details.",
+        "User receives confirmation after saving changes.",
+        "User cannot change email to one already in use.",
+        "User sees error messages for invalid input."
+      ],
+      "priority": "Medium"
+    },
+    {
+      "id": "US-005",
+      "title": "View Dashboard",
+      "user_story": "As a logged-in user, I want to view my dashboard so that I can access my personalized content and actions.",
+      "acceptance_criteria": [
+        "User is redirected to dashboard after login.",
+        "Dashboard displays user\u2019s name and profile picture.",
+        "Dashboard shows recent activity and notifications.",
+        "User can access main features from dashboard.",
+        "Dashboard updates in real time with new activity."
+      ],
+      "priority": "High"
+    },
+    {
+      "id": "US-006",
+      "title": "Search Functionality",
+      "user_story": "As a user, I want to search for items using keywords so that I can quickly find relevant content.",
+      "acceptance_criteria": [
+        "User can access search bar from all pages.",
+        "User can enter keywords and see relevant results.",
+        "Search results update dynamically as user types.",
+        "User can filter search results by category.",
+        "Search returns accurate and relevant items."
+      ],
+      "priority": "High"
+    },
+    {
+      "id": "US-007",
+      "title": "Item Listing",
+      "user_story": "As a user, I want to view a list of available items so that I can browse and select items of interest.",
+      "acceptance_criteria": [
+        "User can access item listing page from dashboard.",
+        "Items are displayed with images, titles, and short descriptions.",
+        "User can sort items by date, popularity, or category.",
+        "User can paginate through item listings.",
+        "User can see the total number of items available."
+      ],
+      "priority": "High"
+    },
+    {
+      "id": "US-008",
+      "title": "Item Details View",
+      "user_story": "As a user, I want to view detailed information about an item so that I can make informed decisions.",
+      "acceptance_criteria": [
+        "User can click on an item to view its details.",
+        "Item details page displays full description, images, and related information.",
+        "User can see reviews and ratings for the item.",
+        "User can add item to favorites from details page.",
+        "User can share item details via social media."
+      ],
+      "priority": "High"
+    },
+    {
+      "id": "US-009",
+      "title": "Add Item to Favorites",
+      "user_story": "As a user, I want to add items to my favorites list so that I can easily access them later.",
+      "acceptance_criteria": [
+        "User can add item to favorites from item details page.",
+        "User receives confirmation when item is added to favorites.",
+        "User can view and manage favorites from dashboard.",
+        "User can remove items from favorites.",
+        "Favorites list updates in real time."
+      ],
+      "priority": "Medium"
+    },
+    {
+      "id": "US-010",
+      "title": "Submit Item Review",
+      "user_story": "As a user, I want to submit reviews for items so that I can share my feedback with others.",
+      "acceptance_criteria": [
+        "User can submit a review from item details page.",
+        "User can rate item using a star rating system.",
+        "User can edit or delete their review.",
+        "Review is displayed after submission.",
+        "User cannot submit multiple reviews for the same item."
+      ],
+      "priority": "Medium"
+    },
+    {
+      "id": "US-011",
+      "title": "View Notifications",
+      "user_story": "As a user, I want to view notifications so that I am informed of important updates and actions.",
+      "acceptance_criteria": [
+        "User can access notifications from dashboard.",
+        "Notifications display recent activity and messages.",
+        "User can mark notifications as read.",
+        "Unread notifications are highlighted.",
+        "Notifications update in real time."
+      ],
+      "priority": "Medium"
+    },
+    {
+      "id": "US-012",
+      "title": "Admin: Manage Users",
+      "user_story": "As an admin, I want to view and manage user accounts so that I can maintain platform integrity.",
+      "acceptance_criteria": [
+        "Admin can view a list of all registered users.",
+        "Admin can search and filter users by name or email.",
+        "Admin can deactivate or delete user accounts.",
+        "Admin receives confirmation after performing actions.",
+        "Admin cannot delete their own account."
+      ],
+      "priority": "High"
+    },
+    {
+      "id": "US-013",
+      "title": "Admin: Manage Items",
+      "user_story": "As an admin, I want to add, edit, or remove items so that the item list stays current and accurate.",
+      "acceptance_criteria": [
+        "Admin can add new items with all required details.",
+        "Admin can edit existing item information.",
+        "Admin can remove items from the listing.",
+        "Admin receives confirmation after each action.",
+        "Changes are reflected immediately for all users."
+      ],
+      "priority": "High"
+    },
+    {
+      "id": "US-014",
+      "title": "Admin: Moderate Reviews",
+      "user_story": "As an admin, I want to moderate item reviews so that inappropriate content can be removed.",
+      "acceptance_criteria": [
+        "Admin can view all submitted reviews.",
+        "Admin can delete or hide inappropriate reviews.",
+        "Admin can filter reviews by item or user.",
+        "Admin receives confirmation after moderating a review.",
+        "Moderated reviews are removed from public view."
+      ],
+      "priority": "Medium"
+    },
+    {
+      "id": "US-015",
+      "title": "User Logout",
+      "user_story": "As a logged-in user, I want to log out of my account so that my session is securely ended.",
+      "acceptance_criteria": [
+        "User can access logout option from dashboard.",
+        "User is logged out and redirected to homepage.",
+        "Session is terminated upon logout.",
+        "User cannot access dashboard after logout.",
+        "User receives confirmation of successful logout."
+      ],
+      "priority": "High"
+    },
+    {
+      "id": "US-016",
+      "title": "Change Password",
+      "user_story": "As a logged-in user, I want to change my password so that my account remains secure.",
+      "acceptance_criteria": [
+        "User can access change password option from profile.",
+        "User must enter current password to change password.",
+        "User receives confirmation after successful password change.",
+        "User cannot reuse previous passwords.",
+        "User sees error messages for invalid input."
+      ],
+      "priority": "Medium"
+    },
+    {
+      "id": "US-017",
+      "title": "View Favorites List",
+      "user_story": "As a user, I want to view my favorites list so that I can quickly access saved items.",
+      "acceptance_criteria": [
+        "User can access favorites list from dashboard.",
+        "Favorites list displays all saved items with images and titles.",
+        "User can remove items from favorites list.",
+        "Favorites list updates in real time.",
+        "User receives confirmation when item is removed."
+      ],
+      "priority": "Medium"
+    },
+    {
+      "id": "US-018",
+      "title": "Filter Items",
+      "user_story": "As a user, I want to filter items by category and other attributes so that I can find relevant items easily.",
+      "acceptance_criteria": [
+        "User can filter items by category, price, and rating.",
+        "Filtered results update without page reload.",
+        "User can clear filters to view all items.",
+        "Filters are easy to access and use.",
+        "User sees accurate results after applying filters."
+      ],
+      "priority": "Medium"
+    },
+    {
+      "id": "US-019",
+      "title": "Share Item Details",
+      "user_story": "As a user, I want to share item details via social media so that I can recommend items to others.",
+      "acceptance_criteria": [
+        "User can share item details to Facebook, Twitter, and email.",
+        "Shared link directs recipients to item details page.",
+        "User receives confirmation after sharing.",
+        "User can copy item link to clipboard.",
+        "Shared content includes item image and description."
+      ],
+      "priority": "Low"
+    },
+    {
+      "id": "US-020",
+      "title": "View Item Reviews",
+      "user_story": "As a user, I want to view reviews for an item so that I can make informed decisions before interacting with it.",
+      "acceptance_criteria": [
+        "User can view all reviews for an item on item details page.",
+        "Reviews display reviewer name, rating, and comments.",
+        "Reviews are sorted by date or rating.",
+        "User can report inappropriate reviews.",
+        "Review count is displayed on item details page."
+      ],
+      "priority": "Medium"
+    }
+  ],
+  "summary": "20 comprehensive user stories have been generated covering user registration, authentication, profile management, dashboard, item browsing, search, favorites, reviews, notifications, admin management, and sharing functionalities. Each story includes acceptance criteria and priority.",
+  "agent_name": "User Story Creator",
+  "file_name": "sample input_userstory - Copy.docx",
+  "timestamp": "2026-02-05T01:06:34.070785"
+}

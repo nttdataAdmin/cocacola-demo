@@ -1,0 +1,997 @@
+{
+  "test_cases": [
+    {
+      "id": "TC-001",
+      "title": "Create Standard Purchase Order - Positive Flow",
+      "description": "Verify that a procurement user can create a standard PO with all required fields.",
+      "preconditions": [
+        "User has procurement role",
+        "Vendor, material, plant master dATF exists"
+      ],
+      "test_steps": [
+        "Login as procurement user",
+        "Navigate to PO creation screen",
+        "Select vendor, material, quantity, price, plant, and delivery date",
+        "Save the PO"
+      ],
+      "expected_results": "PO is saved, assigned a unique number, and no FI document is posted.",
+      "priority": "High",
+      "test_type": "Functional",
+      "user_story_id": "US-001"
+    },
+    {
+      "id": "TC-002",
+      "title": "Create PO - Missing Mandatory Field (Negative)",
+      "description": "Verify system prevents PO creation if a mandatory field (e.g., vendor) is missing.",
+      "preconditions": [
+        "User has procurement role"
+      ],
+      "test_steps": [
+        "Login as procurement user",
+        "Navigate to PO creation screen",
+        "Leave vendor field blank",
+        "Enter other required fields",
+        "Attempt to save PO"
+      ],
+      "expected_results": "System displays error and prevents PO creation.",
+      "priority": "High",
+      "test_type": "Functional",
+      "user_story_id": "US-001"
+    },
+    {
+      "id": "TC-003",
+      "title": "Create PO - Boundary Quantity Value",
+      "description": "Verify PO creation with minimum allowed quantity.",
+      "preconditions": [
+        "User has procurement role",
+        "Material master dATF exists"
+      ],
+      "test_steps": [
+        "Login as procurement user",
+        "Navigate to PO creation screen",
+        "Enter vendor, material, price, plant, and delivery date",
+        "Enter quantity as 1",
+        "Save the PO"
+      ],
+      "expected_results": "PO is saved successfully with quantity 1.",
+      "priority": "Medium",
+      "test_type": "Functional",
+      "user_story_id": "US-001"
+    },
+    {
+      "id": "TC-004",
+      "title": "Create PO - Price Edge Case",
+      "description": "Verify PO creation with zero price is not allowed.",
+      "preconditions": [
+        "User has procurement role",
+        "Material master dATF exists"
+      ],
+      "test_steps": [
+        "Login as procurement user",
+        "Navigate to PO creation screen",
+        "Enter vendor, material, quantity, plant, and delivery date",
+        "Enter price as 0",
+        "Attempt to save PO"
+      ],
+      "expected_results": "System displays error and prevents PO creation with zero price.",
+      "priority": "Medium",
+      "test_type": "Functional",
+      "user_story_id": "US-001"
+    },
+    {
+      "id": "TC-005",
+      "title": "Create PO - Compliance with Best Practices",
+      "description": "Verify PO creation follows SAP S/4HANA best practices with minimal customization.",
+      "preconditions": [
+        "User has procurement role",
+        "System configured for standard PO process"
+      ],
+      "test_steps": [
+        "Login as procurement user",
+        "Create a PO using standard SAP fields",
+        "Save PO",
+        "Review PO configuration and fields"
+      ],
+      "expected_results": "PO is created using standard fields and process; no custom fields or logic present.",
+      "priority": "Medium",
+      "test_type": "Functional",
+      "user_story_id": "US-001"
+    },
+    {
+      "id": "TC-006",
+      "title": "PO Approval - Release Strategy Positive Flow",
+      "description": "Verify PO is routed for approval based on release strategy and can be approved.",
+      "preconditions": [
+        "PO created and pending approval",
+        "Release strategy configured"
+      ],
+      "test_steps": [
+        "Login as procurement manager",
+        "Navigate to PO approval screen",
+        "Review PO details",
+        "Approve PO"
+      ],
+      "expected_results": "PO status changes to 'Approved'; approval history is recorded.",
+      "priority": "High",
+      "test_type": "Functional",
+      "user_story_id": "US-002"
+    },
+    {
+      "id": "TC-007",
+      "title": "PO Approval - Unauthorized User Attempt",
+      "description": "Verify unauthorized user cannot approve PO.",
+      "preconditions": [
+        "PO created and pending approval",
+        "User does not have approval role"
+      ],
+      "test_steps": [
+        "Login as unauthorized user",
+        "Attempt to approve PO"
+      ],
+      "expected_results": "System prevents approval and displays error message.",
+      "priority": "High",
+      "test_type": "Functional",
+      "user_story_id": "US-002"
+    },
+    {
+      "id": "TC-008",
+      "title": "PO Approval - Release Strategy Boundary Value",
+      "description": "Verify PO approval routing for PO value at threshold.",
+      "preconditions": [
+        "Release strategy threshold set (e.g., $10,000)",
+        "PO created with value exactly at threshold"
+      ],
+      "test_steps": [
+        "Login as procurement manager",
+        "Review PO approval routing",
+        "Approve PO"
+      ],
+      "expected_results": "PO is routed to correct approver as per release strategy and approved.",
+      "priority": "Medium",
+      "test_type": "Functional",
+      "user_story_id": "US-002"
+    },
+    {
+      "id": "TC-009",
+      "title": "PO Approval - Audit Trail Verification",
+      "description": "Verify approval history is recorded for audit purposes.",
+      "preconditions": [
+        "PO approved"
+      ],
+      "test_steps": [
+        "Login as procurement user",
+        "Navigate to PO history",
+        "Review approval events"
+      ],
+      "expected_results": "Approval history is visible with timestamp and user info.",
+      "priority": "Medium",
+      "test_type": "Functional",
+      "user_story_id": "US-002"
+    },
+    {
+      "id": "TC-010",
+      "title": "PO Approval - Attempt GR/IR on Unapproved PO",
+      "description": "Verify system prevents GR or IR posting for unapproved PO.",
+      "preconditions": [
+        "PO created but not approved"
+      ],
+      "test_steps": [
+        "Login as warehouse or AP user",
+        "Attempt to post GR or IR against unapproved PO"
+      ],
+      "expected_results": "System blocks transaction and displays error.",
+      "priority": "High",
+      "test_type": "Functional",
+      "user_story_id": "US-002"
+    },
+    {
+      "id": "TC-011",
+      "title": "Post Goods Receipt - Full Receipt Positive Flow",
+      "description": "Verify warehouse user can post full GR against approved PO.",
+      "preconditions": [
+        "PO approved",
+        "Goods physically received"
+      ],
+      "test_steps": [
+        "Login as warehouse user",
+        "Select PO",
+        "Enter received quantity equal to PO quantity",
+        "Post GR"
+      ],
+      "expected_results": "Inventory/expense updated, FI document generated, GR/IR credited.",
+      "priority": "High",
+      "test_type": "Functional",
+      "user_story_id": "US-003"
+    },
+    {
+      "id": "TC-012",
+      "title": "Post Goods Receipt - Partial Receipt",
+      "description": "Verify warehouse user can post partial GR and system updates remaining quantity.",
+      "preconditions": [
+        "PO approved",
+        "Partial goods received"
+      ],
+      "test_steps": [
+        "Login as warehouse user",
+        "Select PO",
+        "Enter received quantity less than PO quantity",
+        "Post GR"
+      ],
+      "expected_results": "Partial GR posted, remaining PO quantity updated, FI document generated.",
+      "priority": "High",
+      "test_type": "Functional",
+      "user_story_id": "US-003"
+    },
+    {
+      "id": "TC-013",
+      "title": "Post Goods Receipt - Over Receipt (Negative)",
+      "description": "Verify system prevents posting GR quantity greater than PO quantity.",
+      "preconditions": [
+        "PO approved"
+      ],
+      "test_steps": [
+        "Login as warehouse user",
+        "Select PO",
+        "Enter received quantity greater than PO quantity",
+        "Attempt to post GR"
+      ],
+      "expected_results": "System displays error and prevents over-receipt.",
+      "priority": "High",
+      "test_type": "Functional",
+      "user_story_id": "US-004"
+    },
+    {
+      "id": "TC-014",
+      "title": "Post Goods Receipt - Traceability to PO",
+      "description": "Verify each GR is linked to original PO for traceability.",
+      "preconditions": [
+        "PO approved",
+        "GR posted"
+      ],
+      "test_steps": [
+        "Login as warehouse user",
+        "Navigate to GR document",
+        "Check reference to PO"
+      ],
+      "expected_results": "GR document displays PO reference.",
+      "priority": "Medium",
+      "test_type": "Functional",
+      "user_story_id": "US-004"
+    },
+    {
+      "id": "TC-015",
+      "title": "Post Goods Receipt - FI Document Generation",
+      "description": "Verify FI document is automatically generated upon GR posting.",
+      "preconditions": [
+        "PO approved",
+        "GR posted"
+      ],
+      "test_steps": [
+        "Login as finance user",
+        "Navigate to FI documents",
+        "Search for document linked to GR"
+      ],
+      "expected_results": "FI document exists and reflects correct accounts.",
+      "priority": "High",
+      "test_type": "Functional",
+      "user_story_id": "US-003"
+    },
+    {
+      "id": "TC-016",
+      "title": "Post Vendor Invoice - 3-Way Match Positive",
+      "description": "Verify invoice can be posted when PO, GR, and invoice match.",
+      "preconditions": [
+        "PO approved",
+        "GR posted"
+      ],
+      "test_steps": [
+        "Login as AP user",
+        "Select PO and related GRs",
+        "Enter invoice details matching PO and GR",
+        "Post invoice"
+      ],
+      "expected_results": "Invoice posted, FI document generated, 3-way match successful.",
+      "priority": "High",
+      "test_type": "Functional",
+      "user_story_id": "US-005"
+    },
+    {
+      "id": "TC-017",
+      "title": "Post Vendor Invoice - Price Difference Within Tolerance",
+      "description": "Verify invoice is posted when price difference is within tolerance.",
+      "preconditions": [
+        "PO approved",
+        "GR posted",
+        "Tolerance configured"
+      ],
+      "test_steps": [
+        "Login as AP user",
+        "Select PO and GR",
+        "Enter invoice with price slightly higher than PO (within tolerance)",
+        "Post invoice"
+      ],
+      "expected_results": "Invoice posted, FI document generated, tolerance applied.",
+      "priority": "High",
+      "test_type": "Functional",
+      "user_story_id": "US-006"
+    },
+    {
+      "id": "TC-018",
+      "title": "Post Vendor Invoice - Price Difference Exceeds Tolerance (Negative)",
+      "description": "Verify invoice is blocked when price difference exceeds tolerance.",
+      "preconditions": [
+        "PO approved",
+        "GR posted",
+        "Tolerance configured"
+      ],
+      "test_steps": [
+        "Login as AP user",
+        "Select PO and GR",
+        "Enter invoice with price much higher than PO (exceeds tolerance)",
+        "Attempt to post invoice"
+      ],
+      "expected_results": "Invoice is blocked for payment, system notifies user.",
+      "priority": "High",
+      "test_type": "Functional",
+      "user_story_id": "US-006"
+    },
+    {
+      "id": "TC-019",
+      "title": "Post Vendor Invoice - Quantity Difference Within Tolerance",
+      "description": "Verify invoice is posted when quantity difference is within tolerance.",
+      "preconditions": [
+        "PO approved",
+        "Partial GR posted",
+        "Tolerance configured"
+      ],
+      "test_steps": [
+        "Login as AP user",
+        "Select PO and GR",
+        "Enter invoice for quantity slightly higher than GR (within tolerance)",
+        "Post invoice"
+      ],
+      "expected_results": "Invoice posted, tolerance applied.",
+      "priority": "Medium",
+      "test_type": "Functional",
+      "user_story_id": "US-006"
+    },
+    {
+      "id": "TC-020",
+      "title": "Post Vendor Invoice - Blocked Invoice Review",
+      "description": "Verify blocked invoices are flagged and can be reviewed by AP user.",
+      "preconditions": [
+        "Invoice blocked due to tolerance breach"
+      ],
+      "test_steps": [
+        "Login as AP user",
+        "Navigate to blocked invoices list",
+        "Review blocked invoice details"
+      ],
+      "expected_results": "Blocked invoice is visible, flagged, and details available for review.",
+      "priority": "High",
+      "test_type": "Functional",
+      "user_story_id": "US-007"
+    },
+    {
+      "id": "TC-021",
+      "title": "Post Vendor Invoice - Attempt Payment on Blocked Invoice (Negative)",
+      "description": "Verify payment processing is prevented for blocked invoices.",
+      "preconditions": [
+        "Invoice blocked for payment"
+      ],
+      "test_steps": [
+        "Login as AP user",
+        "Attempt to process payment for blocked invoice"
+      ],
+      "expected_results": "System prevents payment and displays error.",
+      "priority": "High",
+      "test_type": "Functional",
+      "user_story_id": "US-007"
+    },
+    {
+      "id": "TC-022",
+      "title": "Automatic FI Posting - GR Transaction",
+      "description": "Verify FI document is generated automatically for GR posting.",
+      "preconditions": [
+        "PO approved",
+        "GR posted"
+      ],
+      "test_steps": [
+        "Login as finance user",
+        "Check FI document list for GR transaction"
+      ],
+      "expected_results": "FI document exists, correct accounts posted, real-time update.",
+      "priority": "High",
+      "test_type": "Functional",
+      "user_story_id": "US-008"
+    },
+    {
+      "id": "TC-023",
+      "title": "Automatic FI Posting - IR Transaction",
+      "description": "Verify FI document is generated automatically for IR posting.",
+      "preconditions": [
+        "PO approved",
+        "GR posted",
+        "Invoice posted"
+      ],
+      "test_steps": [
+        "Login as finance user",
+        "Check FI document list for IR transaction"
+      ],
+      "expected_results": "FI document exists, correct accounts posted, real-time update.",
+      "priority": "High",
+      "test_type": "Functional",
+      "user_story_id": "US-008"
+    },
+    {
+      "id": "TC-024",
+      "title": "Automatic FI Posting - No Manual Intervention",
+      "description": "Verify no manual FI posting is required for standard P2P transactions.",
+      "preconditions": [
+        "P2P transactions posted"
+      ],
+      "test_steps": [
+        "Login as finance user",
+        "Review FI postings for PO, GR, IR",
+        "Check for manual posting requirement"
+      ],
+      "expected_results": "All postings are automatic; no manual intervention needed.",
+      "priority": "High",
+      "test_type": "Functional",
+      "user_story_id": "US-008"
+    },
+    {
+      "id": "TC-025",
+      "title": "Automatic GR/IR Clearing on Invoice Posting",
+      "description": "Verify GR/IR account is cleared automatically when invoice is posted.",
+      "preconditions": [
+        "GR posted",
+        "Invoice posted"
+      ],
+      "test_steps": [
+        "Login as finance user",
+        "Review GR/IR account before and after invoice posting"
+      ],
+      "expected_results": "GR/IR account is cleared, clearing entries reflected in FI document.",
+      "priority": "High",
+      "test_type": "Functional",
+      "user_story_id": "US-009"
+    },
+    {
+      "id": "TC-026",
+      "title": "Manual Clearing of GR/IR Prevented",
+      "description": "Verify system prevents manual clearing of GR/IR for standard transactions.",
+      "preconditions": [
+        "GR/IR items exist"
+      ],
+      "test_steps": [
+        "Login as finance user",
+        "Attempt manual clearing of GR/IR account"
+      ],
+      "expected_results": "System prevents manual clearing and displays error.",
+      "priority": "High",
+      "test_type": "Functional",
+      "user_story_id": "US-009"
+    },
+    {
+      "id": "TC-027",
+      "title": "GR/IR Open Items Reporting",
+      "description": "Verify open GR/IR items are tracked and reported.",
+      "preconditions": [
+        "GR/IR items exist"
+      ],
+      "test_steps": [
+        "Login as finance user",
+        "Run GR/IR open items report"
+      ],
+      "expected_results": "Report displays open GR/IR items by PO and vendor.",
+      "priority": "Medium",
+      "test_type": "Functional",
+      "user_story_id": "US-009"
+    },
+    {
+      "id": "TC-028",
+      "title": "Vendor Liability Posting on Invoice Receipt",
+      "description": "Verify vendor liabilities are posted automatically during invoice receipt.",
+      "preconditions": [
+        "Invoice posted"
+      ],
+      "test_steps": [
+        "Login as finance user",
+        "Check vendor account balances after invoice posting"
+      ],
+      "expected_results": "Vendor account updated in real time, liability posted as per standards.",
+      "priority": "High",
+      "test_type": "Functional",
+      "user_story_id": "US-010"
+    },
+    {
+      "id": "TC-029",
+      "title": "Vendor Liability Posting - Compliance Check",
+      "description": "Verify liability postings comply with company accounting standards.",
+      "preconditions": [
+        "Invoice posted"
+      ],
+      "test_steps": [
+        "Login as finance manager",
+        "Review FI document for vendor liability posting",
+        "Check GL account used"
+      ],
+      "expected_results": "Liability posted to correct GL account as per policy.",
+      "priority": "High",
+      "test_type": "Functional",
+      "user_story_id": "US-010"
+    },
+    {
+      "id": "TC-030",
+      "title": "Vendor Balance Visibility in Reports",
+      "description": "Verify vendor balances are visible in standard reports.",
+      "preconditions": [
+        "Vendor liability posted"
+      ],
+      "test_steps": [
+        "Login as finance user",
+        "Run vendor balance report"
+      ],
+      "expected_results": "Report displays updated vendor balances.",
+      "priority": "Medium",
+      "test_type": "Functional",
+      "user_story_id": "US-010"
+    },
+    {
+      "id": "TC-031",
+      "title": "View PO History - All Events Displayed",
+      "description": "Verify system displays all PO-related activities in history.",
+      "preconditions": [
+        "PO created, approved, GR and IR posted"
+      ],
+      "test_steps": [
+        "Login as procurement user",
+        "Navigate to PO history screen",
+        "Review history"
+      ],
+      "expected_results": "All events (creation, approval, GR, IR) displayed with timestamp and user info.",
+      "priority": "Medium",
+      "test_type": "Functional",
+      "user_story_id": "US-011"
+    },
+    {
+      "id": "TC-032",
+      "title": "View PO History - Audit Access",
+      "description": "Verify PO history is accessible for audit purposes.",
+      "preconditions": [
+        "PO history exists"
+      ],
+      "test_steps": [
+        "Login as auditor",
+        "Access PO history",
+        "Review event details"
+      ],
+      "expected_results": "PO history is accessible and includes all required details for audit.",
+      "priority": "Medium",
+      "test_type": "Functional",
+      "user_story_id": "US-011"
+    },
+    {
+      "id": "TC-033",
+      "title": "View GR and Invoice Status - Real-Time Update",
+      "description": "Verify GR and IR status for PO is updated in real time.",
+      "preconditions": [
+        "PO, GR, IR posted"
+      ],
+      "test_steps": [
+        "Login as procurement or finance user",
+        "Navigate to PO status screen",
+        "Review GR and IR status"
+      ],
+      "expected_results": "Status reflects current GR and IR, updated in real time.",
+      "priority": "Medium",
+      "test_type": "Functional",
+      "user_story_id": "US-012"
+    },
+    {
+      "id": "TC-034",
+      "title": "View GR and Invoice Status - Blocked Invoice Indication",
+      "description": "Verify blocked invoices are clearly indicated in PO status.",
+      "preconditions": [
+        "Blocked invoice exists for PO"
+      ],
+      "test_steps": [
+        "Login as procurement or finance user",
+        "Navigate to PO status screen",
+        "Check invoice status"
+      ],
+      "expected_results": "Blocked invoice is clearly flagged in status view.",
+      "priority": "Medium",
+      "test_type": "Functional",
+      "user_story_id": "US-012"
+    },
+    {
+      "id": "TC-035",
+      "title": "View GR/IR Balances Report",
+      "description": "Verify system provides report of open GR/IR balances by PO and vendor.",
+      "preconditions": [
+        "GR/IR items exist"
+      ],
+      "test_steps": [
+        "Login as finance user",
+        "Run GR/IR balance report"
+      ],
+      "expected_results": "Report displays open balances by PO and vendor, real-time dATF.",
+      "priority": "Medium",
+      "test_type": "Functional",
+      "user_story_id": "US-013"
+    },
+    {
+      "id": "TC-036",
+      "title": "GR/IR Balances - Period Close Highlight",
+      "description": "Verify balances outside tolerance are highlighted at period close.",
+      "preconditions": [
+        "Period close process initiated",
+        "GR/IR balances exist"
+      ],
+      "test_steps": [
+        "Login as finance user",
+        "Run GR/IR period close report"
+      ],
+      "expected_results": "Balances outside tolerance are flagged for action.",
+      "priority": "Medium",
+      "test_type": "Functional",
+      "user_story_id": "US-013"
+    },
+    {
+      "id": "TC-037",
+      "title": "Role-Based Access - Procurement User",
+      "description": "Verify procurement user can access only procurement functions.",
+      "preconditions": [
+        "User assigned procurement role"
+      ],
+      "test_steps": [
+        "Login as procurement user",
+        "Attempt to access procurement, warehouse, AP, and finance functions"
+      ],
+      "expected_results": "User can access only procurement functions; others are restricted.",
+      "priority": "High",
+      "test_type": "Functional",
+      "user_story_id": "US-014"
+    },
+    {
+      "id": "TC-038",
+      "title": "Role-Based Access - Unauthorized Access Attempt",
+      "description": "Verify unauthorized access attempts are logged.",
+      "preconditions": [
+        "User assigned procurement role"
+      ],
+      "test_steps": [
+        "Login as procurement user",
+        "Attempt to access finance functions"
+      ],
+      "expected_results": "Access denied, attempt logged in audit trail.",
+      "priority": "High",
+      "test_type": "Functional",
+      "user_story_id": "US-014"
+    },
+    {
+      "id": "TC-039",
+      "title": "Role Assignment Management",
+      "description": "Verify role assignments can be managed by authorized administrators.",
+      "preconditions": [
+        "User is system administrator"
+      ],
+      "test_steps": [
+        "Login as administrator",
+        "Assign or revoke roles for users",
+        "Save changes"
+      ],
+      "expected_results": "Role assignments updated, changes logged.",
+      "priority": "High",
+      "test_type": "Functional",
+      "user_story_id": "US-014"
+    },
+    {
+      "id": "TC-040",
+      "title": "Segregation of Duties - Prevent PO and Invoice by Same User",
+      "description": "Verify system prevents single user from creating PO and posting invoice.",
+      "preconditions": [
+        "User assigned procurement role only"
+      ],
+      "test_steps": [
+        "Login as procurement user",
+        "Create PO",
+        "Attempt to post invoice for same PO"
+      ],
+      "expected_results": "System prevents invoice posting by same user.",
+      "priority": "High",
+      "test_type": "Functional",
+      "user_story_id": "US-015"
+    },
+    {
+      "id": "TC-041",
+      "title": "Segregation of Duties - Conflicting Role Assignment",
+      "description": "Verify system prevents assignment of conflicting roles to same user.",
+      "preconditions": [
+        "User is system administrator"
+      ],
+      "test_steps": [
+        "Login as administrator",
+        "Attempt to assign both procurement and AP roles to same user"
+      ],
+      "expected_results": "System blocks conflicting role assignment and logs attempt.",
+      "priority": "High",
+      "test_type": "Functional",
+      "user_story_id": "US-015"
+    },
+    {
+      "id": "TC-042",
+      "title": "Segregation of Duties - Audit Log Verification",
+      "description": "Verify audit logs are maintained for all role assignments and changes.",
+      "preconditions": [
+        "Role assignments changed"
+      ],
+      "test_steps": [
+        "Login as auditor",
+        "Access audit logs",
+        "Review role assignment changes"
+      ],
+      "expected_results": "Audit logs show all changes with timestamp and user info.",
+      "priority": "High",
+      "test_type": "Functional",
+      "user_story_id": "US-015"
+    },
+    {
+      "id": "TC-043",
+      "title": "FI Posting - Use of Correct GL Accounts",
+      "description": "Verify FI postings use correct GL accounts as per company policy.",
+      "preconditions": [
+        "P2P transaction posted"
+      ],
+      "test_steps": [
+        "Login as finance manager",
+        "Review FI document",
+        "Check GL accounts used"
+      ],
+      "expected_results": "FI postings use correct GL accounts.",
+      "priority": "High",
+      "test_type": "Functional",
+      "user_story_id": "US-016"
+    },
+    {
+      "id": "TC-044",
+      "title": "FI Posting - Mandatory Fields Validation",
+      "description": "Verify system enforces mandatory fields and validation checks for FI postings.",
+      "preconditions": [
+        "P2P transaction posted"
+      ],
+      "test_steps": [
+        "Login as finance user",
+        "Attempt to post FI document with missing mandatory field"
+      ],
+      "expected_results": "System prevents posting and displays error.",
+      "priority": "High",
+      "test_type": "Functional",
+      "user_story_id": "US-016"
+    },
+    {
+      "id": "TC-045",
+      "title": "FI Posting - Traceability to Source Transaction",
+      "description": "Verify all FI postings are traceable to source P2P transactions.",
+      "preconditions": [
+        "FI document exists"
+      ],
+      "test_steps": [
+        "Login as finance user",
+        "Review FI document details",
+        "Check reference to PO/GR/IR"
+      ],
+      "expected_results": "FI document includes reference to source transaction.",
+      "priority": "High",
+      "test_type": "Functional",
+      "user_story_id": "US-016"
+    },
+    {
+      "id": "TC-046",
+      "title": "FI Posting - Accounting Standards Configurability",
+      "description": "Verify accounting standards are configurable and updATFble in system.",
+      "preconditions": [
+        "User is finance manager"
+      ],
+      "test_steps": [
+        "Login as finance manager",
+        "Navigate to accounting standards configuration",
+        "Update configuration",
+        "Save changes"
+      ],
+      "expected_results": "Accounting standards updated and applied to new postings.",
+      "priority": "High",
+      "test_type": "Functional",
+      "user_story_id": "US-016"
+    },
+    {
+      "id": "TC-047",
+      "title": "Real-Time Integration - No Batch Jobs Required",
+      "description": "Verify all GR and IR postings are reflected in FI without batch jobs.",
+      "preconditions": [
+        "GR and IR posted"
+      ],
+      "test_steps": [
+        "Login as finance user",
+        "Check FI postings immediately after GR/IR"
+      ],
+      "expected_results": "FI postings are visible in real time; no batch jobs required.",
+      "priority": "High",
+      "test_type": "Functional",
+      "user_story_id": "US-017"
+    },
+    {
+      "id": "TC-048",
+      "title": "Real-Time Integration - Integration Error Notification",
+      "description": "Verify system notifies users of any P2P-FI integration errors.",
+      "preconditions": [
+        "Simulate integration error"
+      ],
+      "test_steps": [
+        "Trigger GR or IR posting with error (e.g., missing GL account)",
+        "Observe system notification"
+      ],
+      "expected_results": "System notifies user of integration error.",
+      "priority": "High",
+      "test_type": "Functional",
+      "user_story_id": "US-017"
+    },
+    {
+      "id": "TC-049",
+      "title": "Master DATF Creation - Positive Flow",
+      "description": "Verify new vendor, material, and GL account master dATF can be created.",
+      "preconditions": [
+        "User has master dATF specialist role"
+      ],
+      "test_steps": [
+        "Login as master dATF specialist",
+        "Navigate to vendor, material, and GL account creation screens",
+        "Enter valid dATF for each",
+        "Save records"
+      ],
+      "expected_results": "Master dATF records created and available for use.",
+      "priority": "Medium",
+      "test_type": "Functional",
+      "user_story_id": "US-018"
+    },
+    {
+      "id": "TC-050",
+      "title": "Master DATF Creation - Duplicate Entry Prevention",
+      "description": "Verify system prevents creation of duplicate master dATF entries.",
+      "preconditions": [
+        "Master dATF record exists"
+      ],
+      "test_steps": [
+        "Login as master dATF specialist",
+        "Attempt to create vendor/material/GL account with existing key",
+        "Save record"
+      ],
+      "expected_results": "System prevents duplicate entry and displays error.",
+      "priority": "Medium",
+      "test_type": "Functional",
+      "user_story_id": "US-018"
+    },
+    {
+      "id": "TC-051",
+      "title": "Master DATF Creation - Validation of Completeness",
+      "description": "Verify system validates completeness and accuracy of master dATF records.",
+      "preconditions": [
+        "User has master dATF specialist role"
+      ],
+      "test_steps": [
+        "Login as master dATF specialist",
+        "Enter incomplete dATF for vendor/material/GL account",
+        "Attempt to save record"
+      ],
+      "expected_results": "System displays error and prevents saving incomplete record.",
+      "priority": "Medium",
+      "test_type": "Functional",
+      "user_story_id": "US-018"
+    },
+    {
+      "id": "TC-052",
+      "title": "Track Procurement and Financial Impact - Dashboard Display",
+      "description": "Verify system provides dashboard showing procurement and FI dATF side by side.",
+      "preconditions": [
+        "P2P transactions posted"
+      ],
+      "test_steps": [
+        "Login as business user",
+        "Access procurement and financial dashboard"
+      ],
+      "expected_results": "Dashboard displays real-time procurement and FI dATF.",
+      "priority": "Medium",
+      "test_type": "Functional",
+      "user_story_id": "US-019"
+    },
+    {
+      "id": "TC-053",
+      "title": "Track Procurement and Financial Impact - Drill Down",
+      "description": "Verify users can drill down to transaction details from dashboard/report.",
+      "preconditions": [
+        "Dashboard/report available"
+      ],
+      "test_steps": [
+        "Login as business user",
+        "Access dashboard/report",
+        "Drill down to transaction details"
+      ],
+      "expected_results": "User can view detailed transaction dATF.",
+      "priority": "Medium",
+      "test_type": "Functional",
+      "user_story_id": "US-019"
+    },
+    {
+      "id": "TC-054",
+      "title": "Track Procurement and Financial Impact - Export Report",
+      "description": "Verify reports are exportable for further analysis.",
+      "preconditions": [
+        "Report available"
+      ],
+      "test_steps": [
+        "Login as business user",
+        "Access report",
+        "Export report to Excel or PDF"
+      ],
+      "expected_results": "Report is exported successfully.",
+      "priority": "Low",
+      "test_type": "Functional",
+      "user_story_id": "US-019"
+    },
+    {
+      "id": "TC-055",
+      "title": "No Open GR/IR Balances at Period Close - Alert Generation",
+      "description": "Verify system generates alerts for open GR/IR balances at period close.",
+      "preconditions": [
+        "GR/IR balances exist at period close"
+      ],
+      "test_steps": [
+        "Initiate period close process",
+        "Review system alerts"
+      ],
+      "expected_results": "System generates alert for open GR/IR balances.",
+      "priority": "High",
+      "test_type": "Functional",
+      "user_story_id": "US-020"
+    },
+    {
+      "id": "TC-056",
+      "title": "No Open GR/IR Balances at Period Close - User Action Required",
+      "description": "Verify balances outside tolerance require user action before period close.",
+      "preconditions": [
+        "GR/IR balances outside tolerance at period close"
+      ],
+      "test_steps": [
+        "Initiate period close process",
+        "Review flagged balances",
+        "Take corrective action"
+      ],
+      "expected_results": "System requires user action for flagged balances before period close.",
+      "priority": "High",
+      "test_type": "Functional",
+      "user_story_id": "US-020"
+    },
+    {
+      "id": "TC-057",
+      "title": "No Open GR/IR Balances at Period Close - Reconciliation Report",
+      "description": "Verify GR/IR reconciliation report is available for period-end review.",
+      "preconditions": [
+        "Period close process initiated"
+      ],
+      "test_steps": [
+        "Login as finance user",
+        "Run GR/IR reconciliation report"
+      ],
+      "expected_results": "Report displays all open and cleared GR/IR balances for review.",
+      "priority": "High",
+      "test_type": "Functional",
+      "user_story_id": "US-020"
+    }
+  ],
+  "summary": "57 comprehensive test cases have been generated, covering positive, negative, boundary, and edge scenarios for all user stories and requirements in the SAP S/4HANA P2P process. All key functionalities, controls, and reporting aspects are thoroughly tested for end-to-end process integrity and compliance.",
+  "agent_name": "Test Case Generator",
+  "file_name": "sample input Copy.docx",
+  "timestamp": "2026-02-05T03:58:54.334211"
+}

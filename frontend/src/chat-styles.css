@@ -1,0 +1,73 @@
+/* Chat Message Formatting Styles */
+.message-text {
+  line-height: 1.6;
+  word-wrap: break-word;
+}
+
+.message-text strong {
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.message-text em {
+  font-style: italic;
+  color: var(--text-secondary);
+}
+
+.message-text code {
+  background: var(--bg-primary);
+  padding: 0.2rem 0.4rem;
+  border-radius: 4px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.875em;
+  color: var(--accent-primary);
+  border: 1px solid var(--border-color);
+}
+
+.message-text h1,
+.message-text h2,
+.message-text h3 {
+  margin: 1rem 0 0.5rem 0;
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+.message-text h1 {
+  font-size: 1.5rem;
+  border-bottom: 2px solid var(--border-color);
+  padding-bottom: 0.5rem;
+}
+
+.message-text h2 {
+  font-size: 1.25rem;
+}
+
+.message-text h3 {
+  font-size: 1.1rem;
+}
+
+.message-text ul,
+.message-text ol {
+  margin: 0.5rem 0;
+  padding-left: 1.5rem;
+}
+
+.message-text li {
+  margin: 0.25rem 0;
+  color: var(--text-secondary);
+}
+
+.message-text a {
+  color: var(--accent-primary);
+  text-decoration: underline;
+  transition: color 0.2s ease;
+}
+
+.message-text a:hover {
+  color: var(--accent-secondary);
+}
+
+.message-text br {
+  line-height: 1.5;
+}
+

@@ -1,0 +1,248 @@
+{
+  "user_stories": [
+    {
+      "id": "US-001",
+      "title": "Create Standard Purchase Orders",
+      "user_story": "As a procurement user, I want to create standard Purchase Orders for goods so that I can initiate the procurement process in compliance with company policies.",
+      "acceptance_criteria": [
+        "User can select a vendor, material, quantity, price, plant, and delivery date when creating a PO.",
+        "PO is saved in the system and assigned a unique number.",
+        "No FI document is posted at PO creation.",
+        "PO follows SAP S/4HANA best practices with minimal customization."
+      ],
+      "priority": "High"
+    },
+    {
+      "id": "US-002",
+      "title": "PO Approval via Release Strategy",
+      "user_story": "As a procurement manager, I want Purchase Orders to be approved through a release strategy so that only authorized purchases are processed.",
+      "acceptance_criteria": [
+        "POs are routed for approval based on predefined release strategy criteria (e.g., value, material group).",
+        "Only approved POs can proceed to the next step in the process.",
+        "System records approval history for audit purposes.",
+        "Unapproved POs cannot be used for Goods Receipt or Invoice Receipt."
+      ],
+      "priority": "High"
+    },
+    {
+      "id": "US-003",
+      "title": "Record Goods Receipt Against PO",
+      "user_story": "As a warehouse user, I want to post Goods Receipts with reference to a PO so that inventory and expenses are updated accurately.",
+      "acceptance_criteria": [
+        "User can select a PO and post a full or partial Goods Receipt.",
+        "System updates inventory or expense accounts accordingly.",
+        "A corresponding FI document is automatically generated.",
+        "GR/IR clearing account is credited upon GR posting."
+      ],
+      "priority": "High"
+    },
+    {
+      "id": "US-004",
+      "title": "Support Partial and Full Goods Receipts",
+      "user_story": "As a warehouse user, I want to post partial or full Goods Receipts so that I can accurately reflect the quantities received.",
+      "acceptance_criteria": [
+        "System allows entry of received quantity less than or equal to the PO quantity.",
+        "Remaining PO quantity is updated after each partial GR.",
+        "System prevents over-receipt beyond PO quantity.",
+        "Each GR is linked to the original PO for traceability."
+      ],
+      "priority": "Medium"
+    },
+    {
+      "id": "US-005",
+      "title": "Post Vendor Invoice Against PO",
+      "user_story": "As an accounts payable user, I want to post vendor invoices against a PO so that invoice processing is streamlined and accurate.",
+      "acceptance_criteria": [
+        "User can select a PO and post an invoice referencing the PO and related GRs.",
+        "System performs 3-way matching between PO, GR, and Invoice.",
+        "Invoice is posted only if matching criteria are met or within tolerance limits.",
+        "A corresponding FI document is automatically generated."
+      ],
+      "priority": "High"
+    },
+    {
+      "id": "US-006",
+      "title": "Apply Tolerance Limits for Invoice Matching",
+      "user_story": "As an accounts payable user, I want the system to apply tolerance limits for price and quantity differences during invoice matching so that minor discrepancies do not block processing.",
+      "acceptance_criteria": [
+        "Tolerance limits for price and quantity differences are configurable.",
+        "Invoices within tolerance are posted automatically.",
+        "Invoices exceeding tolerance are blocked for payment.",
+        "System provides clear notification when an invoice is blocked due to tolerance breach."
+      ],
+      "priority": "High"
+    },
+    {
+      "id": "US-007",
+      "title": "Block Invoices with Discrepancies",
+      "user_story": "As an accounts payable user, I want invoices with discrepancies beyond tolerance to be blocked for payment so that only valid invoices are paid.",
+      "acceptance_criteria": [
+        "Invoices exceeding tolerance limits are automatically blocked for payment.",
+        "Blocked invoices are flagged and visible in the system.",
+        "System allows users to review and resolve blocked invoices.",
+        "Payment processing is prevented for blocked invoices."
+      ],
+      "priority": "High"
+    },
+    {
+      "id": "US-008",
+      "title": "Automatic FI Posting for Procurement Transactions",
+      "user_story": "As a finance user, I want all procurement transactions (GR, IR) to automatically generate FI postings so that financial records are updated in real time.",
+      "acceptance_criteria": [
+        "GR and IR postings automatically create corresponding FI documents.",
+        "FI postings reflect correct accounts as per company chart of accounts.",
+        "No manual FI intervention is required for standard P2P transactions.",
+        "FI postings are visible in real time."
+      ],
+      "priority": "High"
+    },
+    {
+      "id": "US-009",
+      "title": "Automatic GR/IR Clearing on Invoice Posting",
+      "user_story": "As a finance user, I want the system to automatically clear the GR/IR account when an invoice is posted so that interim accounts are reconciled.",
+      "acceptance_criteria": [
+        "GR/IR account is automatically cleared upon successful invoice posting.",
+        "Clearing entries are reflected in FI documents.",
+        "System prevents manual clearing of GR/IR for standard transactions.",
+        "Open GR/IR items are tracked and reported."
+      ],
+      "priority": "High"
+    },
+    {
+      "id": "US-010",
+      "title": "Post Liabilities to Vendor Accounts",
+      "user_story": "As a finance user, I want liabilities from procurement transactions to be posted to vendor accounts so that accounts payable balances are accurate.",
+      "acceptance_criteria": [
+        "Vendor liabilities are posted automatically during invoice receipt.",
+        "Vendor account balances are updated in real time.",
+        "Liability postings comply with company accounting standards.",
+        "Vendor balances are visible in standard reports."
+      ],
+      "priority": "High"
+    },
+    {
+      "id": "US-011",
+      "title": "View PO History",
+      "user_story": "As a procurement user, I want to view the history of a Purchase Order so that I can track all related activities and statuses.",
+      "acceptance_criteria": [
+        "System displays all activities related to a PO (creation, approval, GR, IR).",
+        "PO history is accessible from the PO screen.",
+        "Each event in the history includes a timestamp and user information.",
+        "History is available for audit purposes."
+      ],
+      "priority": "Medium"
+    },
+    {
+      "id": "US-012",
+      "title": "View GR and Invoice Status",
+      "user_story": "As a procurement or finance user, I want to view the status of Goods Receipts and Invoices for a PO so that I can monitor process completion.",
+      "acceptance_criteria": [
+        "System displays current status of GR and IR for each PO.",
+        "Users can see quantities received and invoiced versus ordered.",
+        "Blocked invoices are clearly indicated.",
+        "Status information is updated in real time."
+      ],
+      "priority": "Medium"
+    },
+    {
+      "id": "US-013",
+      "title": "View GR/IR Balances",
+      "user_story": "As a finance user, I want to view GR/IR balances so that I can monitor and reconcile interim accounts.",
+      "acceptance_criteria": [
+        "System provides a report of open GR/IR balances by PO and vendor.",
+        "Users can drill down to transaction details from the GR/IR report.",
+        "Report reflects real-time dATF.",
+        "Balances at period close are highlighted if outside tolerance."
+      ],
+      "priority": "Medium"
+    },
+    {
+      "id": "US-014",
+      "title": "Role-Based Access Control",
+      "user_story": "As a system administrator, I want to enforce role-based access so that users can only perform actions permitted by their roles.",
+      "acceptance_criteria": [
+        "Roles are defined for procurement, warehouse, accounts payable, and finance users.",
+        "Users can only access functions relevant to their roles.",
+        "Unauthorized access attempts are logged.",
+        "Role assignments can be managed by authorized administrators."
+      ],
+      "priority": "High"
+    },
+    {
+      "id": "US-015",
+      "title": "Segregation of Duties",
+      "user_story": "As an internal auditor, I want the system to enforce segregation of duties between procurement and accounting so that process controls are maintained.",
+      "acceptance_criteria": [
+        "No single user can create a PO and post the corresponding invoice.",
+        "System prevents assignment of conflicting roles to the same user.",
+        "Segregation of duties violations are reported to administrators.",
+        "Audit logs are maintained for all role assignments and changes."
+      ],
+      "priority": "High"
+    },
+    {
+      "id": "US-016",
+      "title": "Comply with Company Accounting Standards",
+      "user_story": "As a finance manager, I want all FI postings to comply with company accounting standards so that financial statements are accurate and auditable.",
+      "acceptance_criteria": [
+        "FI postings use correct GL accounts as per company policy.",
+        "All postings are documented and traceable to source transactions.",
+        "System enforces mandatory fields and validation checks.",
+        "Accounting standards are configurable and updATFble."
+      ],
+      "priority": "High"
+    },
+    {
+      "id": "US-017",
+      "title": "Real-Time Integration of P2P and FI",
+      "user_story": "As a finance user, I want all P2P transactions to integrate with FI in real time so that financial dATF is always current.",
+      "acceptance_criteria": [
+        "All GR and IR postings are reflected in FI without delay.",
+        "No batch jobs are required for standard P2P-FI integration.",
+        "Financial reports show up-to-date procurement transactions.",
+        "System notifies users of any integration errors."
+      ],
+      "priority": "High"
+    },
+    {
+      "id": "US-018",
+      "title": "Master DATF Creation for P2P",
+      "user_story": "As a master dATF specialist, I want to create new vendor, material, and GL account master dATF so that the P2P process can function with accurate and current dATF.",
+      "acceptance_criteria": [
+        "System allows creation of new vendor, material, and GL account records.",
+        "Master dATF records are validated for completeness and accuracy.",
+        "Duplicate entries are prevented.",
+        "Master dATF is available for use in P2P transactions immediately after creation."
+      ],
+      "priority": "Medium"
+    },
+    {
+      "id": "US-019",
+      "title": "Track Procurement and Financial Impact in Real Time",
+      "user_story": "As a business user, I want to track procurement transactions and their financial impact in real time so that I can make informed decisions.",
+      "acceptance_criteria": [
+        "System provides dashboards or reports showing procurement and FI dATF side by side.",
+        "Users can filter and drill down to transaction details.",
+        "DATF is updated in real time as transactions are posted.",
+        "Reports are exportable for further analysis."
+      ],
+      "priority": "Medium"
+    },
+    {
+      "id": "US-020",
+      "title": "No Open GR/IR Balances at Period Close",
+      "user_story": "As a finance user, I want the system to ensure there are no open GR/IR balances at period close beyond defined tolerances so that interim accounts are reconciled and closed properly.",
+      "acceptance_criteria": [
+        "System provides alerts for open GR/IR balances at period close.",
+        "Balances within tolerance are flagged as acceptable.",
+        "Balances outside tolerance require user action before period close.",
+        "GR/IR reconciliation report is available for period-end review."
+      ],
+      "priority": "High"
+    }
+  ],
+  "summary": "20 comprehensive user stories have been generated, covering all functional requirements for the SAP S/4HANA P2P process, including PO creation and approval, GR and IR processing, FI integration, reporting, controls, and master dATF management. Each story includes acceptance criteria and priority to ensure full coverage and traceability.",
+  "agent_name": "User Story Creator",
+  "file_name": "sample input Copy.docx",
+  "timestamp": "2026-02-05T03:58:04.497560"
+}

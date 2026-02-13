@@ -1,0 +1,1354 @@
+{
+  "test_cases": [
+    {
+      "id": "TC-001",
+      "title": "Successful Email Registration",
+      "description": "Verify that a new user can register using a valid email and strong password.",
+      "preconditions": [
+        "User is not logged in",
+        "Email is not registered"
+      ],
+      "test_steps": [
+        "Navigate to the registration page",
+        "Enter a valid email address",
+        "Enter a strong password",
+        "Submit the registration form"
+      ],
+      "expected_results": "User receives a confirmation email and account is created.",
+      "priority": "High",
+      "test_type": "Functional",
+      "user_story_id": "US-001"
+    },
+    {
+      "id": "TC-002",
+      "title": "Registration with Invalid Email Format",
+      "description": "Verify that registration fails when an invalid email format is entered.",
+      "preconditions": [
+        "User is not logged in"
+      ],
+      "test_steps": [
+        "Navigate to the registration page",
+        "Enter an invalid email format (e.g., 'user@com')",
+        "Enter a strong password",
+        "Submit the registration form"
+      ],
+      "expected_results": "System displays an error message for invalid email format.",
+      "priority": "High",
+      "test_type": "Functional",
+      "user_story_id": "US-001"
+    },
+    {
+      "id": "TC-003",
+      "title": "Registration with Weak Password",
+      "description": "Verify that registration fails when a weak password is entered.",
+      "preconditions": [
+        "User is not logged in"
+      ],
+      "test_steps": [
+        "Navigate to the registration page",
+        "Enter a valid email address",
+        "Enter a weak password (e.g., '12345')",
+        "Submit the registration form"
+      ],
+      "expected_results": "System displays an error message for weak password.",
+      "priority": "High",
+      "test_type": "Functional",
+      "user_story_id": "US-001"
+    },
+    {
+      "id": "TC-004",
+      "title": "Registration with Already Registered Email",
+      "description": "Verify that registration fails when using an email that is already registered.",
+      "preconditions": [
+        "User is not logged in",
+        "Email is already registered"
+      ],
+      "test_steps": [
+        "Navigate to the registration page",
+        "Enter an already registered email address",
+        "Enter a strong password",
+        "Submit the registration form"
+      ],
+      "expected_results": "System displays an error message indicating email is already registered.",
+      "priority": "High",
+      "test_type": "Functional",
+      "user_story_id": "US-001"
+    },
+    {
+      "id": "TC-005",
+      "title": "Registration with Missing Required Fields",
+      "description": "Verify that registration fails when required fields are missing.",
+      "preconditions": [
+        "User is not logged in"
+      ],
+      "test_steps": [
+        "Navigate to the registration page",
+        "Leave the email field blank",
+        "Enter a strong password",
+        "Submit the registration form"
+      ],
+      "expected_results": "System displays an error message for missing required fields.",
+      "priority": "High",
+      "test_type": "Functional",
+      "user_story_id": "US-001"
+    },
+    {
+      "id": "TC-006",
+      "title": "Successful Social Media Registration",
+      "description": "Verify that a new user can register using Google account.",
+      "preconditions": [
+        "User is not logged in",
+        "Google account is valid"
+      ],
+      "test_steps": [
+        "Navigate to the registration page",
+        "Select 'Register with Google'",
+        "Authenticate with Google",
+        "Complete registration"
+      ],
+      "expected_results": "User account is created and user is logged in.",
+      "priority": "Medium",
+      "test_type": "Functional",
+      "user_story_id": "US-002"
+    },
+    {
+      "id": "TC-007",
+      "title": "Social Media Registration Authentication Failure",
+      "description": "Verify that user is notified if social media authentication fails.",
+      "preconditions": [
+        "User is not logged in",
+        "Google account authentication will fail"
+      ],
+      "test_steps": [
+        "Navigate to the registration page",
+        "Select 'Register with Google'",
+        "Attempt to authenticate with invalid Google credentials"
+      ],
+      "expected_results": "System displays an error message indicating authentication failure.",
+      "priority": "Medium",
+      "test_type": "Functional",
+      "user_story_id": "US-002"
+    },
+    {
+      "id": "TC-008",
+      "title": "Link Multiple Social Media Accounts",
+      "description": "Verify that user can link multiple social media accounts to their profile.",
+      "preconditions": [
+        "User is registered and logged in",
+        "User has Google and Facebook accounts"
+      ],
+      "test_steps": [
+        "Navigate to profile settings",
+        "Select 'Link Facebook account'",
+        "Authenticate with Facebook",
+        "Select 'Link Google account'",
+        "Authenticate with Google"
+      ],
+      "expected_results": "Both social media accounts are linked to the user profile.",
+      "priority": "Medium",
+      "test_type": "Functional",
+      "user_story_id": "US-002"
+    },
+    {
+      "id": "TC-009",
+      "title": "Successful User Login",
+      "description": "Verify that a registered user can log in using valid credentials.",
+      "preconditions": [
+        "User is registered",
+        "User is not logged in"
+      ],
+      "test_steps": [
+        "Navigate to the login page",
+        "Enter registered email and correct password",
+        "Submit the login form"
+      ],
+      "expected_results": "User is logged in and redirected to the dashboard.",
+      "priority": "High",
+      "test_type": "Functional",
+      "user_story_id": "US-003"
+    },
+    {
+      "id": "TC-010",
+      "title": "Login with Incorrect Credentials",
+      "description": "Verify that the system notifies the user when incorrect credentials are entered.",
+      "preconditions": [
+        "User is registered",
+        "User is not logged in"
+      ],
+      "test_steps": [
+        "Navigate to the login page",
+        "Enter registered email and incorrect password",
+        "Submit the login form"
+      ],
+      "expected_results": "System displays an error message for incorrect credentials.",
+      "priority": "High",
+      "test_type": "Functional",
+      "user_story_id": "US-003"
+    },
+    {
+      "id": "TC-011",
+      "title": "Forgot Password Link Access",
+      "description": "Verify that the user can access the 'Forgot Password' feature.",
+      "preconditions": [
+        "User is registered",
+        "User is not logged in"
+      ],
+      "test_steps": [
+        "Navigate to the login page",
+        "Click on 'Forgot Password' link"
+      ],
+      "expected_results": "System displays password reset request form.",
+      "priority": "High",
+      "test_type": "Functional",
+      "user_story_id": "US-003"
+    },
+    {
+      "id": "TC-012",
+      "title": "Login Session Persistence",
+      "description": "Verify that login session persists until user logs out or session expires.",
+      "preconditions": [
+        "User is registered",
+        "User is logged in"
+      ],
+      "test_steps": [
+        "Log in with valid credentials",
+        "Close browser and reopen",
+        "Navigate to the platform"
+      ],
+      "expected_results": "User remains logged in if session is active.",
+      "priority": "High",
+      "test_type": "Functional",
+      "user_story_id": "US-003"
+    },
+    {
+      "id": "TC-013",
+      "title": "Request Password Reset",
+      "description": "Verify that user can request a password reset link via email.",
+      "preconditions": [
+        "User is registered",
+        "User is not logged in"
+      ],
+      "test_steps": [
+        "Navigate to 'Forgot Password' page",
+        "Enter registered email address",
+        "Submit request"
+      ],
+      "expected_results": "System sends a secure reset link to the registered email.",
+      "priority": "High",
+      "test_type": "Functional",
+      "user_story_id": "US-004"
+    },
+    {
+      "id": "TC-014",
+      "title": "Password Reset with Invalid Email",
+      "description": "Verify that password reset fails for unregistered email.",
+      "preconditions": [
+        "User is not logged in"
+      ],
+      "test_steps": [
+        "Navigate to 'Forgot Password' page",
+        "Enter an unregistered email address",
+        "Submit request"
+      ],
+      "expected_results": "System displays error message for unregistered email.",
+      "priority": "High",
+      "test_type": "Functional",
+      "user_story_id": "US-004"
+    },
+    {
+      "id": "TC-015",
+      "title": "Set New Password via Reset Link",
+      "description": "Verify that user can set a new password using the reset link.",
+      "preconditions": [
+        "User has received password reset email"
+      ],
+      "test_steps": [
+        "Open password reset email",
+        "Click on the reset link",
+        "Enter a strong new password",
+        "Submit"
+      ],
+      "expected_results": "Password is updated and user is notified of successful reset.",
+      "priority": "High",
+      "test_type": "Functional",
+      "user_story_id": "US-004"
+    },
+    {
+      "id": "TC-016",
+      "title": "Password Reset with Weak New Password",
+      "description": "Verify that system validates new password strength during reset.",
+      "preconditions": [
+        "User has received password reset email"
+      ],
+      "test_steps": [
+        "Open password reset email",
+        "Click on the reset link",
+        "Enter a weak new password",
+        "Submit"
+      ],
+      "expected_results": "System displays error for weak password.",
+      "priority": "High",
+      "test_type": "Functional",
+      "user_story_id": "US-004"
+    },
+    {
+      "id": "TC-017",
+      "title": "View Profile Information",
+      "description": "Verify that user can view profile information including name, email, and profile picture.",
+      "preconditions": [
+        "User is logged in"
+      ],
+      "test_steps": [
+        "Navigate to profile page"
+      ],
+      "expected_results": "Profile information is displayed correctly.",
+      "priority": "Medium",
+      "test_type": "Functional",
+      "user_story_id": "US-005"
+    },
+    {
+      "id": "TC-018",
+      "title": "Edit and Save Profile Changes",
+      "description": "Verify that user can edit and save changes to profile fields.",
+      "preconditions": [
+        "User is logged in"
+      ],
+      "test_steps": [
+        "Navigate to profile page",
+        "Edit name and profile picture",
+        "Save changes"
+      ],
+      "expected_results": "Profile is updated and confirmation is displayed.",
+      "priority": "Medium",
+      "test_type": "Functional",
+      "user_story_id": "US-005"
+    },
+    {
+      "id": "TC-019",
+      "title": "Profile Update with Invalid DATF",
+      "description": "Verify that system validates updated information before saving.",
+      "preconditions": [
+        "User is logged in"
+      ],
+      "test_steps": [
+        "Navigate to profile page",
+        "Enter invalid dATF (e.g., blank name)",
+        "Save changes"
+      ],
+      "expected_results": "System displays error for invalid dATF.",
+      "priority": "Medium",
+      "test_type": "Functional",
+      "user_story_id": "US-005"
+    },
+    {
+      "id": "TC-020",
+      "title": "Immediate Reflection of Profile Changes",
+      "description": "Verify that profile changes are reflected immediately after saving.",
+      "preconditions": [
+        "User is logged in"
+      ],
+      "test_steps": [
+        "Navigate to profile page",
+        "Edit profile information",
+        "Save changes",
+        "Refresh profile page"
+      ],
+      "expected_results": "Updated information is displayed instantly.",
+      "priority": "Medium",
+      "test_type": "Functional",
+      "user_story_id": "US-005"
+    },
+    {
+      "id": "TC-021",
+      "title": "Change Password from Profile",
+      "description": "Verify that user can change password from profile settings.",
+      "preconditions": [
+        "User is logged in"
+      ],
+      "test_steps": [
+        "Navigate to profile settings",
+        "Enter current password",
+        "Enter new strong password",
+        "Submit"
+      ],
+      "expected_results": "Password is changed and confirmation is displayed.",
+      "priority": "Medium",
+      "test_type": "Functional",
+      "user_story_id": "US-006"
+    },
+    {
+      "id": "TC-022",
+      "title": "Change Password with Incorrect Current Password",
+      "description": "Verify that password change fails if current password is incorrect.",
+      "preconditions": [
+        "User is logged in"
+      ],
+      "test_steps": [
+        "Navigate to profile settings",
+        "Enter incorrect current password",
+        "Enter new strong password",
+        "Submit"
+      ],
+      "expected_results": "System displays error for incorrect current password.",
+      "priority": "Medium",
+      "test_type": "Functional",
+      "user_story_id": "US-006"
+    },
+    {
+      "id": "TC-023",
+      "title": "Change Password with Weak New Password",
+      "description": "Verify that system checks new password strength during password change.",
+      "preconditions": [
+        "User is logged in"
+      ],
+      "test_steps": [
+        "Navigate to profile settings",
+        "Enter current password",
+        "Enter weak new password",
+        "Submit"
+      ],
+      "expected_results": "System displays error for weak password.",
+      "priority": "Medium",
+      "test_type": "Functional",
+      "user_story_id": "US-006"
+    },
+    {
+      "id": "TC-024",
+      "title": "Logout Other Sessions after Password Change",
+      "description": "Verify that user is logged out from other sessions after password change.",
+      "preconditions": [
+        "User is logged in on multiple devices"
+      ],
+      "test_steps": [
+        "Change password from profile on one device",
+        "Attempt to access account from another device"
+      ],
+      "expected_results": "User is logged out from other sessions.",
+      "priority": "Medium",
+      "test_type": "Functional",
+      "user_story_id": "US-006"
+    },
+    {
+      "id": "TC-025",
+      "title": "Browse Product CATFlog",
+      "description": "Verify that user can view a list of products with images and basic details.",
+      "preconditions": [
+        "Products are available in cATFlog"
+      ],
+      "test_steps": [
+        "Navigate to product cATFlog page"
+      ],
+      "expected_results": "Product list with images and details is displayed.",
+      "priority": "High",
+      "test_type": "Functional",
+      "user_story_id": "US-007"
+    },
+    {
+      "id": "TC-026",
+      "title": "Product CATFlog Category Filter",
+      "description": "Verify that products are organized by categories and filters.",
+      "preconditions": [
+        "Products are available in multiple categories"
+      ],
+      "test_steps": [
+        "Navigate to product cATFlog",
+        "Select a category filter"
+      ],
+      "expected_results": "Only products from selected category are displayed.",
+      "priority": "High",
+      "test_type": "Functional",
+      "user_story_id": "US-007"
+    },
+    {
+      "id": "TC-027",
+      "title": "Product CATFlog Search",
+      "description": "Verify that user can search for products by name or keyword.",
+      "preconditions": [
+        "Products are available in cATFlog"
+      ],
+      "test_steps": [
+        "Navigate to product cATFlog",
+        "Enter product name or keyword in search bar",
+        "Submit search"
+      ],
+      "expected_results": "Relevant products are displayed based on search term.",
+      "priority": "High",
+      "test_type": "Functional",
+      "user_story_id": "US-007"
+    },
+    {
+      "id": "TC-028",
+      "title": "Real-time CATFlog Update",
+      "description": "Verify that cATFlog updates in real-time as new products are added.",
+      "preconditions": [
+        "Admin adds a new product"
+      ],
+      "test_steps": [
+        "Navigate to product cATFlog",
+        "Admin adds a new product",
+        "Refresh cATFlog page"
+      ],
+      "expected_results": "New product appears in cATFlog instantly.",
+      "priority": "High",
+      "test_type": "Functional",
+      "user_story_id": "US-007"
+    },
+    {
+      "id": "TC-029",
+      "title": "View Product Details",
+      "description": "Verify that user can view detailed information about a product.",
+      "preconditions": [
+        "Product exists in cATFlog"
+      ],
+      "test_steps": [
+        "Navigate to product cATFlog",
+        "Select a product"
+      ],
+      "expected_results": "Product details including images, description, price, and specifications are displayed.",
+      "priority": "High",
+      "test_type": "Functional",
+      "user_story_id": "US-008"
+    },
+    {
+      "id": "TC-030",
+      "title": "View Product Reviews and Ratings",
+      "description": "Verify that user can see product reviews and ratings.",
+      "preconditions": [
+        "Product has reviews"
+      ],
+      "test_steps": [
+        "Navigate to product details page"
+      ],
+      "expected_results": "Product reviews and ratings are displayed.",
+      "priority": "High",
+      "test_type": "Functional",
+      "user_story_id": "US-008"
+    },
+    {
+      "id": "TC-031",
+      "title": "View Stock Availability",
+      "description": "Verify that user can view stock availability for a product.",
+      "preconditions": [
+        "Product exists in cATFlog"
+      ],
+      "test_steps": [
+        "Navigate to product details page"
+      ],
+      "expected_results": "Stock availability is displayed.",
+      "priority": "High",
+      "test_type": "Functional",
+      "user_story_id": "US-008"
+    },
+    {
+      "id": "TC-032",
+      "title": "Related Products Suggestion",
+      "description": "Verify that related products are suggested on the product details page.",
+      "preconditions": [
+        "Related products exist in cATFlog"
+      ],
+      "test_steps": [
+        "Navigate to product details page"
+      ],
+      "expected_results": "Related products are displayed as suggestions.",
+      "priority": "High",
+      "test_type": "Functional",
+      "user_story_id": "US-008"
+    },
+    {
+      "id": "TC-033",
+      "title": "Add Product to Cart from CATFlog",
+      "description": "Verify that user can add products to cart from cATFlog page.",
+      "preconditions": [
+        "Product exists in cATFlog"
+      ],
+      "test_steps": [
+        "Navigate to product cATFlog",
+        "Click 'Add to Cart' on a product"
+      ],
+      "expected_results": "Product is added to cart and cart quantity/total price is updated.",
+      "priority": "High",
+      "test_type": "Functional",
+      "user_story_id": "US-009"
+    },
+    {
+      "id": "TC-034",
+      "title": "Add Product to Cart from Details Page",
+      "description": "Verify that user can add product to cart from product details page.",
+      "preconditions": [
+        "Product exists in cATFlog"
+      ],
+      "test_steps": [
+        "Navigate to product details page",
+        "Click 'Add to Cart'"
+      ],
+      "expected_results": "Product is added to cart and cart quantity/total price is updated.",
+      "priority": "High",
+      "test_type": "Functional",
+      "user_story_id": "US-009"
+    },
+    {
+      "id": "TC-035",
+      "title": "Add Out of Stock Product to Cart",
+      "description": "Verify that user is notified when trying to add out of stock product to cart.",
+      "preconditions": [
+        "Product is out of stock"
+      ],
+      "test_steps": [
+        "Navigate to product details page",
+        "Click 'Add to Cart'"
+      ],
+      "expected_results": "System displays notification that product is out of stock.",
+      "priority": "High",
+      "test_type": "Functional",
+      "user_story_id": "US-009"
+    },
+    {
+      "id": "TC-036",
+      "title": "Cart Persistence Across Sessions",
+      "description": "Verify that cart persists across sessions until checkout or removal.",
+      "preconditions": [
+        "User has added products to cart"
+      ],
+      "test_steps": [
+        "Add products to cart",
+        "Log out",
+        "Log in again",
+        "View cart"
+      ],
+      "expected_results": "Cart contents remain unchanged.",
+      "priority": "High",
+      "test_type": "Functional",
+      "user_story_id": "US-009"
+    },
+    {
+      "id": "TC-037",
+      "title": "Update Cart Quantity",
+      "description": "Verify that user can increase or decrease product quantity in cart.",
+      "preconditions": [
+        "Product is in cart"
+      ],
+      "test_steps": [
+        "Navigate to cart",
+        "Increase product quantity",
+        "Decrease product quantity"
+      ],
+      "expected_results": "System recalculates total price and updates cart immediately.",
+      "priority": "Medium",
+      "test_type": "Functional",
+      "user_story_id": "US-010"
+    },
+    {
+      "id": "TC-038",
+      "title": "Update Cart Quantity Beyond Stock",
+      "description": "Verify that user is notified if requested quantity exceeds stock.",
+      "preconditions": [
+        "Product is in cart",
+        "Limited stock available"
+      ],
+      "test_steps": [
+        "Navigate to cart",
+        "Attempt to increase quantity beyond available stock"
+      ],
+      "expected_results": "System displays notification that quantity exceeds stock.",
+      "priority": "Medium",
+      "test_type": "Functional",
+      "user_story_id": "US-010"
+    },
+    {
+      "id": "TC-039",
+      "title": "Remove Item from Cart",
+      "description": "Verify that user can remove items from cart.",
+      "preconditions": [
+        "Product is in cart"
+      ],
+      "test_steps": [
+        "Navigate to cart",
+        "Click 'Remove' on a product"
+      ],
+      "expected_results": "Product is removed from cart and total price is updated.",
+      "priority": "Medium",
+      "test_type": "Functional",
+      "user_story_id": "US-010"
+    },
+    {
+      "id": "TC-040",
+      "title": "Checkout with Valid Information",
+      "description": "Verify that user can complete checkout with valid shipping, billing, and payment information.",
+      "preconditions": [
+        "Products are in cart"
+      ],
+      "test_steps": [
+        "Navigate to checkout page",
+        "Enter valid shipping and billing information",
+        "Select payment method",
+        "Review order summary",
+        "Confirm and pay"
+      ],
+      "expected_results": "Order is placed and user receives confirmation.",
+      "priority": "High",
+      "test_type": "Functional",
+      "user_story_id": "US-011"
+    },
+    {
+      "id": "TC-041",
+      "title": "Checkout with Missing Required Fields",
+      "description": "Verify that checkout fails if required fields are missing.",
+      "preconditions": [
+        "Products are in cart"
+      ],
+      "test_steps": [
+        "Navigate to checkout page",
+        "Leave shipping address blank",
+        "Attempt to proceed"
+      ],
+      "expected_results": "System displays error for missing required fields.",
+      "priority": "High",
+      "test_type": "Functional",
+      "user_story_id": "US-011"
+    },
+    {
+      "id": "TC-042",
+      "title": "Order Summary Display Before Confirmation",
+      "description": "Verify that order summary is displayed before confirmation.",
+      "preconditions": [
+        "Products are in cart"
+      ],
+      "test_steps": [
+        "Navigate to checkout page",
+        "Enter all required information",
+        "Proceed to order summary"
+      ],
+      "expected_results": "Order summary with products, quantities, prices, and totals is displayed.",
+      "priority": "High",
+      "test_type": "Functional",
+      "user_story_id": "US-011"
+    },
+    {
+      "id": "TC-043",
+      "title": "View Order History",
+      "description": "Verify that user can view a list of previous orders with details.",
+      "preconditions": [
+        "User has placed orders"
+      ],
+      "test_steps": [
+        "Log in",
+        "Navigate to order history page"
+      ],
+      "expected_results": "List of previous orders with details is displayed.",
+      "priority": "Medium",
+      "test_type": "Functional",
+      "user_story_id": "US-012"
+    },
+    {
+      "id": "TC-044",
+      "title": "Order Status Display",
+      "description": "Verify that order status is displayed for each order.",
+      "preconditions": [
+        "User has placed orders"
+      ],
+      "test_steps": [
+        "Navigate to order history page"
+      ],
+      "expected_results": "Order status (e.g., processing, shipped) is displayed for each order.",
+      "priority": "Medium",
+      "test_type": "Functional",
+      "user_story_id": "US-012"
+    },
+    {
+      "id": "TC-045",
+      "title": "Reorder Items from Past Orders",
+      "description": "Verify that user can reorder items from past orders.",
+      "preconditions": [
+        "User has past orders"
+      ],
+      "test_steps": [
+        "Navigate to order history",
+        "Select an order",
+        "Click 'Reorder'"
+      ],
+      "expected_results": "Items are added to cart for reorder.",
+      "priority": "Medium",
+      "test_type": "Functional",
+      "user_story_id": "US-012"
+    },
+    {
+      "id": "TC-046",
+      "title": "Filter Orders by Date",
+      "description": "Verify that user can filter orders by date.",
+      "preconditions": [
+        "User has multiple orders"
+      ],
+      "test_steps": [
+        "Navigate to order history",
+        "Apply date filter"
+      ],
+      "expected_results": "Orders within selected date range are displayed.",
+      "priority": "Medium",
+      "test_type": "Functional",
+      "user_story_id": "US-012"
+    },
+    {
+      "id": "TC-047",
+      "title": "Submit Product Review",
+      "description": "Verify that user can submit a review and rating for purchased products.",
+      "preconditions": [
+        "User has purchased product"
+      ],
+      "test_steps": [
+        "Navigate to purchased product details",
+        "Enter review and rating",
+        "Submit review"
+      ],
+      "expected_results": "Review is submitted and displayed on product details page.",
+      "priority": "Medium",
+      "test_type": "Functional",
+      "user_story_id": "US-013"
+    },
+    {
+      "id": "TC-048",
+      "title": "Submit Review for Unpurchased Product",
+      "description": "Verify that system validates user has purchased product before allowing review.",
+      "preconditions": [
+        "User has not purchased product"
+      ],
+      "test_steps": [
+        "Navigate to product details",
+        "Attempt to submit review"
+      ],
+      "expected_results": "System prevents review submission and displays error.",
+      "priority": "Medium",
+      "test_type": "Functional",
+      "user_story_id": "US-013"
+    },
+    {
+      "id": "TC-049",
+      "title": "Edit Product Review",
+      "description": "Verify that user can edit their own review.",
+      "preconditions": [
+        "User has submitted review"
+      ],
+      "test_steps": [
+        "Navigate to product details",
+        "Locate own review",
+        "Edit review and save"
+      ],
+      "expected_results": "Review is updated and changes are displayed.",
+      "priority": "Medium",
+      "test_type": "Functional",
+      "user_story_id": "US-013"
+    },
+    {
+      "id": "TC-050",
+      "title": "Delete Product Review",
+      "description": "Verify that user can delete their own review.",
+      "preconditions": [
+        "User has submitted review"
+      ],
+      "test_steps": [
+        "Navigate to product details",
+        "Locate own review",
+        "Delete review"
+      ],
+      "expected_results": "Review is removed from product details page.",
+      "priority": "Medium",
+      "test_type": "Functional",
+      "user_story_id": "US-013"
+    },
+    {
+      "id": "TC-051",
+      "title": "Add Product to Wishlist",
+      "description": "Verify that user can add products to wishlist from cATFlog.",
+      "preconditions": [
+        "User is logged in",
+        "Product exists in cATFlog"
+      ],
+      "test_steps": [
+        "Navigate to product cATFlog",
+        "Click 'Add to Wishlist' on a product"
+      ],
+      "expected_results": "Product is added to wishlist.",
+      "priority": "Low",
+      "test_type": "Functional",
+      "user_story_id": "US-014"
+    },
+    {
+      "id": "TC-052",
+      "title": "View and Manage Wishlist Items",
+      "description": "Verify that user can view and manage wishlist items.",
+      "preconditions": [
+        "User has items in wishlist"
+      ],
+      "test_steps": [
+        "Navigate to wishlist page",
+        "View wishlist items",
+        "Remove an item"
+      ],
+      "expected_results": "Wishlist items are displayed and can be managed.",
+      "priority": "Low",
+      "test_type": "Functional",
+      "user_story_id": "US-014"
+    },
+    {
+      "id": "TC-053",
+      "title": "Move Item from Wishlist to Cart",
+      "description": "Verify that user can move items from wishlist to cart.",
+      "preconditions": [
+        "User has items in wishlist"
+      ],
+      "test_steps": [
+        "Navigate to wishlist",
+        "Select item",
+        "Click 'Move to Cart'"
+      ],
+      "expected_results": "Item is removed from wishlist and added to cart.",
+      "priority": "Low",
+      "test_type": "Functional",
+      "user_story_id": "US-014"
+    },
+    {
+      "id": "TC-054",
+      "title": "Wishlist Persistence Across Sessions",
+      "description": "Verify that wishlist persists across user sessions.",
+      "preconditions": [
+        "User has items in wishlist"
+      ],
+      "test_steps": [
+        "Add items to wishlist",
+        "Log out",
+        "Log in again",
+        "View wishlist"
+      ],
+      "expected_results": "Wishlist items remain unchanged.",
+      "priority": "Low",
+      "test_type": "Functional",
+      "user_story_id": "US-014"
+    },
+    {
+      "id": "TC-055",
+      "title": "Admin Add New Product",
+      "description": "Verify that admin can create new product entries with all required details.",
+      "preconditions": [
+        "Admin is logged in"
+      ],
+      "test_steps": [
+        "Navigate to admin product management",
+        "Click 'Add New Product'",
+        "Enter all required product details",
+        "Save product"
+      ],
+      "expected_results": "Product is added to cATFlog and visible to users.",
+      "priority": "High",
+      "test_type": "Functional",
+      "user_story_id": "US-015"
+    },
+    {
+      "id": "TC-056",
+      "title": "Admin Edit Product Information",
+      "description": "Verify that admin can edit existing product information.",
+      "preconditions": [
+        "Admin is logged in",
+        "Product exists in cATFlog"
+      ],
+      "test_steps": [
+        "Navigate to admin product management",
+        "Select a product",
+        "Edit product details",
+        "Save changes"
+      ],
+      "expected_results": "Product information is updated and reflected in cATFlog.",
+      "priority": "High",
+      "test_type": "Functional",
+      "user_story_id": "US-015"
+    },
+    {
+      "id": "TC-057",
+      "title": "Admin Remove Product from CATFlog",
+      "description": "Verify that admin can remove products from cATFlog.",
+      "preconditions": [
+        "Admin is logged in",
+        "Product exists in cATFlog"
+      ],
+      "test_steps": [
+        "Navigate to admin product management",
+        "Select a product",
+        "Click 'Remove Product'"
+      ],
+      "expected_results": "Product is removed from cATFlog and no longer visible to users.",
+      "priority": "High",
+      "test_type": "Functional",
+      "user_story_id": "US-015"
+    },
+    {
+      "id": "TC-058",
+      "title": "Admin Product DATF Validation",
+      "description": "Verify that system validates product dATF before saving.",
+      "preconditions": [
+        "Admin is logged in"
+      ],
+      "test_steps": [
+        "Navigate to admin product management",
+        "Attempt to add product with missing required fields",
+        "Save product"
+      ],
+      "expected_results": "System displays error for missing required fields.",
+      "priority": "High",
+      "test_type": "Functional",
+      "user_story_id": "US-015"
+    },
+    {
+      "id": "TC-059",
+      "title": "Admin View All Orders",
+      "description": "Verify that admin can view all orders with details.",
+      "preconditions": [
+        "Admin is logged in",
+        "Orders exist"
+      ],
+      "test_steps": [
+        "Navigate to admin order management",
+        "View list of orders"
+      ],
+      "expected_results": "All orders with details are displayed.",
+      "priority": "High",
+      "test_type": "Functional",
+      "user_story_id": "US-016"
+    },
+    {
+      "id": "TC-060",
+      "title": "Admin Update Order Status",
+      "description": "Verify that admin can update order status.",
+      "preconditions": [
+        "Admin is logged in",
+        "Order exists"
+      ],
+      "test_steps": [
+        "Navigate to admin order management",
+        "Select an order",
+        "Change status to 'Shipped'",
+        "Save changes"
+      ],
+      "expected_results": "Order status is updated and visible to user.",
+      "priority": "High",
+      "test_type": "Functional",
+      "user_story_id": "US-016"
+    },
+    {
+      "id": "TC-061",
+      "title": "Order Status Change Logging",
+      "description": "Verify that system logs changes to order status.",
+      "preconditions": [
+        "Admin is logged in",
+        "Order exists"
+      ],
+      "test_steps": [
+        "Update order status",
+        "Check system logs"
+      ],
+      "expected_results": "Order status change is recorded in system logs.",
+      "priority": "High",
+      "test_type": "Functional",
+      "user_story_id": "US-016"
+    },
+    {
+      "id": "TC-062",
+      "title": "Admin Filter Orders by Status",
+      "description": "Verify that admin can filter orders by status.",
+      "preconditions": [
+        "Admin is logged in",
+        "Orders exist with different statuses"
+      ],
+      "test_steps": [
+        "Navigate to admin order management",
+        "Apply status filter"
+      ],
+      "expected_results": "Only orders with selected status are displayed.",
+      "priority": "High",
+      "test_type": "Functional",
+      "user_story_id": "US-016"
+    },
+    {
+      "id": "TC-063",
+      "title": "Admin View All User Accounts",
+      "description": "Verify that admin can view all user accounts.",
+      "preconditions": [
+        "Admin is logged in",
+        "User accounts exist"
+      ],
+      "test_steps": [
+        "Navigate to admin user management",
+        "View list of user accounts"
+      ],
+      "expected_results": "All user accounts are displayed.",
+      "priority": "Medium",
+      "test_type": "Functional",
+      "user_story_id": "US-017"
+    },
+    {
+      "id": "TC-064",
+      "title": "Admin Deactivate User Account",
+      "description": "Verify that admin can deactivate a user account.",
+      "preconditions": [
+        "Admin is logged in",
+        "User account exists"
+      ],
+      "test_steps": [
+        "Navigate to admin user management",
+        "Select a user account",
+        "Click 'Deactivate'"
+      ],
+      "expected_results": "User account is deactivated and user cannot log in.",
+      "priority": "Medium",
+      "test_type": "Functional",
+      "user_story_id": "US-017"
+    },
+    {
+      "id": "TC-065",
+      "title": "Admin Reset User Password",
+      "description": "Verify that admin can reset a user's password.",
+      "preconditions": [
+        "Admin is logged in",
+        "User account exists"
+      ],
+      "test_steps": [
+        "Navigate to admin user management",
+        "Select a user account",
+        "Click 'Reset Password'"
+      ],
+      "expected_results": "User receives password reset email.",
+      "priority": "Medium",
+      "test_type": "Functional",
+      "user_story_id": "US-017"
+    },
+    {
+      "id": "TC-066",
+      "title": "Admin Action Logging",
+      "description": "Verify that system logs all admin actions on user accounts.",
+      "preconditions": [
+        "Admin is logged in"
+      ],
+      "test_steps": [
+        "Perform actions on user accounts (deactivate, reset password)",
+        "Check system logs"
+      ],
+      "expected_results": "All admin actions are recorded in system logs.",
+      "priority": "Medium",
+      "test_type": "Functional",
+      "user_story_id": "US-017"
+    },
+    {
+      "id": "TC-067",
+      "title": "Admin Filter Users by Status",
+      "description": "Verify that admin can filter users by status.",
+      "preconditions": [
+        "Admin is logged in",
+        "User accounts exist with different statuses"
+      ],
+      "test_steps": [
+        "Navigate to admin user management",
+        "Apply status filter"
+      ],
+      "expected_results": "Only users with selected status are displayed.",
+      "priority": "Medium",
+      "test_type": "Functional",
+      "user_story_id": "US-017"
+    },
+    {
+      "id": "TC-068",
+      "title": "Order Confirmation Email Notification",
+      "description": "Verify that user receives email confirmation upon order placement.",
+      "preconditions": [
+        "User has placed an order"
+      ],
+      "test_steps": [
+        "Place an order",
+        "Check registered email inbox"
+      ],
+      "expected_results": "Order confirmation email with order details is received.",
+      "priority": "Medium",
+      "test_type": "Functional",
+      "user_story_id": "US-018"
+    },
+    {
+      "id": "TC-069",
+      "title": "Order Status Update Email Notification",
+      "description": "Verify that user receives email updates for order status changes.",
+      "preconditions": [
+        "User has placed an order",
+        "Order status is updated"
+      ],
+      "test_steps": [
+        "Admin updates order status",
+        "Check user's email inbox"
+      ],
+      "expected_results": "Email notification with updated order status is received.",
+      "priority": "Medium",
+      "test_type": "Functional",
+      "user_story_id": "US-018"
+    },
+    {
+      "id": "TC-070",
+      "title": "Opt Out of Email Notifications",
+      "description": "Verify that user can opt out of email notifications.",
+      "preconditions": [
+        "User is logged in"
+      ],
+      "test_steps": [
+        "Navigate to notification settings",
+        "Disable email notifications",
+        "Place an order"
+      ],
+      "expected_results": "No email notifications are received for order updates.",
+      "priority": "Medium",
+      "test_type": "Functional",
+      "user_story_id": "US-018"
+    },
+    {
+      "id": "TC-071",
+      "title": "Search Products by Name",
+      "description": "Verify that user can search for products by name.",
+      "preconditions": [
+        "Products exist in cATFlog"
+      ],
+      "test_steps": [
+        "Enter product name in search bar",
+        "Submit search"
+      ],
+      "expected_results": "Relevant products matching the name are displayed.",
+      "priority": "High",
+      "test_type": "Functional",
+      "user_story_id": "US-019"
+    },
+    {
+      "id": "TC-072",
+      "title": "Search Products by Category",
+      "description": "Verify that user can filter search results by category.",
+      "preconditions": [
+        "Products exist in multiple categories"
+      ],
+      "test_steps": [
+        "Enter keyword in search bar",
+        "Apply category filter",
+        "Submit search"
+      ],
+      "expected_results": "Relevant products in selected category are displayed.",
+      "priority": "High",
+      "test_type": "Functional",
+      "user_story_id": "US-019"
+    },
+    {
+      "id": "TC-073",
+      "title": "Search Products by Keyword",
+      "description": "Verify that user can search for products by keyword.",
+      "preconditions": [
+        "Products exist in cATFlog"
+      ],
+      "test_steps": [
+        "Enter keyword in search bar",
+        "Submit search"
+      ],
+      "expected_results": "Relevant products matching the keyword are displayed.",
+      "priority": "High",
+      "test_type": "Functional",
+      "user_story_id": "US-019"
+    },
+    {
+      "id": "TC-074",
+      "title": "Search Result Sorting by Relevance",
+      "description": "Verify that search results are sorted by relevance.",
+      "preconditions": [
+        "Products exist in cATFlog"
+      ],
+      "test_steps": [
+        "Enter search term",
+        "Submit search"
+      ],
+      "expected_results": "Search results are sorted by relevance.",
+      "priority": "High",
+      "test_type": "Functional",
+      "user_story_id": "US-019"
+    },
+    {
+      "id": "TC-075",
+      "title": "Responsive Design on Mobile",
+      "description": "Verify that platform layout adapts to mobile screen size.",
+      "preconditions": [
+        "User accesses platform on mobile device"
+      ],
+      "test_steps": [
+        "Open platform on mobile device",
+        "Navigate through various pages"
+      ],
+      "expected_results": "Layout adapts and all features are accessible on mobile.",
+      "priority": "Medium",
+      "test_type": "Non-functional",
+      "user_story_id": "US-020"
+    },
+    {
+      "id": "TC-076",
+      "title": "Responsive Design on Tablet",
+      "description": "Verify that platform layout adapts to tablet screen size.",
+      "preconditions": [
+        "User accesses platform on tablet device"
+      ],
+      "test_steps": [
+        "Open platform on tablet device",
+        "Navigate through various pages"
+      ],
+      "expected_results": "Layout adapts and all features are accessible on tablet.",
+      "priority": "Medium",
+      "test_type": "Non-functional",
+      "user_story_id": "US-020"
+    },
+    {
+      "id": "TC-077",
+      "title": "Responsive Design on Desktop",
+      "description": "Verify that platform layout adapts to desktop screen size.",
+      "preconditions": [
+        "User accesses platform on desktop device"
+      ],
+      "test_steps": [
+        "Open platform on desktop device",
+        "Navigate through various pages"
+      ],
+      "expected_results": "Layout adapts and all features are accessible on desktop.",
+      "priority": "Medium",
+      "test_type": "Non-functional",
+      "user_story_id": "US-020"
+    },
+    {
+      "id": "TC-078",
+      "title": "Image and Text Scaling",
+      "description": "Verify that images and text scale appropriately on different devices.",
+      "preconditions": [
+        "User accesses platform on mobile, tablet, and desktop"
+      ],
+      "test_steps": [
+        "Open platform on each device",
+        "View product cATFlog and details"
+      ],
+      "expected_results": "Images and text scale appropriately on all devices.",
+      "priority": "Medium",
+      "test_type": "Non-functional",
+      "user_story_id": "US-020"
+    },
+    {
+      "id": "TC-079",
+      "title": "Navigation Usability Across Devices",
+      "description": "Verify that navigation remains user-friendly on mobile, tablet, and desktop.",
+      "preconditions": [
+        "User accesses platform on various devices"
+      ],
+      "test_steps": [
+        "Open platform on each device",
+        "Navigate through main menu and pages"
+      ],
+      "expected_results": "Navigation is user-friendly and consistent across devices.",
+      "priority": "Medium",
+      "test_type": "Non-functional",
+      "user_story_id": "US-020"
+    }
+  ],
+  "summary": "79 comprehensive test cases have been generated covering positive, negative, boundary, and edge scenarios for all 20 user stories, ensuring thorough functional and non-functional coverage of user registration, login, password management, profile management, product cATFlog, cart, checkout, order history, reviews, wishlist, admin features, notifications, search, and responsive design.",
+  "agent_name": "Test Case Generator",
+  "file_name": "samplefinal.docx",
+  "timestamp": "2026-02-05T01:58:14.537052"
+}

@@ -1,0 +1,9 @@
+Production Line Status Form
+
+Production Line: PL-078
+Status: NO-GO
+Manager: Michael Brown
+Date: 2025-01-15
+Workers: 20
+Skills: assembly, quality_check, packaging
+Reason: Maintenance required - scheduled downtime

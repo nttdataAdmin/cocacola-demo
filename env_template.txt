@@ -1,0 +1,12 @@
+# Azure OpenAI Configuration
+# Copy this content to a file named .env in the ATA_Demo folder
+
+AZURE_ENDPOINT=https://your-endpoint.openai.azure.com/
+AZURE_DEPLOYMENT=gpt-4.1
+AZURE_API_KEY=your-api-key-here
+AZURE_API_VERSION=2024-08-01-preview
+
+# Note: The application will work without Azure OpenAI API key
+# It will use keyword-based fallbacks for form classification
+
+

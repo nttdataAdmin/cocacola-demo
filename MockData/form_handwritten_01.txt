@@ -1,0 +1,9 @@
+Production Line Status Form
+
+Production Line: PL-042
+Status: NO-GO
+Manager: John Smith
+Date: 2025-01-15
+Workers: 20
+Skills: assembly, quality_check, packaging
+Reason: Equipment malfunction - conveyor belt stopped

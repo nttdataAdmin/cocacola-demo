@@ -1,0 +1,268 @@
+{
+  "user_stories": [
+    {
+      "id": "US-001",
+      "title": "User Registration",
+      "user_story": "As a new user, I want to register an account so that I can access personalized features.",
+      "acceptance_criteria": [
+        "User can enter required information (name, email, password).",
+        "System validates email format and password strength.",
+        "User receives confirmation email after registration.",
+        "User cannot register with an already used email.",
+        "User is redirected to login page after successful registration."
+      ],
+      "priority": "High"
+    },
+    {
+      "id": "US-002",
+      "title": "User Login",
+      "user_story": "As a registered user, I want to log in to my account so that I can access my dashboard.",
+      "acceptance_criteria": [
+        "User can enter email and password to log in.",
+        "System validates credentials and displays error for invalid login.",
+        "User is redirected to dashboard upon successful login.",
+        "User can choose 'Remember Me' option.",
+        "User is locked out after 5 failed login attempts."
+      ],
+      "priority": "High"
+    },
+    {
+      "id": "US-003",
+      "title": "Password Reset",
+      "user_story": "As a user, I want to reset my password so that I can regain access if I forget it.",
+      "acceptance_criteria": [
+        "User can request password reset via email.",
+        "System sends password reset link to registered email.",
+        "User can set a new password using the reset link.",
+        "System validates new password strength.",
+        "User receives confirmation after successful password reset."
+      ],
+      "priority": "High"
+    },
+    {
+      "id": "US-004",
+      "title": "Profile Management",
+      "user_story": "As a user, I want to update my profile information so that my account details are current.",
+      "acceptance_criteria": [
+        "User can edit name, email, and contact information.",
+        "Changes are saved and reflected immediately.",
+        "System validates email format on update.",
+        "User receives confirmation of successful update.",
+        "User cannot change email to one already in use."
+      ],
+      "priority": "Medium"
+    },
+    {
+      "id": "US-005",
+      "title": "View Dashboard",
+      "user_story": "As a user, I want to view my dashboard so that I can see my account summary and recent activity.",
+      "acceptance_criteria": [
+        "Dashboard displays user\u2019s name and profile picture.",
+        "Recent activity is listed chronologically.",
+        "Account summary shows relevant statistics.",
+        "User can access dashboard from main navigation.",
+        "Dashboard updates in real-time."
+      ],
+      "priority": "High"
+    },
+    {
+      "id": "US-006",
+      "title": "Search Feature",
+      "user_story": "As a user, I want to search for items so that I can quickly find what I need.",
+      "acceptance_criteria": [
+        "User can enter keywords in search bar.",
+        "Search results are displayed in order of relevance.",
+        "System supports filtering and sorting of results.",
+        "Search is responsive and returns results within 2 seconds.",
+        "User can clear search input."
+      ],
+      "priority": "High"
+    },
+    {
+      "id": "US-007",
+      "title": "Advanced Search Filters",
+      "user_story": "As a user, I want to apply advanced filters to search results so that I can narrow down my options.",
+      "acceptance_criteria": [
+        "User can filter results by category, date, and status.",
+        "Multiple filters can be applied simultaneously.",
+        "Filters can be reset to default.",
+        "Filtered results update instantly.",
+        "System displays number of results per filter."
+      ],
+      "priority": "Medium"
+    },
+    {
+      "id": "US-008",
+      "title": "Item Details View",
+      "user_story": "As a user, I want to view detailed information about an item so that I can make informed decisions.",
+      "acceptance_criteria": [
+        "User can click on an item to view details.",
+        "Details page displays all relevant information (description, images, price, etc.).",
+        "User can navigate back to search results.",
+        "Images are displayed in a gallery format.",
+        "Related items are suggested on the details page."
+      ],
+      "priority": "High"
+    },
+    {
+      "id": "US-009",
+      "title": "Add Item to Favorites",
+      "user_story": "As a user, I want to add items to my favorites list so that I can easily access them later.",
+      "acceptance_criteria": [
+        "User can mark/unmark items as favorites.",
+        "Favorites list is accessible from dashboard.",
+        "User can remove items from favorites.",
+        "System displays count of favorite items.",
+        "Favorites persist across sessions."
+      ],
+      "priority": "Medium"
+    },
+    {
+      "id": "US-010",
+      "title": "Notifications",
+      "user_story": "As a user, I want to receive notifications about important updates so that I stay informed.",
+      "acceptance_criteria": [
+        "User receives notifications for account activity.",
+        "Notifications are displayed in a dedicated section.",
+        "Unread notifications are highlighted.",
+        "User can mark notifications as read.",
+        "User can delete notifications."
+      ],
+      "priority": "Medium"
+    },
+    {
+      "id": "US-011",
+      "title": "Admin User Management",
+      "user_story": "As an admin, I want to manage user accounts so that I can maintain system integrity.",
+      "acceptance_criteria": [
+        "Admin can view list of all users.",
+        "Admin can activate/deactivate user accounts.",
+        "Admin can edit user details.",
+        "Admin can reset user passwords.",
+        "Changes are logged for audit purposes."
+      ],
+      "priority": "High"
+    },
+    {
+      "id": "US-012",
+      "title": "Admin Item Management",
+      "user_story": "As an admin, I want to manage items in the system so that I can ensure dATF accuracy.",
+      "acceptance_criteria": [
+        "Admin can add new items to the system.",
+        "Admin can edit existing items.",
+        "Admin can delete items.",
+        "System validates item dATF before saving.",
+        "Changes are reflected immediately."
+      ],
+      "priority": "High"
+    },
+    {
+      "id": "US-013",
+      "title": "Audit Log",
+      "user_story": "As an admin, I want to view audit logs so that I can track system changes and user actions.",
+      "acceptance_criteria": [
+        "Audit log records all significant actions (login, updates, deletions).",
+        "Logs are searchable by date and user.",
+        "Admin can export logs to CSV.",
+        "Log entries include timestamp and actor.",
+        "Logs are protected from unauthorized access."
+      ],
+      "priority": "Medium"
+    },
+    {
+      "id": "US-014",
+      "title": "Role-Based Access Control",
+      "user_story": "As an admin, I want to assign roles to users so that access to features is properly restricted.",
+      "acceptance_criteria": [
+        "Admin can assign roles (user, admin, manager) to accounts.",
+        "System enforces permissions based on role.",
+        "Users see only features allowed by their role.",
+        "Role changes take effect immediately.",
+        "Unauthorized access attempts are logged."
+      ],
+      "priority": "High"
+    },
+    {
+      "id": "US-015",
+      "title": "Responsive Design",
+      "user_story": "As a user, I want the application to be responsive so that I can use it on any device.",
+      "acceptance_criteria": [
+        "Application layout adjusts for mobile, tablet, and desktop.",
+        "All features are accessible on all device sizes.",
+        "Images and text scale appropriately.",
+        "Navigation is usable on touch devices.",
+        "No horizontal scrolling is required."
+      ],
+      "priority": "Medium"
+    },
+    {
+      "id": "US-016",
+      "title": "Help and Support",
+      "user_story": "As a user, I want access to help and support resources so that I can resolve issues quickly.",
+      "acceptance_criteria": [
+        "Help section is accessible from main navigation.",
+        "User can search help articles.",
+        "Contact support option is available.",
+        "FAQs are listed and searchable.",
+        "User receives confirmation after submitting a support request."
+      ],
+      "priority": "Low"
+    },
+    {
+      "id": "US-017",
+      "title": "Session Timeout",
+      "user_story": "As a user, I want my session to time out after inactivity so that my account remains secure.",
+      "acceptance_criteria": [
+        "Session times out after configurable period of inactivity.",
+        "User is notified before session expires.",
+        "User is logged out automatically after timeout.",
+        "User must log in again to regain access.",
+        "Session timeout does not affect unsaved dATF."
+      ],
+      "priority": "Medium"
+    },
+    {
+      "id": "US-018",
+      "title": "DATF Export",
+      "user_story": "As a user, I want to export my dATF so that I can use it outside the application.",
+      "acceptance_criteria": [
+        "User can export dATF in CSV and PDF formats.",
+        "Export includes all selected dATF fields.",
+        "User can select date range for export.",
+        "Exported files are downloadable.",
+        "System confirms successful export."
+      ],
+      "priority": "Low"
+    },
+    {
+      "id": "US-019",
+      "title": "Multi-language Support",
+      "user_story": "As a user, I want to select my preferred language so that I can use the application comfortably.",
+      "acceptance_criteria": [
+        "User can select language from settings.",
+        "All labels and messages are translated.",
+        "Language selection persists across sessions.",
+        "Default language is applied for new users.",
+        "System falls back to default language for missing translations."
+      ],
+      "priority": "Low"
+    },
+    {
+      "id": "US-020",
+      "title": "Bulk Actions",
+      "user_story": "As a user, I want to perform bulk actions on items so that I can manage multiple items efficiently.",
+      "acceptance_criteria": [
+        "User can select multiple items at once.",
+        "Bulk actions include delete, move, and export.",
+        "System confirms before performing destructive actions.",
+        "Bulk actions are processed efficiently.",
+        "User receives feedback on success or failure."
+      ],
+      "priority": "Medium"
+    }
+  ],
+  "summary": "20 comprehensive user stories were generated covering user registration, authentication, profile management, dashboard, search and filters, item details and favorites, notifications, admin management, audit logs, access control, responsive design, help/support, session timeout, dATF export, multi-language support, and bulk actions.",
+  "agent_name": "User Story Creator",
+  "file_name": "samplefinalcore.docx",
+  "timestamp": "2026-02-05T02:10:49.400161"
+}

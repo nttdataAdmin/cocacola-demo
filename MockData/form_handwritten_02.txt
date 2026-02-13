@@ -1,0 +1,8 @@
+Production Line Status Form
+
+Production Line: PL-015
+Status: GO
+Manager: Sarah Johnson
+Date: 2025-01-15
+Workers: 20
+Skills: assembly, quality_check, packaging

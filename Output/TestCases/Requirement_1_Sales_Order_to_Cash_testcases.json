@@ -1,0 +1,989 @@
+{
+  "test_cases": [
+    {
+      "id": "TC-001",
+      "title": "Create Sales Order with Valid Data",
+      "description": "Verify that a sales representative can create a sales order with all required fields filled correctly.",
+      "preconditions": [
+        "User is logged in as Sales Representative",
+        "Customer and product master data exist"
+      ],
+      "test_steps": [
+        "Navigate to Sales Order creation screen",
+        "Enter valid customer, product, quantity, price, and delivery date",
+        "Save the sales order"
+      ],
+      "expected_results": "Sales order is created, assigned a unique order number, status is 'Open', and order appears in the sales order list.",
+      "priority": "High",
+      "test_type": "Functional",
+      "user_story_id": "US-001"
+    },
+    {
+      "id": "TC-002",
+      "title": "Attempt to Create Sales Order with Missing Mandatory Fields",
+      "description": "Verify that the system prevents creation of a sales order when mandatory fields are missing.",
+      "preconditions": [
+        "User is logged in as Sales Representative"
+      ],
+      "test_steps": [
+        "Navigate to Sales Order creation screen",
+        "Leave one or more mandatory fields (e.g., product or customer) blank",
+        "Attempt to save the sales order"
+      ],
+      "expected_results": "System displays validation error and does not save the sales order.",
+      "priority": "High",
+      "test_type": "Functional",
+      "user_story_id": "US-001"
+    },
+    {
+      "id": "TC-003",
+      "title": "Boundary Test for Maximum Quantity in Sales Order",
+      "description": "Verify that the system accepts the maximum allowed quantity for a product in a sales order.",
+      "preconditions": [
+        "User is logged in as Sales Representative",
+        "Product has a defined maximum quantity"
+      ],
+      "test_steps": [
+        "Navigate to Sales Order creation screen",
+        "Enter maximum allowed quantity for a product",
+        "Fill other required fields",
+        "Save the sales order"
+      ],
+      "expected_results": "Sales order is created successfully with maximum quantity.",
+      "priority": "Medium",
+      "test_type": "Functional",
+      "user_story_id": "US-001"
+    },
+    {
+      "id": "TC-004",
+      "title": "Create Sales Order with Invalid Delivery Date",
+      "description": "Verify that the system rejects a sales order with a delivery date in the past.",
+      "preconditions": [
+        "User is logged in as Sales Representative"
+      ],
+      "test_steps": [
+        "Navigate to Sales Order creation screen",
+        "Enter a delivery date in the past",
+        "Fill other required fields",
+        "Attempt to save the sales order"
+      ],
+      "expected_results": "System displays error and does not save the sales order.",
+      "priority": "Medium",
+      "test_type": "Functional",
+      "user_story_id": "US-001"
+    },
+    {
+      "id": "TC-005",
+      "title": "Verify Sales Order Appears in List After Creation",
+      "description": "Ensure that a newly created sales order is visible in the sales order list.",
+      "preconditions": [
+        "Sales order has been created"
+      ],
+      "test_steps": [
+        "Navigate to Sales Order list",
+        "Search for the newly created order number"
+      ],
+      "expected_results": "Sales order is displayed in the list with status 'Open'.",
+      "priority": "High",
+      "test_type": "Functional",
+      "user_story_id": "US-001"
+    },
+    {
+      "id": "TC-006",
+      "title": "Edit Sales Order Before Delivery",
+      "description": "Verify that a sales representative can edit an existing sales order before delivery is processed.",
+      "preconditions": [
+        "Sales order exists with status 'Open'",
+        "User is logged in as Sales Representative"
+      ],
+      "test_steps": [
+        "Navigate to Sales Order list",
+        "Select an 'Open' sales order",
+        "Edit order details (e.g., quantity or delivery date)",
+        "Save changes"
+      ],
+      "expected_results": "Order is updated, status remains 'Open', and changes are tracked in audit trail.",
+      "priority": "High",
+      "test_type": "Functional",
+      "user_story_id": "US-002"
+    },
+    {
+      "id": "TC-007",
+      "title": "Attempt to Edit Sales Order After Delivery",
+      "description": "Verify that the system prevents editing of sales orders after delivery is processed.",
+      "preconditions": [
+        "Sales order exists with status 'Delivered'",
+        "User is logged in as Sales Representative"
+      ],
+      "test_steps": [
+        "Navigate to Sales Order list",
+        "Select a 'Delivered' sales order",
+        "Attempt to edit order details"
+      ],
+      "expected_results": "System prevents editing and displays an appropriate message.",
+      "priority": "High",
+      "test_type": "Functional",
+      "user_story_id": "US-002"
+    },
+    {
+      "id": "TC-008",
+      "title": "Audit Trail for Sales Order Edits",
+      "description": "Verify that all changes to sales orders are logged in the audit trail.",
+      "preconditions": [
+        "Sales order exists",
+        "User edits order details"
+      ],
+      "test_steps": [
+        "Edit sales order details",
+        "Save changes",
+        "Access audit trail for the order"
+      ],
+      "expected_results": "Audit trail shows user, timestamp, and details of changes.",
+      "priority": "Medium",
+      "test_type": "Functional",
+      "user_story_id": "US-002"
+    },
+    {
+      "id": "TC-009",
+      "title": "Edit Sales Order with Invalid Data",
+      "description": "Verify that the system validates updated information before saving edited sales order.",
+      "preconditions": [
+        "Sales order exists with status 'Open'"
+      ],
+      "test_steps": [
+        "Edit sales order and enter invalid data (e.g., negative quantity)",
+        "Attempt to save changes"
+      ],
+      "expected_results": "System displays validation error and does not save changes.",
+      "priority": "Medium",
+      "test_type": "Functional",
+      "user_story_id": "US-002"
+    },
+    {
+      "id": "TC-010",
+      "title": "View Sales Order Details",
+      "description": "Verify that a sales representative can view all details of a sales order.",
+      "preconditions": [
+        "Sales order exists",
+        "User is logged in as Sales Representative"
+      ],
+      "test_steps": [
+        "Navigate to Sales Order list",
+        "Select a sales order",
+        "View order details"
+      ],
+      "expected_results": "System displays customer, items, pricing, status, delivery date, and order history.",
+      "priority": "High",
+      "test_type": "Functional",
+      "user_story_id": "US-003"
+    },
+    {
+      "id": "TC-011",
+      "title": "Access Sales Order Attachments",
+      "description": "Verify that order attachments are accessible from the sales order details view.",
+      "preconditions": [
+        "Sales order exists with attachments"
+      ],
+      "test_steps": [
+        "Navigate to Sales Order details",
+        "Click on attachment link"
+      ],
+      "expected_results": "Attachment opens or downloads successfully.",
+      "priority": "Medium",
+      "test_type": "Functional",
+      "user_story_id": "US-003"
+    },
+    {
+      "id": "TC-012",
+      "title": "Search Sales Order by Order Number",
+      "description": "Verify that users can search for a sales order using the order number.",
+      "preconditions": [
+        "Sales order exists"
+      ],
+      "test_steps": [
+        "Navigate to Sales Order search",
+        "Enter order number",
+        "Execute search"
+      ],
+      "expected_results": "Sales order matching the order number is displayed.",
+      "priority": "High",
+      "test_type": "Functional",
+      "user_story_id": "US-003"
+    },
+    {
+      "id": "TC-013",
+      "title": "Role-Based Restriction on Viewing Sales Orders",
+      "description": "Verify that users without appropriate roles cannot view sales order details.",
+      "preconditions": [
+        "User is logged in with restricted role"
+      ],
+      "test_steps": [
+        "Attempt to access sales order details"
+      ],
+      "expected_results": "Access is denied and an appropriate message is displayed.",
+      "priority": "High",
+      "test_type": "Functional",
+      "user_story_id": "US-003"
+    },
+    {
+      "id": "TC-014",
+      "title": "Cancel Open Sales Order",
+      "description": "Verify that a sales representative can cancel a sales order with 'Open' status.",
+      "preconditions": [
+        "Sales order exists with status 'Open'"
+      ],
+      "test_steps": [
+        "Navigate to Sales Order list",
+        "Select an 'Open' sales order",
+        "Click 'Cancel Order'",
+        "Enter reason for cancellation",
+        "Confirm cancellation"
+      ],
+      "expected_results": "Order status changes to 'Cancelled', reason is recorded, inventory updated, and user/timestamp logged.",
+      "priority": "Medium",
+      "test_type": "Functional",
+      "user_story_id": "US-004"
+    },
+    {
+      "id": "TC-015",
+      "title": "Attempt to Cancel Delivered Sales Order",
+      "description": "Verify that the system prevents cancellation of sales orders after delivery.",
+      "preconditions": [
+        "Sales order exists with status 'Delivered'"
+      ],
+      "test_steps": [
+        "Attempt to cancel the delivered sales order"
+      ],
+      "expected_results": "System displays error and does not allow cancellation.",
+      "priority": "Medium",
+      "test_type": "Functional",
+      "user_story_id": "US-004"
+    },
+    {
+      "id": "TC-016",
+      "title": "Verify Inventory Update After Sales Order Cancellation",
+      "description": "Ensure that inventory and product availability are updated after a sales order is cancelled.",
+      "preconditions": [
+        "Sales order is cancelled"
+      ],
+      "test_steps": [
+        "Check product inventory before cancellation",
+        "Cancel the sales order",
+        "Check product inventory after cancellation"
+      ],
+      "expected_results": "Inventory reflects the cancellation and availability is updated.",
+      "priority": "Medium",
+      "test_type": "Functional",
+      "user_story_id": "US-004"
+    },
+    {
+      "id": "TC-017",
+      "title": "Cancel Sales Order Without Reason",
+      "description": "Verify that the system requires a reason for cancellation.",
+      "preconditions": [
+        "Sales order exists with status 'Open'"
+      ],
+      "test_steps": [
+        "Attempt to cancel sales order without entering a reason"
+      ],
+      "expected_results": "System displays validation error and does not cancel the order.",
+      "priority": "Low",
+      "test_type": "Functional",
+      "user_story_id": "US-004"
+    },
+    {
+      "id": "TC-018",
+      "title": "Process Delivery for Open Sales Order",
+      "description": "Verify that a warehouse clerk can process delivery for an open sales order.",
+      "preconditions": [
+        "Sales order exists with status 'Open'",
+        "Product is available in inventory"
+      ],
+      "test_steps": [
+        "Navigate to Delivery creation screen",
+        "Select open sales order",
+        "Create delivery document"
+      ],
+      "expected_results": "Delivery document is created, assigned a unique number, and order status is updated to 'Delivered'.",
+      "priority": "High",
+      "test_type": "Functional",
+      "user_story_id": "US-005"
+    },
+    {
+      "id": "TC-019",
+      "title": "Attempt Delivery with Insufficient Inventory",
+      "description": "Verify that the system prevents delivery processing if product is not available.",
+      "preconditions": [
+        "Sales order exists with status 'Open'",
+        "Product is out of stock"
+      ],
+      "test_steps": [
+        "Attempt to create delivery for the sales order"
+      ],
+      "expected_results": "System displays error and does not create delivery document.",
+      "priority": "High",
+      "test_type": "Functional",
+      "user_story_id": "US-005"
+    },
+    {
+      "id": "TC-020",
+      "title": "Verify Inventory Update After Delivery",
+      "description": "Ensure that inventory is reduced by delivered quantity after delivery processing.",
+      "preconditions": [
+        "Delivery is processed for a sales order"
+      ],
+      "test_steps": [
+        "Check product inventory before delivery",
+        "Process delivery",
+        "Check product inventory after delivery"
+      ],
+      "expected_results": "Inventory is reduced by the delivered quantity.",
+      "priority": "High",
+      "test_type": "Functional",
+      "user_story_id": "US-005"
+    },
+    {
+      "id": "TC-021",
+      "title": "Edit Delivery Address Before Shipment",
+      "description": "Verify that a warehouse clerk can edit delivery address before shipment confirmation.",
+      "preconditions": [
+        "Delivery document exists with status 'Open'"
+      ],
+      "test_steps": [
+        "Navigate to Delivery document",
+        "Edit delivery address and contact details",
+        "Save changes"
+      ],
+      "expected_results": "Changes are saved, logged, and delivery status remains 'Open'.",
+      "priority": "Medium",
+      "test_type": "Functional",
+      "user_story_id": "US-006"
+    },
+    {
+      "id": "TC-022",
+      "title": "Attempt to Edit Delivery After Goods Issue",
+      "description": "Verify that the system prevents editing of delivery details after goods issue is posted.",
+      "preconditions": [
+        "Delivery document exists with goods issue posted"
+      ],
+      "test_steps": [
+        "Attempt to edit delivery address or contact details"
+      ],
+      "expected_results": "System prevents editing and displays an appropriate message.",
+      "priority": "Medium",
+      "test_type": "Functional",
+      "user_story_id": "US-006"
+    },
+    {
+      "id": "TC-023",
+      "title": "Edit Delivery with Invalid Data",
+      "description": "Verify that the system validates changes to delivery details before saving.",
+      "preconditions": [
+        "Delivery document exists with status 'Open'"
+      ],
+      "test_steps": [
+        "Edit delivery address with invalid data (e.g., blank address)",
+        "Attempt to save changes"
+      ],
+      "expected_results": "System displays validation error and does not save changes.",
+      "priority": "Low",
+      "test_type": "Functional",
+      "user_story_id": "US-006"
+    },
+    {
+      "id": "TC-024",
+      "title": "Post Goods Issue for Delivery",
+      "description": "Verify that a warehouse clerk can post goods issue for a delivery with 'Open' status.",
+      "preconditions": [
+        "Delivery document exists with status 'Open'"
+      ],
+      "test_steps": [
+        "Navigate to Goods Issue posting screen",
+        "Select delivery document",
+        "Post goods issue"
+      ],
+      "expected_results": "Goods issue is posted, inventory is reduced, delivery status is updated to 'Shipped', and user/timestamp are recorded.",
+      "priority": "High",
+      "test_type": "Functional",
+      "user_story_id": "US-007"
+    },
+    {
+      "id": "TC-025",
+      "title": "Attempt Duplicate Goods Issue Posting",
+      "description": "Verify that the system prevents duplicate posting of goods issue for the same delivery.",
+      "preconditions": [
+        "Goods issue already posted for delivery"
+      ],
+      "test_steps": [
+        "Attempt to post goods issue again for the same delivery"
+      ],
+      "expected_results": "System displays error and prevents duplicate posting.",
+      "priority": "High",
+      "test_type": "Functional",
+      "user_story_id": "US-007"
+    },
+    {
+      "id": "TC-026",
+      "title": "Post Goods Issue with Insufficient Inventory",
+      "description": "Verify that the system prevents posting goods issue if inventory is insufficient.",
+      "preconditions": [
+        "Delivery document exists",
+        "Inventory is less than delivery quantity"
+      ],
+      "test_steps": [
+        "Attempt to post goods issue"
+      ],
+      "expected_results": "System displays error and does not post goods issue.",
+      "priority": "Medium",
+      "test_type": "Functional",
+      "user_story_id": "US-007"
+    },
+    {
+      "id": "TC-027",
+      "title": "Create Billing Document for Delivered Sales Order",
+      "description": "Verify that a billing clerk can create a billing document only for delivered sales orders.",
+      "preconditions": [
+        "Sales order exists with status 'Delivered'"
+      ],
+      "test_steps": [
+        "Navigate to Billing creation screen",
+        "Select delivered sales order",
+        "Create billing document"
+      ],
+      "expected_results": "Billing document is created, assigned a unique invoice number, includes all relevant information, and order status is updated to 'Billed'.",
+      "priority": "High",
+      "test_type": "Functional",
+      "user_story_id": "US-008"
+    },
+    {
+      "id": "TC-028",
+      "title": "Attempt to Create Billing for Undelivered Order",
+      "description": "Verify that the system prevents billing for orders not yet delivered.",
+      "preconditions": [
+        "Sales order exists with status 'Open'"
+      ],
+      "test_steps": [
+        "Attempt to create billing document"
+      ],
+      "expected_results": "System displays error and does not create billing document.",
+      "priority": "High",
+      "test_type": "Functional",
+      "user_story_id": "US-008"
+    },
+    {
+      "id": "TC-029",
+      "title": "Edit Billing Document Before Posting",
+      "description": "Verify that a billing clerk can edit billing details before posting to FI.",
+      "preconditions": [
+        "Billing document exists and not yet posted to FI"
+      ],
+      "test_steps": [
+        "Navigate to Billing document",
+        "Edit billing details (e.g., price or address)",
+        "Save changes"
+      ],
+      "expected_results": "Changes are saved, logged, and warnings are displayed for missing/incorrect data.",
+      "priority": "Medium",
+      "test_type": "Functional",
+      "user_story_id": "US-009"
+    },
+    {
+      "id": "TC-030",
+      "title": "Attempt to Edit Billing After FI Posting",
+      "description": "Verify that the system restricts editing of billing document after posting to FI.",
+      "preconditions": [
+        "Billing document is posted to FI"
+      ],
+      "test_steps": [
+        "Attempt to edit billing details"
+      ],
+      "expected_results": "System prevents editing and displays warning.",
+      "priority": "Medium",
+      "test_type": "Functional",
+      "user_story_id": "US-009"
+    },
+    {
+      "id": "TC-031",
+      "title": "Edit Billing Document with Missing Data",
+      "description": "Verify that the system displays warnings for missing or incorrect data during billing edit.",
+      "preconditions": [
+        "Billing document exists and not yet posted to FI"
+      ],
+      "test_steps": [
+        "Edit billing document and remove required data",
+        "Attempt to save changes"
+      ],
+      "expected_results": "System displays warning and does not save changes.",
+      "priority": "Low",
+      "test_type": "Functional",
+      "user_story_id": "US-009"
+    },
+    {
+      "id": "TC-032",
+      "title": "Post Billing Document to FI Automatically",
+      "description": "Verify that posting a billing document to FI updates revenue and receivables in real time and generates FI document number.",
+      "preconditions": [
+        "Billing document exists and ready for posting"
+      ],
+      "test_steps": [
+        "Post billing document to FI",
+        "Check FI postings for revenue and receivables",
+        "Verify FI document number is linked"
+      ],
+      "expected_results": "Billing is posted to FI automatically, accounts updated, FI document number generated and linked.",
+      "priority": "High",
+      "test_type": "Functional",
+      "user_story_id": "US-010"
+    },
+    {
+      "id": "TC-033",
+      "title": "Attempt Duplicate FI Posting for Billing Document",
+      "description": "Verify that the system prevents duplicate posting of the same billing document to FI.",
+      "preconditions": [
+        "Billing document already posted to FI"
+      ],
+      "test_steps": [
+        "Attempt to post billing document to FI again"
+      ],
+      "expected_results": "System displays error and prevents duplicate posting.",
+      "priority": "High",
+      "test_type": "Functional",
+      "user_story_id": "US-010"
+    },
+    {
+      "id": "TC-034",
+      "title": "Handle FI Posting Errors",
+      "description": "Verify that posting errors are logged and notified to the user during FI posting.",
+      "preconditions": [
+        "Simulate error during FI posting"
+      ],
+      "test_steps": [
+        "Attempt to post billing document to FI",
+        "Trigger posting error (e.g., missing GL account)"
+      ],
+      "expected_results": "Error is logged and user is notified with details.",
+      "priority": "High",
+      "test_type": "Functional",
+      "user_story_id": "US-010"
+    },
+    {
+      "id": "TC-035",
+      "title": "Automatic FI Integration for O2C Transactions",
+      "description": "Verify that all sales, delivery, and billing transactions are reflected in FI in real time without manual intervention.",
+      "preconditions": [
+        "O2C transactions are processed"
+      ],
+      "test_steps": [
+        "Create sales order",
+        "Process delivery",
+        "Create and post billing document",
+        "Check FI postings"
+      ],
+      "expected_results": "All transactions are posted to FI automatically and traceable to originating transactions.",
+      "priority": "High",
+      "test_type": "Functional",
+      "user_story_id": "US-011"
+    },
+    {
+      "id": "TC-036",
+      "title": "FI Integration Error Logging",
+      "description": "Verify that the system provides error logs for failed FI integrations.",
+      "preconditions": [
+        "Simulate FI integration failure"
+      ],
+      "test_steps": [
+        "Trigger FI integration error",
+        "Check error logs"
+      ],
+      "expected_results": "Error is logged and accessible for troubleshooting.",
+      "priority": "High",
+      "test_type": "Functional",
+      "user_story_id": "US-011"
+    },
+    {
+      "id": "TC-037",
+      "title": "View Standard O2C Reports",
+      "description": "Verify that standard reports for sales orders, deliveries, billings, and FI postings are available.",
+      "preconditions": [
+        "User is logged in as Business Analyst"
+      ],
+      "test_steps": [
+        "Navigate to Reports section",
+        "Open standard O2C reports"
+      ],
+      "expected_results": "Reports display real-time data and are exportable to Excel/PDF.",
+      "priority": "Medium",
+      "test_type": "Functional",
+      "user_story_id": "US-012"
+    },
+    {
+      "id": "TC-038",
+      "title": "Filter O2C Reports by Customer and Date",
+      "description": "Verify that reports can be filtered by customer and date.",
+      "preconditions": [
+        "Reports are available"
+      ],
+      "test_steps": [
+        "Open O2C report",
+        "Apply filter for specific customer and date range"
+      ],
+      "expected_results": "Report displays filtered data as per criteria.",
+      "priority": "Medium",
+      "test_type": "Functional",
+      "user_story_id": "US-012"
+    },
+    {
+      "id": "TC-039",
+      "title": "Role-Based Access to Reports",
+      "description": "Verify that access to reports is restricted based on user roles.",
+      "preconditions": [
+        "User is logged in with restricted role"
+      ],
+      "test_steps": [
+        "Attempt to access O2C reports"
+      ],
+      "expected_results": "Access is denied and appropriate message is displayed.",
+      "priority": "Medium",
+      "test_type": "Functional",
+      "user_story_id": "US-012"
+    },
+    {
+      "id": "TC-040",
+      "title": "Assign Role-Based Access to Users",
+      "description": "Verify that system administrator can assign roles to users for O2C tasks.",
+      "preconditions": [
+        "User is logged in as System Administrator"
+      ],
+      "test_steps": [
+        "Navigate to User Management",
+        "Assign sales, warehouse, billing, finance, or admin role to user",
+        "Save changes"
+      ],
+      "expected_results": "Role is assigned and auditable in system logs.",
+      "priority": "High",
+      "test_type": "Functional",
+      "user_story_id": "US-013"
+    },
+    {
+      "id": "TC-041",
+      "title": "Unauthorized Access Attempt Logging",
+      "description": "Verify that unauthorized access attempts are logged.",
+      "preconditions": [
+        "User attempts unauthorized access"
+      ],
+      "test_steps": [
+        "Log in with a role not permitted for a function",
+        "Attempt to access restricted function"
+      ],
+      "expected_results": "Access is denied and attempt is logged in system.",
+      "priority": "High",
+      "test_type": "Functional",
+      "user_story_id": "US-013"
+    },
+    {
+      "id": "TC-042",
+      "title": "Update User Roles",
+      "description": "Verify that administrator can update user roles and changes are auditable.",
+      "preconditions": [
+        "User is logged in as System Administrator"
+      ],
+      "test_steps": [
+        "Navigate to User Management",
+        "Change user role",
+        "Save changes"
+      ],
+      "expected_results": "Role is updated and change is logged in audit trail.",
+      "priority": "High",
+      "test_type": "Functional",
+      "user_story_id": "US-013"
+    },
+    {
+      "id": "TC-043",
+      "title": "End-to-End O2C Process Flow Automation",
+      "description": "Verify that the system supports seamless transition from sales order creation to FI posting without manual intervention.",
+      "preconditions": [
+        "User has appropriate roles",
+        "Standard SAP configuration is in place"
+      ],
+      "test_steps": [
+        "Create sales order",
+        "Process delivery",
+        "Post goods issue",
+        "Create and post billing document",
+        "Check FI posting"
+      ],
+      "expected_results": "Each process step updates status automatically, no manual intervention required, and alerts are generated for failures.",
+      "priority": "High",
+      "test_type": "Functional",
+      "user_story_id": "US-014"
+    },
+    {
+      "id": "TC-044",
+      "title": "Prevent Skipping of Mandatory O2C Steps",
+      "description": "Verify that the system prevents skipping mandatory steps in O2C process.",
+      "preconditions": [
+        "User attempts to skip a step"
+      ],
+      "test_steps": [
+        "Attempt to create billing document without delivery",
+        "Attempt to post FI without billing"
+      ],
+      "expected_results": "System prevents skipping and displays error message.",
+      "priority": "High",
+      "test_type": "Functional",
+      "user_story_id": "US-014"
+    },
+    {
+      "id": "TC-045",
+      "title": "Audit Trail for O2C Transactions",
+      "description": "Verify that all changes to O2C transactions are logged and accessible to authorized users.",
+      "preconditions": [
+        "O2C transactions are processed"
+      ],
+      "test_steps": [
+        "Make changes to sales order, delivery, billing, and FI posting",
+        "Access audit trail",
+        "Attempt to edit or delete audit logs"
+      ],
+      "expected_results": "Audit trail shows all changes, is accessible, and cannot be edited or deleted.",
+      "priority": "Medium",
+      "test_type": "Functional",
+      "user_story_id": "US-015"
+    },
+    {
+      "id": "TC-046",
+      "title": "Export Audit Logs for Review",
+      "description": "Verify that audit logs can be exported for review.",
+      "preconditions": [
+        "Audit logs exist"
+      ],
+      "test_steps": [
+        "Navigate to audit trail",
+        "Export logs to Excel or PDF"
+      ],
+      "expected_results": "Audit logs are exported successfully.",
+      "priority": "Medium",
+      "test_type": "Functional",
+      "user_story_id": "US-015"
+    },
+    {
+      "id": "TC-047",
+      "title": "Error Notification for Failed O2C Processing",
+      "description": "Verify that system notifies users of errors during O2C processing.",
+      "preconditions": [
+        "Simulate error in O2C process"
+      ],
+      "test_steps": [
+        "Trigger error (e.g., missing mandatory field)",
+        "Observe error message and notification"
+      ],
+      "expected_results": "System displays clear error message and sends notification to responsible user.",
+      "priority": "Medium",
+      "test_type": "Functional",
+      "user_story_id": "US-016"
+    },
+    {
+      "id": "TC-048",
+      "title": "Prevent Further Processing Until Error Resolved",
+      "description": "Verify that system prevents further processing of O2C transaction until error is resolved.",
+      "preconditions": [
+        "O2C transaction has error"
+      ],
+      "test_steps": [
+        "Attempt to proceed with next process step after error",
+        "Resolve error",
+        "Proceed with process"
+      ],
+      "expected_results": "System blocks processing until error is resolved, then allows continuation.",
+      "priority": "Medium",
+      "test_type": "Functional",
+      "user_story_id": "US-016"
+    },
+    {
+      "id": "TC-049",
+      "title": "Search O2C Documents by Multiple Criteria",
+      "description": "Verify that users can search and filter sales orders, deliveries, and billings by document number, customer, date, and status.",
+      "preconditions": [
+        "O2C documents exist"
+      ],
+      "test_steps": [
+        "Navigate to search screen",
+        "Enter multiple search criteria",
+        "Execute search"
+      ],
+      "expected_results": "Search results are displayed in real time and match criteria.",
+      "priority": "Medium",
+      "test_type": "Functional",
+      "user_story_id": "US-017"
+    },
+    {
+      "id": "TC-050",
+      "title": "Save Frequently Used Search Filters",
+      "description": "Verify that users can save frequently used search filters.",
+      "preconditions": [
+        "User is logged in"
+      ],
+      "test_steps": [
+        "Create search filter",
+        "Save filter",
+        "Use saved filter for future searches"
+      ],
+      "expected_results": "Saved filter is available and can be reused.",
+      "priority": "Low",
+      "test_type": "Functional",
+      "user_story_id": "US-017"
+    },
+    {
+      "id": "TC-051",
+      "title": "Role-Based Restriction on Search Results",
+      "description": "Verify that access to search results is restricted by user role.",
+      "preconditions": [
+        "User is logged in with restricted role"
+      ],
+      "test_steps": [
+        "Perform search for O2C documents"
+      ],
+      "expected_results": "User only sees documents permitted by their role.",
+      "priority": "Medium",
+      "test_type": "Functional",
+      "user_story_id": "US-017"
+    },
+    {
+      "id": "TC-052",
+      "title": "Standard SAP Configuration for O2C Process",
+      "description": "Verify that system uses SAP standard order, delivery, and billing types for O2C process.",
+      "preconditions": [
+        "SAP standard configuration is in place"
+      ],
+      "test_steps": [
+        "Create sales order",
+        "Process delivery",
+        "Create billing document",
+        "Verify document types"
+      ],
+      "expected_results": "All documents use SAP standard types, no custom development required.",
+      "priority": "Medium",
+      "test_type": "Functional",
+      "user_story_id": "US-018"
+    },
+    {
+      "id": "TC-053",
+      "title": "Verify Configuration Documentation Availability",
+      "description": "Ensure that configuration documentation is available for reference.",
+      "preconditions": [
+        "System is configured using SAP best practices"
+      ],
+      "test_steps": [
+        "Access configuration documentation repository",
+        "Search for O2C process documentation"
+      ],
+      "expected_results": "Relevant documentation is available and accessible.",
+      "priority": "Low",
+      "test_type": "Functional",
+      "user_story_id": "US-018"
+    },
+    {
+      "id": "TC-054",
+      "title": "Verify Status Updates at Each O2C Step",
+      "description": "Verify that status is updated automatically at each process step (order, delivery, billing, FI posting).",
+      "preconditions": [
+        "O2C process steps are performed"
+      ],
+      "test_steps": [
+        "Create sales order",
+        "Process delivery",
+        "Post goods issue",
+        "Create and post billing document",
+        "Check status at each step"
+      ],
+      "expected_results": "Status is updated automatically and logged in audit trail.",
+      "priority": "High",
+      "test_type": "Functional",
+      "user_story_id": "US-019"
+    },
+    {
+      "id": "TC-055",
+      "title": "Prevent Manual Status Overrides",
+      "description": "Verify that system prevents manual status overrides for O2C documents.",
+      "preconditions": [
+        "O2C documents exist"
+      ],
+      "test_steps": [
+        "Attempt to manually change status of sales order, delivery, or billing document"
+      ],
+      "expected_results": "System prevents manual status change and displays error.",
+      "priority": "High",
+      "test_type": "Functional",
+      "user_story_id": "US-019"
+    },
+    {
+      "id": "TC-056",
+      "title": "Status Change Notification",
+      "description": "Verify that status updates trigger notifications if configured.",
+      "preconditions": [
+        "Notification configuration is enabled"
+      ],
+      "test_steps": [
+        "Perform O2C process step that changes status",
+        "Check for notification"
+      ],
+      "expected_results": "Notification is sent to relevant users upon status change.",
+      "priority": "Medium",
+      "test_type": "Functional",
+      "user_story_id": "US-019"
+    },
+    {
+      "id": "TC-057",
+      "title": "Automated Flag for Manual Intervention in O2C Process",
+      "description": "Verify that system flags any step requiring manual intervention for review.",
+      "preconditions": [
+        "O2C process step requires manual intervention"
+      ],
+      "test_steps": [
+        "Trigger a scenario where manual intervention is needed (e.g., exception)",
+        "Check for flag and report"
+      ],
+      "expected_results": "System flags the step and reports to process owner.",
+      "priority": "High",
+      "test_type": "Functional",
+      "user_story_id": "US-020"
+    },
+    {
+      "id": "TC-058",
+      "title": "Metrics on Manual vs Automated Transactions",
+      "description": "Verify that system provides metrics on manual versus automated transactions.",
+      "preconditions": [
+        "O2C transactions are processed"
+      ],
+      "test_steps": [
+        "Access metrics dashboard",
+        "Review manual and automated transaction statistics"
+      ],
+      "expected_results": "Metrics are displayed accurately for manual and automated transactions.",
+      "priority": "Medium",
+      "test_type": "Functional",
+      "user_story_id": "US-020"
+    },
+    {
+      "id": "TC-059",
+      "title": "Request Support for Automation Failure",
+      "description": "Verify that users can request support if automation fails in O2C process.",
+      "preconditions": [
+        "Automation failure occurs"
+      ],
+      "test_steps": [
+        "Encounter automation failure",
+        "Use system option to request support",
+        "Check for support ticket creation"
+      ],
+      "expected_results": "Support request is logged and tracked for resolution.",
+      "priority": "High",
+      "test_type": "Functional",
+      "user_story_id": "US-020"
+    }
+  ],
+  "summary": "59 comprehensive test cases have been generated, covering all user stories and requirements for SAP S/4HANA Order-to-Cash (O2C) process. The test cases include positive, negative, boundary, and edge scenarios for sales order management, delivery, billing, FI integration, reporting, controls, automation, standard SAP configuration, and error handling.",
+  "agent_name": "Test Case Generator",
+  "file_name": "Requirement_1_Sales_Order_to_Cash.docx",
+  "timestamp": "2026-02-05T06:58:10.318072"
+}
